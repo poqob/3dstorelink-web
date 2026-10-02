@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Allow: /about
+Allow: /platform
+Allow: /upload
+Disallow: /dashboard/
+Disallow: /api-docs/
+Disallow: /editor/
+
+Sitemap: https://3dstorelink.com/sitemap.xml

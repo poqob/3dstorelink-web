@@ -1,0 +1,2 @@
+/api/*  https://api.3dstorelink.com/api/:splat  200
+/*      /index.html                             200
