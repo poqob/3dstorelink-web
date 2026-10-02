@@ -539,20 +539,27 @@ function GuestUploadForm() {
 /* ─── Language Switcher ────────────────────────────────────────────────────── */
 function LanguageSwitcher() {
   const { i18n } = useTranslation();
+  const currentLang = i18n.language?.startsWith('de') ? 'de' : i18n.language?.startsWith('en') ? 'en' : 'tr';
   
   return (
     <div className="flex gap-1 bg-white/5 rounded-lg p-1 border border-white/10">
       <button 
         onClick={() => i18n.changeLanguage('tr')}
-        className={`px-2 py-1 text-xs font-bold rounded-md transition ${i18n.language === 'tr' ? 'bg-white text-black' : 'text-gray-400 hover:text-white'}`}
+        className={`px-2 py-1 text-xs font-bold rounded-md transition ${currentLang === 'tr' ? 'bg-white text-black' : 'text-gray-400 hover:text-white'}`}
       >
         TR
       </button>
       <button 
         onClick={() => i18n.changeLanguage('en')}
-        className={`px-2 py-1 text-xs font-bold rounded-md transition ${i18n.language === 'en' ? 'bg-white text-black' : 'text-gray-400 hover:text-white'}`}
+        className={`px-2 py-1 text-xs font-bold rounded-md transition ${currentLang === 'en' ? 'bg-white text-black' : 'text-gray-400 hover:text-white'}`}
       >
         EN
+      </button>
+      <button 
+        onClick={() => i18n.changeLanguage('de')}
+        className={`px-2 py-1 text-xs font-bold rounded-md transition ${currentLang === 'de' ? 'bg-white text-black' : 'text-gray-400 hover:text-white'}`}
+      >
+        DE
       </button>
     </div>
   );

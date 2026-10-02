@@ -94,6 +94,97 @@ const resources = {
       }
     }
   },
+  de: {
+    translation: {
+          "nav": {
+                "platform": "Plattform",
+                "showcase": "Showcase",
+                "upload": "Modell hochladen",
+                "dashboard": "Dashboard",
+                "login": "Anmelden"
+          },
+          "hero": {
+                "tag": "AR-Unterstützung · Web-3D · Admin-genehmigt",
+                "title1": "Bringen Sie Ihre 3D-Modelle",
+                "title2": "in die Welt",
+                "desc": "Webbasierter 3D-Viewer, AR-Unterstützung und globale Reichweite. Hochleistungsfähige Plattform zur Veröffentlichung von Modellen.",
+                "btn_showcase": "Showcase →",
+                "btn_upload": "Modell hochladen",
+                "btn_play": "Abspielen",
+                "btn_pause": "Pause"
+          },
+          "features": {
+                "f1_title": "Webbasiert",
+                "f1_desc": "Kein Plugin erforderlich. Funktioniert sofort im Browser.",
+                "f2_title": "AR-Unterstützung",
+                "f2_desc": "Augmented-Reality-Erlebnis auf mobilen Endgeräten.",
+                "f3_title": "Hohe Leistung",
+                "f3_desc": "Lädt blitzschnell und rendert flüssig, selbst bei großen Modellen."
+          },
+          "showcase": {
+                "tag": "Genehmigte Modelle",
+                "title1": "Showcase",
+                "title2": "Galerie",
+                "desc": "Klicken Sie hier, um Modelle in 3D & AR zu erleben.",
+                "btn_add": "Modell hinzufügen →",
+                "empty": "Noch keine genehmigten Modelle vorhanden. Laden Sie als Erster eins hoch!",
+                "ar_ready": "3D & AR bereit",
+                "ar_hint": "Nutzen Sie ein Mobilgerät für das AR-Erlebnis",
+                "fullscreen": "Vollbild ↗",
+                "view": "In 3D & AR ansehen",
+                "prev": "Zurück",
+                "next": "Weiter",
+                "page_info": "Seite {{page}} von {{totalPages}} · Gesamt {{total}} Modelle"
+          },
+          "upload": {
+                "tag": "Beitragen",
+                "title1": "Teilen Sie Ihr",
+                "title2": "Modell",
+                "desc": "Laden Sie Ihr Modell hoch. Nach der Admin-Genehmigung wird es im Showcase veröffentlicht.",
+                "contact_hint": "Bei fehlerhaftem Upload oder Stornierung:",
+                "full_name_lbl": "Vollständiger Name",
+                "full_name_ph": "z. B. Max Mustermann",
+                "company_lbl": "Unternehmen",
+                "company_ph": "z. B. Acme Corp",
+                "phone_lbl": "Telefon",
+                "phone_ph": "+49 151 12345678",
+                "name_lbl": "Modellname",
+                "name_hint": "(max. 14 Zeichen)",
+                "name_ph": "Modell benennen",
+                "email_lbl": "E-Mail",
+                "email_ph": "mail@beispiel.de",
+                "format_model": "max. 20 MB",
+                "format_img": "Vorschau: JPG/PNG max. 2 MB",
+                "file_lbl": "Modell-Datei",
+                "file_hint": "(max. 20 MB)",
+                "file_sel": "Datei auswählen oder ablegen",
+                "img_lbl": "Vorschaubild",
+                "img_hint": "(max. 2 MB · JPG/PNG)",
+                "img_sel": "Bild auswählen",
+                "err_generic": "Beim Hochladen ist ein Fehler aufgetreten. Wenn das Problem weiterhin besteht, schreiben Sie an",
+                "err_required_name": "Vollständiger Name ist erforderlich.",
+                "err_required_company": "Unternehmen ist erforderlich.",
+                "err_required_phone": "Telefonnummer ist erforderlich.",
+                "err_required_email": "E-Mail-Adresse ist erforderlich.",
+                "err_required_model_name": "Modellname ist erforderlich.",
+                "err_required_file": "Modell-Datei ist erforderlich.",
+                "err_required_image": "Titelbild ist erforderlich.",
+                "err_format": "Nicht unterstütztes Format:",
+                "err_file_size": "Modell-Datei darf maximal 20 MB groß sein.",
+                "err_img_size": "Titelbild darf maximal 2 MB groß sein.",
+                "err_img_format": "Titelbild muss im JPG- oder PNG-Format vorliegen.",
+                "note": "Nur 1 Modell pro E-Mail. Admin-Genehmigung erforderlich.",
+                "btn_next": "Nächster Schritt →",
+                "btn_back": "← Zurück",
+                "btn_submit": "Absenden →",
+                "btn_loading": "Wird geladen...",
+                "err_contact": "Wenn das Problem weiterhin besteht, schreiben Sie an",
+                "success_title": "Modell empfangen!",
+                "success_desc": "Nach der Überprüfung durch Administratoren wird es im Showcase veröffentlicht. Bei Fragen wenden Sie sich an",
+                "submit": "Absenden →"
+          }
+    }
+  },
   tr: {
     translation: {
       nav: {

@@ -9,25 +9,33 @@ export default function About() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [copied, setCopied] = useState(false);
 
-  const isTr = i18n.language === 'tr';
+  const currentLang = i18n.language?.startsWith("de") ? "de" : i18n.language?.startsWith("en") ? "en" : "tr";
+  const isTr = currentLang === "tr";
+  const isDe = currentLang === "de";
 
   useEffect(() => {
     document.title = isTr
-      ? '3D StoreLink Platformu | CAD to Web 3D & AR Dağıtım Altyapısı'
-      : '3D StoreLink Platform | CAD to Web 3D & AR Distribution Infrastructure';
+      ? "3D StoreLink Platformu | CAD to Web 3D & AR Dağıtım Altyapısı"
+      : isDe
+      ? "3D StoreLink Plattform | CAD zu Web-3D & AR Verteilungsinfrastruktur"
+      : "3D StoreLink Platform | CAD to Web 3D & AR Distribution Infrastructure";
     window.scrollTo(0, 0);
-  }, [isTr]);
+  }, [isTr, isDe]);
 
-  const contactMailSubject = isTr ? 'Bilgi Almak İstiyorum' : 'Information Request';
+  const contactMailSubject = isTr ? "Bilgi Almak İstiyorum" : isDe ? "Informationen anfordern" : "Information Request";
   const contactMailBody = isTr
-    ? 'Merhaba 3D StoreLink Ekibi,\n\nPlatformunuz ve çözümleriniz hakkında detaylı bilgi almak istiyorum.\n\nAd Soyad:\nFirma:\nTelefon:'
-    : 'Hello 3D StoreLink Team,\n\nI would like to get detailed information about your platform and solutions.\n\nName:\nCompany:\nPhone:';
+    ? "Merhaba 3D StoreLink Ekibi,\n\nPlatformunuz ve çözümleriniz hakkında detaylı bilgi almak istiyorum.\n\nAd Soyad:\nFirma:\nTelefon:"
+    : isDe
+    ? "Hallo 3D StoreLink Team,\n\nich möchte detaillierte Informationen über Ihre Plattform und Lösungen erhalten.\n\nName:\nUnternehmen:\nTelefon:"
+    : "Hello 3D StoreLink Team,\n\nI would like to get detailed information about your platform and solutions.\n\nName:\nCompany:\nPhone:";
   const heroMailto = `mailto:info@3dstorelink.com?subject=${encodeURIComponent(contactMailSubject)}&body=${encodeURIComponent(contactMailBody)}`;
 
-  const accountMailSubject = isTr ? 'Hesap Açma Talebi' : 'Account Opening Request';
+  const accountMailSubject = isTr ? "Hesap Açma Talebi" : isDe ? "Kontoeröffnungsanfrage" : "Account Opening Request";
   const accountMailBody = isTr
-    ? 'Hesap Açmak istiyorum\n\nFirma Adı:\nYetkili Adı Soyadı:\nTelefon:\nE-posta:'
-    : 'I would like to open an account\n\nCompany Name:\nContact Person:\nPhone:\nEmail:';
+    ? "Hesap Açmak istiyorum\n\nFirma Adı:\nYetkili Adı Soyadı:\nTelefon:\nE-posta:"
+    : isDe
+    ? "Ich möchte ein Konto eröffnen\n\nUnternehmensname:\nAnsprechpartner:\nTelefon:\nE-Mail:"
+    : "I would like to open an account\n\nCompany Name:\nContact Person:\nPhone:\nEmail:";
   const bottomMailto = `mailto:info@3dstorelink.com?subject=${encodeURIComponent(accountMailSubject)}&body=${encodeURIComponent(accountMailBody)}`;
 
   const embedCodeSample = `<iframe
@@ -69,6 +77,33 @@ export default function About() {
         {
           q: 'Shopify, WooCommerce, İkas veya özel yazılımlara nasıl entegre ederim?',
           a: 'Panelimizden veya Showcase sayfasından modelinizin embed kodunu kopyalayıp web sitenizdeki ürün açıklama alanına veya özel HTML bloklarına yapıştırmanız yeterlidir. Tüm süreç 30 saniyeden kısa sürer.',
+        },
+      ]
+    : isDe
+    ? [
+        {
+          q: 'Was genau ist 3D StoreLink und wie funktioniert es?',
+          a: '3D StoreLink ist eine cloudbasierte 3D- und AR-Modellverteilungsinfrastruktur, die für E-Commerce, Industriehersteller und 3D-Designer entwickelt wurde. Schwere CAD-Modelle (STP, STEP, STL, OBJ) werden in Sekundenschnelle in schlanke, weboptimierte GLB-Dateien konvertiert und können mit einer einzigen Zeile Einbettungscode in jede Website integriert werden.',
+        },
+        {
+          q: 'Welchen konkreten Nutzen bringt der Einsatz von 3D und AR im E-Commerce?',
+          a: 'Da Kunden Produkte vor dem Kauf um 360 Grad drehen und mit maßstabsgetreuem 1:1-AR in ihren eigenen Räumen ausprobieren können, sinken die Retourenquoten um bis zu 40 %. Verweildauer und Konversionsraten steigen im Durchschnitt um das 2,5-Fache.',
+        },
+        {
+          q: 'Müssen Kunden eine separate App für das AR-Erlebnis herunterladen?',
+          a: 'Absolut nicht. 3D StoreLink basiert vollständig auf WebXR-, iOS QuickLook- und Android Scene Viewer-Standards. Nutzer öffnen einfach die Kamera ihres Smartphones und erleben das Produkt ohne App-Installation in ihrer realen Umgebung.',
+        },
+        {
+          q: 'Welche Dateiformate werden unterstützt und wie läuft die Konvertierung ab?',
+          a: 'Unsere Plattform unterstützt gängige CAD-Formate wie STP (.step / .stp), STL (.stl), OBJ (.obj) sowie GLB/GLTF vollständig. Hochgeladene CAD-Modelle werden durch unsere Cloud-Engine analysiert, Polygonzahl und Texturen ohne sichtbaren Qualitätsverlust optimiert und in das Web-GLB-Format überführt.',
+        },
+        {
+          q: 'Wie wird die Sicherheit und der Schutz meines geistigen Eigentums gewährleistet?',
+          a: '3D StoreLink legt höchsten Wert auf Datenschutz. Ihre originalen CAD-Konstruktionsdateien werden verschlüsselt gespeichert. Webbesuchern wird nur das für die Webdarstellung optimierte visuelle Mesh (GLB) bereitgestellt; Ihre CAD-Originaldaten bleiben geschützt.',
+        },
+        {
+          q: 'Wie binde ich Modelle in Shopify, WooCommerce, Shopware oder eigene Webseiten ein?',
+          a: 'Kopieren Sie einfach den Iframe-Einbettungscode aus unserem Dashboard oder dem Showcase und fügen Sie ihn in Ihre Produktseite oder Ihr CMS ein. Der Vorgang dauert weniger als 30 Sekunden.',
         },
       ]
     : [
@@ -167,7 +202,7 @@ export default function About() {
               <button
                 onClick={() => i18n.changeLanguage('tr')}
                 className={`px-2 py-1 text-xs font-bold rounded-md transition ${
-                  isTr ? 'bg-white text-black' : 'text-gray-400 hover:text-white'
+                  currentLang === 'tr' ? 'bg-white text-black' : 'text-gray-400 hover:text-white'
                 }`}
               >
                 TR
@@ -175,10 +210,18 @@ export default function About() {
               <button
                 onClick={() => i18n.changeLanguage('en')}
                 className={`px-2 py-1 text-xs font-bold rounded-md transition ${
-                  !isTr ? 'bg-white text-black' : 'text-gray-400 hover:text-white'
+                  currentLang === 'en' ? 'bg-white text-black' : 'text-gray-400 hover:text-white'
                 }`}
               >
                 EN
+              </button>
+              <button
+                onClick={() => i18n.changeLanguage('de')}
+                className={`px-2 py-1 text-xs font-bold rounded-md transition ${
+                  currentLang === 'de' ? 'bg-white text-black' : 'text-gray-400 hover:text-white'
+                }`}
+              >
+                DE
               </button>
             </div>
 
@@ -223,6 +266,14 @@ export default function About() {
                 </span>{' '}
                 Yayınlama Ekosistemi
               </>
+            ) : isDe ? (
+              <>
+                Das 3D- & AR-Verteilungsökosystem der{' '}
+                <span className="bg-gradient-to-r from-blue-400 via-sky-300 to-indigo-300 bg-clip-text text-transparent">
+                  nächsten Generation
+                </span>{' '}
+                für Web & E-Commerce
+              </>
             ) : (
               <>
                 The Next-Generation{' '}
@@ -237,6 +288,8 @@ export default function About() {
           <p className="text-gray-400 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed mb-10">
             {isTr
               ? '3D StoreLink; endüstriyel CAD çizimlerinizi (STP, STEP, STL, OBJ) saniyeler içinde yüksek performanslı Web GLB modellerine dönüştürür. Ürünlerinizi her web sitesine, e-ticaret altyapısına ve mobil ortama tek tıkla 3D & AR olarak entegre etmenizi sağlar.'
+              : isDe
+              ? '3D StoreLink konvertiert Ihre industriellen CAD-Konstruktionen (STP, STEP, STL, OBJ) in Sekundenschnelle in hochoptimierte Web-GLB-Modelle. Integrieren Sie 3D- und Augmented-Reality-Erlebnisse mit einer einzigen Codezeile in jede Website.'
               : '3D StoreLink automatically transforms industrial CAD designs (STP, STEP, STL, OBJ) into ultra-optimized Web GLB models. Embed 3D and Augmented Reality (AR) product experiences onto any website with a single line of code.'}
           </p>
 
@@ -245,13 +298,13 @@ export default function About() {
               href={heroMailto}
               className="w-full sm:w-auto bg-white text-black font-bold px-8 py-3.5 rounded-xl hover:bg-gray-100 transition shadow-[0_0_25px_rgba(255,255,255,0.2)] text-sm"
             >
-              {isTr ? 'Bize Ulaşın →' : 'Contact Us →'}
+              {isTr ? 'Bize Ulaşın →' : isDe ? 'Kontakt aufnehmen →' : 'Contact Us →'}
             </a>
             <Link
               to="/#showcase"
               className="w-full sm:w-auto border border-white/20 text-white font-medium px-8 py-3.5 rounded-xl hover:bg-white/5 transition text-sm"
             >
-              {isTr ? 'Showcase Modelleri Keşfet' : 'Explore Showcase Models'}
+              {isTr ? 'Showcase Modelleri Keşfet' : isDe ? 'Showcase-Modelle entdecken' : 'Explore Showcase Models'}
             </Link>
           </div>
 
@@ -260,25 +313,25 @@ export default function About() {
             <div className="p-4 rounded-xl bg-white/2 border border-white/5">
               <div className="text-2xl sm:text-3xl font-extrabold text-blue-400">%80+</div>
               <div className="text-xs text-gray-400 mt-1">
-                {isTr ? 'Dosya Boyutu Optimizasyonu' : 'File Size Reduction'}
+                {isTr ? 'Dosya Boyutu Optimizasyonu' : isDe ? 'Dateigrößen-Optimierung' : 'File Size Reduction'}
               </div>
             </div>
             <div className="p-4 rounded-xl bg-white/2 border border-white/5">
               <div className="text-2xl sm:text-3xl font-extrabold text-green-400">&lt; 1 sn</div>
               <div className="text-xs text-gray-400 mt-1">
-                {isTr ? 'Hızlı CDN Dağıtımı' : 'Global CDN Loading'}
+                {isTr ? 'Hızlı CDN Dağıtımı' : isDe ? 'Weltweite CDN-Auslieferung' : 'Global CDN Loading'}
               </div>
             </div>
             <div className="p-4 rounded-xl bg-white/2 border border-white/5">
               <div className="text-2xl sm:text-3xl font-extrabold text-purple-400">1:1 AR</div>
               <div className="text-xs text-gray-400 mt-1">
-                {isTr ? 'Uygulamasız Gerçek Boyut' : 'App-free Mobile AR'}
+                {isTr ? 'Uygulamasız Gerçek Boyut' : isDe ? 'App-freies mobiles AR' : 'App-free Mobile AR'}
               </div>
             </div>
             <div className="p-4 rounded-xl bg-white/2 border border-white/5">
               <div className="text-2xl sm:text-3xl font-extrabold text-amber-400">2.5x</div>
               <div className="text-xs text-gray-400 mt-1">
-                {isTr ? 'E-Ticaret Dönüşüm Artışı' : 'Higher Conversions'}
+                {isTr ? 'E-Ticaret Dönüşüm Artışı' : isDe ? 'Höhere Konversionsrate' : 'Higher Conversions'}
               </div>
             </div>
           </div>
@@ -289,11 +342,13 @@ export default function About() {
       <section className="py-20 px-6 max-w-7xl mx-auto border-b border-white/5">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-3">
-            {isTr ? 'Neden 3D StoreLink?' : 'Why 3D StoreLink?'}
+            {isTr ? 'Neden 3D StoreLink?' : isDe ? 'Warum 3D StoreLink?' : 'Why 3D StoreLink?'}
           </h2>
           <p className="text-gray-400 text-sm">
             {isTr
               ? 'Geleneksel 2D fotoğraflar müşteri kararlarını ve mühendislik detaylarını aktarmakta yetersiz kalır.'
+              : isDe
+              ? 'Flache 2D-Produktfotos reichen nicht mehr aus, um moderne Kundenerwartungen zu erfüllen.'
               : 'Flat 2D product photos no longer meet modern buyer expectations.'}
           </p>
         </div>
@@ -301,7 +356,7 @@ export default function About() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="p-8 rounded-2xl bg-red-500/5 border border-red-500/20">
             <div className="text-red-400 font-semibold text-sm uppercase tracking-wider mb-3">
-              {isTr ? '❌ Geleneksel Yöntemlerin Zorlukları' : '❌ Traditional Challenges'}
+              {isTr ? '❌ Geleneksel Yöntemlerin Zorlukları' : isDe ? '❌ Traditionelle Herausforderungen' : '❌ Traditional Challenges'}
             </div>
             <ul className="space-y-3 text-sm text-gray-300">
               <li className="flex items-start gap-2.5">
@@ -309,6 +364,8 @@ export default function About() {
                 <span>
                   {isTr
                     ? 'CAD (STP, STEP) dosyaları onlarca megabayttır ve tarayıcılarda doğrudan gösterilemez.'
+                    : isDe
+                    ? 'Schwere CAD-Dateien (STP, STEP) können nicht direkt im Webbrowser dargestellt werden.'
                     : 'Heavy CAD files (STP, STEP) cannot render directly inside browsers.'}
                 </span>
               </li>
@@ -317,6 +374,8 @@ export default function About() {
                 <span>
                   {isTr
                     ? '2D fotoğraflar boyut ve ölçek hissi veremediği için e-ticarette yüksek iade oranlarına yol açar.'
+                    : isDe
+                    ? '2D-Fotos vermitteln kein echtes Gefühl für Maßstab und Details, was zu hohen Retourenquoten führt.'
                     : '2D product photos result in higher return rates due to scale and texture uncertainty.'}
                 </span>
               </li>
@@ -325,6 +384,8 @@ export default function About() {
                 <span>
                   {isTr
                     ? '3D viewer entegrasyonu için uzman yazılımcı ve karmaşık 3D kütüphaneler gerekir.'
+                    : isDe
+                    ? 'Eigene 3D-Web-Integrationen erfordern teure Entwicklerteams und komplexe 3D-Frameworks.'
                     : 'Integrating custom 3D web engines requires expensive 3D developer teams.'}
                 </span>
               </li>
@@ -333,7 +394,7 @@ export default function About() {
 
           <div className="p-8 rounded-2xl bg-blue-500/5 border border-blue-500/20">
             <div className="text-blue-400 font-semibold text-sm uppercase tracking-wider mb-3">
-              {isTr ? '✅ 3D StoreLink Çözümü' : '✅ The 3D StoreLink Advantage'}
+              {isTr ? '✅ 3D StoreLink Çözümü' : isDe ? '✅ Der 3D StoreLink Vorteil' : '✅ The 3D StoreLink Advantage'}
             </div>
             <ul className="space-y-3 text-sm text-gray-300">
               <li className="flex items-start gap-2.5">
@@ -341,6 +402,8 @@ export default function About() {
                 <span>
                   {isTr
                     ? 'Dosyanızı yükleyin; bulut motorumuz otomatik olarak ultra hafif Web GLB üretir.'
+                    : isDe
+                    ? 'Laden Sie Ihre Datei hoch; unsere Cloud-Engine erzeugt automatisch hochkomprimiertes Web-GLB.'
                     : 'Upload any file; our cloud engine produces ultra-compressed Web GLB automatically.'}
                 </span>
               </li>
@@ -349,6 +412,8 @@ export default function About() {
                 <span>
                   {isTr
                     ? 'Müşteriler telefon kamerasını açarak ürünü anında gerçek odalarında 1:1 ölçekle dener.'
+                    : isDe
+                    ? 'Kunden projizieren Produkte ohne App sofort im Maßstab 1:1 in ihre reale Umgebung.'
                     : 'Customers instantly project products into their room with zero-install mobile AR.'}
                 </span>
               </li>
@@ -357,6 +422,8 @@ export default function About() {
                 <span>
                   {isTr
                     ? 'Shopify, WooCommerce, Ticimax veya özel web sitenize tek satır iframe ile 30 saniyede ekleyin.'
+                    : isDe
+                    ? 'In 30 Sekunden mit einem sauberen Iframe-Code in Shopify, WooCommerce oder Shopware eingebettet.'
                     : 'Embed anywhere in 30 seconds with a clean single-line iframe code snippet.'}
                 </span>
               </li>
@@ -369,11 +436,13 @@ export default function About() {
       <section className="py-20 px-6 max-w-7xl mx-auto border-b border-white/5">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-3">
-            {isTr ? 'Desteklenen 3D & CAD Formatları' : 'Supported 3D & CAD Formats'}
+            {isTr ? 'Desteklenen 3D & CAD Formatları' : isDe ? 'Unterstützte 3D- & CAD-Formate' : 'Supported 3D & CAD Formats'}
           </h2>
           <p className="text-gray-400 text-sm">
             {isTr
               ? 'Tasarım ve mühendislik yazılımlarından çıkan modelleri web için kusursuz hale getiriyoruz.'
+              : isDe
+              ? 'Konvertieren Sie CAD- und 3D-Modelle nahtlos in einheitliche Web-Standards.'
               : 'Seamlessly convert CAD and mesh models into unified Web 3D standards.'}
           </p>
         </div>
@@ -385,6 +454,8 @@ export default function About() {
               badge: 'CAD Standard',
               desc: isTr
                 ? 'SolidWorks, CATIA, Siemens NX, Fusion 360 gibi parametrik CAD yazılımlarının standart formatı.'
+                : isDe
+                ? 'Universelles parametrisches CAD-Format für SolidWorks, CATIA, Siemens NX und Fusion 360.'
                 : 'Universal parametric CAD format for SolidWorks, CATIA, Siemens NX, and Fusion 360.',
               color: 'border-blue-500/30',
             },
@@ -393,6 +464,8 @@ export default function About() {
               badge: '3D Mesh',
               desc: isTr
                 ? '3D baskı, tersine mühendislik ve yüzey tarama modelleri için yaygın poligon formatı.'
+                : isDe
+                ? 'Industriestandard für 3D-Druck, additive Fertigung und Oberflächenscans.'
                 : 'Industry standard for 3D printing, scanning, and rapid additive prototyping.',
               color: 'border-cyan-500/30',
             },
@@ -401,6 +474,8 @@ export default function About() {
               badge: 'Visual 3D',
               desc: isTr
                 ? 'Blender, 3ds Max, Maya gibi görsel modelleme programlarının klasik dokulu geometri formatı.'
+                : isDe
+                ? 'Klassisches Polygonformat mit Texturen für Blender, 3ds Max und Maya.'
                 : 'Classic multi-part textured polygon format for Blender, Maya, and 3ds Max.',
               color: 'border-purple-500/30',
             },
@@ -409,6 +484,8 @@ export default function About() {
               badge: 'Web 3D & AR',
               desc: isTr
                 ? 'Web ve AR için en yüksek performanslı, Khronos Group onaylı modern web standardı.'
+                : isDe
+                ? 'Der moderne Khronos-Standard für performantes Web-3D-Rendering und mobiles AR.'
                 : 'The gold standard binary format for real-time web rendering and mobile AR.',
               color: 'border-emerald-500/30',
             },
@@ -427,7 +504,7 @@ export default function About() {
                 <p className="text-gray-400 text-xs leading-relaxed">{item.desc}</p>
               </div>
               <div className="mt-6 pt-4 border-t border-white/5 text-[11px] text-blue-400 font-semibold flex items-center gap-1">
-                <span>⚡ {isTr ? 'Otomatik GLB Dönüşümü' : 'Auto Web GLB Ready'}</span>
+                <span>⚡ {isTr ? 'Otomatik GLB Dönüşümü' : isDe ? 'Automatische GLB-Konvertierung' : 'Auto Web GLB Ready'}</span>
               </div>
             </div>
           ))}
@@ -439,11 +516,13 @@ export default function About() {
         <div className="bg-gradient-to-br from-gray-900 to-black rounded-3xl p-8 sm:p-12 border border-white/15 relative overflow-hidden">
           <div className="max-w-xl">
             <h2 className="text-2xl sm:text-3xl font-black mb-4">
-              {isTr ? 'Tek Satır Kodla Tüm Sitelerde Yayında' : 'One Line of Code. Instant Interactive 3D.'}
+              {isTr ? 'Tek Satır Kodla Tüm Sitelerde Yayında' : isDe ? 'Eine Zeile Code. Sofortiges interaktives 3D.' : 'One Line of Code. Instant Interactive 3D.'}
             </h2>
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
               {isTr
                 ? 'Kendi web sitenize, e-ticaret mağazanıza veya blog yazılarınıza 3D model eklemek için hiçbir harici kütüphaneye veya sunucu yapılandırmasına ihtiyacınız yoktur.'
+                : isDe
+                ? 'Keine komplexen WebGL-Bibliotheken, keine Serverkonfigurationen. Kopieren Sie Ihren Einbettungscode und binden Sie ihn überall im Web ein.'
                 : 'No complex WebGL libraries, no server configs. Copy your custom embed code and place it anywhere on the web.'}
             </p>
           </div>
@@ -453,7 +532,7 @@ export default function About() {
               onClick={copyEmbedCode}
               className="absolute top-3 right-3 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs font-sans transition flex items-center gap-1.5"
             >
-              {copied ? '✓ Kopyalandı' : 'Kodu Kopyala'}
+              {copied ? (isTr ? '✓ Kopyalandı' : isDe ? '✓ Kopiert' : '✓ Copied') : (isTr ? 'Kodu Kopyala' : isDe ? 'Code kopieren' : 'Copy Code')}
             </button>
             <pre className="overflow-x-auto pr-24 py-1 text-blue-300">{embedCodeSample}</pre>
           </div>
@@ -464,11 +543,13 @@ export default function About() {
       <section className="py-20 px-6 max-w-4xl mx-auto border-b border-white/5">
         <div className="text-center mb-14">
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-3">
-            {isTr ? 'Sıkça Sorulan Sorular (SSS)' : 'Frequently Asked Questions (FAQ)'}
+            {isTr ? 'Sıkça Sorulan Sorular (SSS)' : isDe ? 'Häufig gestellte Fragen (FAQ)' : 'Frequently Asked Questions (FAQ)'}
           </h2>
           <p className="text-gray-400 text-sm">
             {isTr
               ? '3D StoreLink platformu, model dönüşümü ve entegrasyon hakkında merak edilenler.'
+              : isDe
+              ? 'Alles Wissenswerte über die 3D StoreLink Plattform, Modellkonvertierung und Integration.'
               : 'Everything you need to know about 3D StoreLink and 3D web distribution.'}
           </p>
         </div>
@@ -504,11 +585,13 @@ export default function About() {
       {/* ── Call to Action ── */}
       <section className="py-24 px-6 text-center max-w-3xl mx-auto">
         <h2 className="text-3xl sm:text-4xl font-black mb-4 tracking-tight">
-          {isTr ? '3D Modellerinizi Dünyaya Açın' : 'Bring Your 3D Models to the World'}
+          {isTr ? '3D Modellerinizi Dünyaya Açın' : isDe ? 'Präsentieren Sie Ihre 3D-Modelle weltweit' : 'Bring Your 3D Models to the World'}
         </h2>
         <p className="text-gray-400 text-sm sm:text-base mb-8">
           {isTr
             ? 'İlk modelinizi yükleyin veya hesabınızı oluşturup 3D StoreLink ekosisteminin tüm avantajlarından yararlanın.'
+            : isDe
+            ? 'Laden Sie Ihr erstes Modell hoch oder eröffnen Sie ein Konto, um alle Vorteile zu nutzen.'
             : 'Upload your first model or create an account to start publishing with 3D StoreLink today.'}
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -516,13 +599,13 @@ export default function About() {
             href={bottomMailto}
             className="w-full sm:w-auto bg-white text-black font-bold px-8 py-3.5 rounded-xl hover:bg-gray-100 transition shadow-lg text-sm"
           >
-            {isTr ? 'Hesap Açmak İstiyorum →' : 'Open an Account →'}
+            {isTr ? 'Hesap Açmak İstiyorum →' : isDe ? 'Konto eröffnen →' : 'Open an Account →'}
           </a>
           <Link
             to="/#upload"
             className="w-full sm:w-auto border border-white/20 text-white font-medium px-8 py-3.5 rounded-xl hover:bg-white/5 transition text-sm"
           >
-            {isTr ? 'Hemen Model Yükleyin' : 'Upload Model Now'}
+            {isTr ? 'Hemen Model Yükleyin' : isDe ? 'Jetzt Modell hochladen' : 'Upload Model Now'}
           </Link>
         </div>
       </section>
@@ -536,7 +619,7 @@ export default function About() {
           </div>
           <div className="flex items-center gap-6">
             <Link to="/" className="hover:text-white transition">
-              {isTr ? 'Ana Sayfa' : 'Home'}
+              {isTr ? 'Ana Sayfa' : isDe ? 'Startseite' : 'Home'}
             </Link>
             <Link to="/#showcase" className="hover:text-white transition">
               Showcase
