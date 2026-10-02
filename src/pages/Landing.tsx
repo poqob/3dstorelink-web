@@ -19,6 +19,14 @@ const MAX_MODEL_SIZE = 20 * 1024 * 1024; // 20MB
 const MAX_IMAGE_SIZE = 2 * 1024 * 1024;  // 2MB
 const MAX_NAME_LEN = 25;
 
+const API_BASE = import.meta.env.VITE_API_URL || 'https://api.3dstorelink.com/api';
+
+const getThumbnailUrl = (thumb?: string) => {
+  if (!thumb) return '';
+  if (thumb.startsWith('http://') || thumb.startsWith('https://')) return thumb;
+  return `${API_BASE}${thumb.startsWith('/') ? '' : '/'}${thumb}`;
+};
+
 /* ─── 3D Modal ─────────────────────────────────────────────────────────────── */
 function ModelModal({ slug, name, onClose }: { slug: string; name: string; onClose: () => void }) {
   const { t } = useTranslation();
@@ -129,9 +137,10 @@ function ShowcaseGallery() {
             <div className="aspect-square bg-gradient-to-br from-gray-900 to-black flex items-center justify-center relative overflow-hidden">
               {model.thumbnail ? (
                 <img
-                  src={`/api${model.thumbnail}`}
+                  src={getThumbnailUrl(model.thumbnail)}
                   alt={model.name}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  loading="lazy"
                 />
               ) : (
                 <span className="text-5xl">📦</span>
