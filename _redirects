@@ -1,2 +1,4 @@
-/api/*  https://api.3dstorelink.com/api/:splat  200
-/*      /index.html                             200
+# Redirect login and dashboard to the main dashboard app
+/login https://dash.3dstorelink.com/login 302
+/dashboard https://dash.3dstorelink.com/dashboard 302
+/dashboard/* https://dash.3dstorelink.com/dashboard/:splat 302
