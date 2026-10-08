@@ -759,7 +759,7 @@ export default function Landing() {
             <img src="/icon.webp" alt="Logo" className="w-5 h-5 opacity-50" />
             <span>3D StoreLink · DagSolution</span>
           </div>
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-6 flex-wrap justify-center">
             <Link to="/about" className="hover:text-white transition font-medium">
               {t('nav.platform')}
             </Link>
@@ -787,6 +787,30 @@ export default function Landing() {
                 <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
               </svg>
               <span>Instagram</span>
+            </a>
+            <a
+              href="https://www.linkedin.com/company/3dstorelink/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white transition flex items-center gap-1.5"
+              aria-label="LinkedIn"
+              title="LinkedIn: 3D StoreLink"
+            >
+              <svg
+                className="w-4 h-4"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                <rect width="4" height="12" x="2" y="9" />
+                <circle cx="4" cy="4" r="2" />
+              </svg>
+              <span>LinkedIn</span>
             </a>
           </div>
         </div>
