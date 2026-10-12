@@ -34,15 +34,18 @@ export default function Typewriter({ text1, text2 }: { text1: string, text2: str
 
   return (
     <h1 className="text-4xl sm:text-5xl xl:text-6xl font-black tracking-tight leading-none mb-6">
-      <span className="inline-block min-h-[1.2em]">
-        {displayedText1}
-        {isTyping1 && <span className="animate-pulse border-r-[4px] border-white ml-1"></span>}
-      </span>
-      <br />
-      <span className="inline-block min-h-[1.2em] bg-gradient-to-r from-white via-gray-300 to-gray-500 bg-clip-text text-transparent">
-        {displayedText2}
-        {!isTyping1 && displayedText2.length < text2.length && <span className="animate-pulse border-r-[4px] border-gray-400 ml-1"></span>}
-        {!isTyping1 && displayedText2.length === text2.length && <span className="animate-pulse border-r-[4px] border-transparent ml-1"></span>}
+      <span className="sr-only">{text1} {text2}</span>
+      <span aria-hidden="true">
+        <span className="inline-block min-h-[1.2em]">
+          {displayedText1}
+          {isTyping1 && <span className="animate-pulse border-r-[4px] border-white ml-1"></span>}
+        </span>
+        <br />
+        <span className="inline-block min-h-[1.2em] bg-gradient-to-r from-white via-gray-300 to-gray-500 bg-clip-text text-transparent">
+          {displayedText2}
+          {!isTyping1 && displayedText2.length < text2.length && <span className="animate-pulse border-r-[4px] border-gray-400 ml-1"></span>}
+          {!isTyping1 && displayedText2.length === text2.length && <span className="animate-pulse border-r-[4px] border-transparent ml-1"></span>}
+        </span>
       </span>
     </h1>
   );
