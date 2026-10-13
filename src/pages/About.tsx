@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuthStore } from '../store/auth';
+import LanguageDropdown from '../components/LanguageDropdown';
 
 export default function About() {
   const { t, i18n } = useTranslation();
@@ -197,37 +198,11 @@ export default function About() {
             <img src="/brand-dark-theme.webp" alt="3D StoreLink Logo" className="h-14 sm:h-16 w-auto" />
           </Link>
           <div className="flex items-center gap-3 sm:gap-4">
-            {/* Language switch */}
-            <div className="flex gap-1 bg-white/5 rounded-lg p-1 border border-white/10">
-              <button
-                onClick={() => i18n.changeLanguage('tr')}
-                className={`px-2 py-1 text-xs font-bold rounded-md transition ${
-                  currentLang === 'tr' ? 'bg-white text-black' : 'text-gray-400 hover:text-white'
-                }`}
-              >
-                TR
-              </button>
-              <button
-                onClick={() => i18n.changeLanguage('en')}
-                className={`px-2 py-1 text-xs font-bold rounded-md transition ${
-                  currentLang === 'en' ? 'bg-white text-black' : 'text-gray-400 hover:text-white'
-                }`}
-              >
-                EN
-              </button>
-              <button
-                onClick={() => i18n.changeLanguage('de')}
-                className={`px-2 py-1 text-xs font-bold rounded-md transition ${
-                  currentLang === 'de' ? 'bg-white text-black' : 'text-gray-400 hover:text-white'
-                }`}
-              >
-                DE
-              </button>
-            </div>
+            <LanguageDropdown />
 
             <Link
               to="/about"
-              className="text-white text-sm font-semibold border-b-2 border-white pb-0.5 hidden sm:block"
+              className="text-white text-sm font-semibold border-b-2 border-white pb-0.5 hidden lg:block"
             >
               Platform
             </Link>
@@ -236,6 +211,18 @@ export default function About() {
               className="text-gray-400 hover:text-white text-sm font-medium transition hidden sm:block"
             >
               {t('nav.showcase')}
+            </Link>
+            <Link
+              to="/karsilastirma"
+              className="text-gray-400 hover:text-white text-sm font-medium transition hidden md:block"
+            >
+              {t('nav.comparison')}
+            </Link>
+            <Link
+              to="/sozluk"
+              className="text-gray-400 hover:text-white text-sm font-medium transition hidden md:block"
+            >
+              {t('nav.glossary')}
             </Link>
             <Link
               to="/#upload"
@@ -487,7 +474,7 @@ export default function About() {
                 : isDe
                 ? 'Der moderne Khronos-Standard für performantes Web-3D-Rendering und mobiles AR.'
                 : 'The gold standard binary format for real-time web rendering and mobile AR.',
-              color: 'border-emerald-500/30',
+              color: 'border-red-500/30',
             },
           ].map((item, idx) => (
             <div

@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import api from '../services/api';
 import { useAuthStore } from '../store/auth';
 import Typewriter from '../components/Typewriter';
+import LanguageDropdown from '../components/LanguageDropdown';
 
 declare global {
   namespace JSX {
@@ -536,34 +537,6 @@ function GuestUploadForm() {
     </form>
   );
 }
-/* ─── Language Switcher ────────────────────────────────────────────────────── */
-function LanguageSwitcher() {
-  const { i18n } = useTranslation();
-  const currentLang = i18n.language?.startsWith('de') ? 'de' : i18n.language?.startsWith('en') ? 'en' : 'tr';
-  
-  return (
-    <div className="flex gap-1 bg-white/5 rounded-lg p-1 border border-white/10">
-      <button 
-        onClick={() => i18n.changeLanguage('tr')}
-        className={`px-2 py-1 text-xs font-bold rounded-md transition ${currentLang === 'tr' ? 'bg-white text-black' : 'text-gray-400 hover:text-white'}`}
-      >
-        TR
-      </button>
-      <button 
-        onClick={() => i18n.changeLanguage('en')}
-        className={`px-2 py-1 text-xs font-bold rounded-md transition ${currentLang === 'en' ? 'bg-white text-black' : 'text-gray-400 hover:text-white'}`}
-      >
-        EN
-      </button>
-      <button 
-        onClick={() => i18n.changeLanguage('de')}
-        className={`px-2 py-1 text-xs font-bold rounded-md transition ${currentLang === 'de' ? 'bg-white text-black' : 'text-gray-400 hover:text-white'}`}
-      >
-        DE
-      </button>
-    </div>
-  );
-}
 
 /* ─── Landing Page ──────────────────────────────────────────────────────────── */
 export default function Landing() {
@@ -607,7 +580,7 @@ export default function Landing() {
             </Link>
           </div>
           <div className="flex items-center gap-3 sm:gap-4">
-            <LanguageSwitcher />
+            <LanguageDropdown />
             <Link
               to="/about"
               className="text-gray-400 hover:text-white text-sm font-medium transition hidden lg:block"
@@ -739,7 +712,7 @@ export default function Landing() {
       <section ref={comparisonRef} id="comparison" className="py-24 px-6 border-t border-white/5 scroll-mt-16 bg-white/[0.01]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <p className="text-xs uppercase tracking-widest text-emerald-400 font-semibold mb-2">{t('comparison.tag')}</p>
+            <p className="text-xs uppercase tracking-widest text-red-400 font-semibold mb-2">{t('comparison.tag')}</p>
             <h2 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">
               {t('comparison.title1')}
               <span className="text-gray-500"> {t('comparison.title2')}</span>
@@ -755,11 +728,8 @@ export default function Landing() {
                 <tr className="border-b border-white/10 bg-white/[0.04]">
                   <th className="py-4 px-6 font-semibold text-gray-300 w-1/3">{t('comparison.col_metric')}</th>
                   <th className="py-4 px-6 font-semibold text-gray-400 w-1/3">{t('comparison.col_traditional')}</th>
-                  <th className="py-4 px-6 font-bold text-white bg-emerald-500/10 border-x border-emerald-500/20 w-1/3">
-                    <span className="flex items-center gap-2">
-                      <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                      {t('comparison.col_3dstorelink')}
-                    </span>
+                  <th className="py-4 px-6 font-bold text-white bg-red-500/10 border-x border-red-500/20 w-1/3">
+                    {t('comparison.col_3dstorelink')}
                   </th>
                 </tr>
               </thead>
@@ -775,7 +745,7 @@ export default function Landing() {
                   <tr key={idx} className="hover:bg-white/[0.02] transition">
                     <td className="py-4 px-6 font-medium text-white">{row.title}</td>
                     <td className="py-4 px-6 text-gray-400">{row.trad}</td>
-                    <td className={`py-4 px-6 border-x border-emerald-500/20 bg-emerald-500/[0.04] ${row.highlight ? 'text-emerald-300 font-semibold' : 'text-gray-200'}`}>
+                    <td className={`py-4 px-6 border-x border-red-500/20 bg-red-500/[0.04] ${row.highlight ? 'text-red-400 font-semibold' : 'text-gray-200'}`}>
                       {row.store}
                     </td>
                   </tr>
@@ -821,7 +791,7 @@ export default function Landing() {
       <section ref={faqRef} id="faq" className="py-24 px-6 border-t border-white/5 scroll-mt-16">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-14">
-            <p className="text-xs uppercase tracking-widest text-emerald-400 font-semibold mb-2">{t('faq.tag')}</p>
+            <p className="text-xs uppercase tracking-widest text-red-400 font-semibold mb-2">{t('faq.tag')}</p>
             <h2 className="text-3xl sm:text-4xl font-black tracking-tight mb-3">
               {t('faq.title1')}
               <span className="text-gray-500"> {t('faq.title2')}</span>
@@ -843,7 +813,7 @@ export default function Landing() {
                 key={idx}
                 className="group border border-white/10 rounded-2xl bg-white/[0.02] hover:border-white/20 transition overflow-hidden"
               >
-                <summary className="flex items-center justify-between p-6 cursor-pointer list-none select-none font-semibold text-white hover:text-emerald-300 transition">
+                <summary className="flex items-center justify-between p-6 cursor-pointer list-none select-none font-semibold text-white hover:text-red-400 transition">
                   <span className="pr-4">{faq.q}</span>
                   <span className="text-gray-500 group-open:rotate-180 transition-transform duration-200 shrink-0">
                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

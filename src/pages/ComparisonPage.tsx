@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuthStore } from '../store/auth';
+import LanguageDropdown from '../components/LanguageDropdown';
 
 export default function ComparisonPage() {
   const { i18n } = useTranslation();
@@ -66,7 +67,7 @@ export default function ComparisonPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#050505] text-white font-sans selection:bg-emerald-500 selection:text-black">
+    <div className="min-h-screen bg-[#050505] text-white font-sans selection:bg-red-500 selection:text-white">
       {/* ── Navbar ── */}
       <nav className="fixed top-0 left-0 right-0 z-40 bg-black/60 backdrop-blur-xl border-b border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
@@ -76,6 +77,7 @@ export default function ComparisonPage() {
             </Link>
           </div>
           <div className="flex items-center gap-4 text-sm font-medium">
+            <LanguageDropdown />
             <Link to="/" className="text-gray-400 hover:text-white transition">
               {isTr ? 'Ana Sayfa' : isDe ? 'Startseite' : 'Home'}
             </Link>
@@ -103,7 +105,7 @@ export default function ComparisonPage() {
           <span className="text-gray-300">{isTr ? 'Karşılaştırma' : isDe ? 'Vergleich' : 'Comparison'}</span>
         </nav>
 
-        <p className="text-xs uppercase tracking-widest text-emerald-400 font-semibold mb-3">
+        <p className="text-xs uppercase tracking-widest text-red-400 font-semibold mb-3">
           {isTr ? 'TEKNİK BENCHMARK & KARŞILAŞTIRMA' : isDe ? 'TECHNISCHER BENCHMARK & VERGLEICH' : 'TECHNICAL BENCHMARK & COMPARISON'}
         </p>
         <h1 className="text-3xl sm:text-5xl font-black tracking-tight mb-6">
@@ -127,11 +129,8 @@ export default function ComparisonPage() {
                 <th className="py-5 px-6 font-semibold text-gray-300 w-1/4">
                   {isTr ? 'Kriter / Özellik' : isDe ? 'Kriterium / Feature' : 'Capability / Feature'}
                 </th>
-                <th className="py-5 px-6 font-bold text-emerald-300 bg-emerald-500/10 border-x border-emerald-500/20 w-1/3">
-                  <span className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                    3D StoreLink (3D & AR)
-                  </span>
+                <th className="py-5 px-6 font-bold text-red-400 bg-red-500/10 border-x border-red-500/20 w-1/3">
+                  3D StoreLink (3D & AR)
                 </th>
                 <th className="py-5 px-6 font-semibold text-gray-300 w-1/4">Sketchfab</th>
                 <th className="py-5 px-6 font-semibold text-gray-400 w-1/4">
@@ -143,7 +142,7 @@ export default function ComparisonPage() {
               {rows.map((r, i) => (
                 <tr key={i} className="hover:bg-white/[0.02] transition">
                   <td className="py-5 px-6 font-medium text-white">{r.feature}</td>
-                  <td className="py-5 px-6 border-x border-emerald-500/20 bg-emerald-500/[0.04] text-emerald-200 font-semibold">
+                  <td className="py-5 px-6 border-x border-red-500/20 bg-red-500/[0.04] text-red-300 font-semibold">
                     {r.storelink}
                   </td>
                   <td className="py-5 px-6 text-gray-300">{r.sketchfab}</td>

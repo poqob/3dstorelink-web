@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuthStore } from '../store/auth';
+import LanguageDropdown from '../components/LanguageDropdown';
 
 interface GlossaryTerm {
   term: string;
@@ -197,7 +198,7 @@ export default function GlossaryPage() {
   });
 
   return (
-    <div className="min-h-screen bg-[#050505] text-white font-sans selection:bg-emerald-500 selection:text-black">
+    <div className="min-h-screen bg-[#050505] text-white font-sans selection:bg-red-500 selection:text-white">
       {/* ── Navbar ── */}
       <nav className="fixed top-0 left-0 right-0 z-40 bg-black/60 backdrop-blur-xl border-b border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
@@ -207,6 +208,7 @@ export default function GlossaryPage() {
             </Link>
           </div>
           <div className="flex items-center gap-4 text-sm font-medium">
+            <LanguageDropdown />
             <Link to="/" className="text-gray-400 hover:text-white transition">
               {isTr ? 'Ana Sayfa' : isDe ? 'Startseite' : 'Home'}
             </Link>
@@ -234,7 +236,7 @@ export default function GlossaryPage() {
           <span className="text-gray-300">{isTr ? 'Sözlük' : isDe ? 'Glossar' : 'Glossary'}</span>
         </nav>
 
-        <p className="text-xs uppercase tracking-widest text-emerald-400 font-semibold mb-3">
+        <p className="text-xs uppercase tracking-widest text-red-400 font-semibold mb-3">
           {isTr ? '3D & CAD MÜHENDİSLİK KILAVUZU' : isDe ? '3D & CAD ENGINEERING GLOSSAR' : '3D & CAD ENGINEERING GLOSSARY'}
         </p>
         <h1 className="text-3xl sm:text-5xl font-black tracking-tight mb-6">
@@ -256,7 +258,7 @@ export default function GlossaryPage() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder={isTr ? 'Terim veya kavram ara (Örn: STEP, GLB, Draco, AR)...' : isDe ? 'Begriff suchen (z.B. STEP, GLB)...' : 'Search terms (e.g. STEP, GLB, Draco)...'}
-              className="w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-emerald-500 transition"
+              className="w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-red-500 transition"
             />
             {search && (
               <button
@@ -275,7 +277,7 @@ export default function GlossaryPage() {
                 onClick={() => setActiveCategory(c.id)}
                 className={`px-3 py-1.5 rounded-lg text-xs font-medium transition ${
                   activeCategory === c.id
-                    ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'
+                    ? 'bg-red-500/20 text-red-300 border border-red-500/40'
                     : 'bg-white/[0.03] text-gray-400 border border-white/10 hover:border-white/20 hover:text-white'
                 }`}
               >
@@ -292,14 +294,14 @@ export default function GlossaryPage() {
           {filteredTerms.map((item, idx) => (
             <article
               key={idx}
-              className="p-7 rounded-2xl border border-white/10 bg-white/[0.02] hover:border-emerald-500/30 transition flex flex-col justify-between"
+              className="p-7 rounded-2xl border border-white/10 bg-white/[0.02] hover:border-red-500/30 transition flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between gap-3 mb-3">
-                  <h2 className="text-xl font-bold text-white group-hover:text-emerald-300">
+                  <h2 className="text-xl font-bold text-white group-hover:text-red-400">
                     {item.term}
                   </h2>
-                  <span className="text-[11px] font-semibold uppercase px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10 text-emerald-400">
+                  <span className="text-[11px] font-semibold uppercase px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10 text-red-400">
                     {item.category}
                   </span>
                 </div>
@@ -308,7 +310,7 @@ export default function GlossaryPage() {
                 </p>
               </div>
               <div className="pt-3 border-t border-white/5 text-xs text-gray-500 leading-normal flex items-start gap-2">
-                <span className="text-emerald-400 shrink-0">✦</span>
+                <span className="text-red-400 shrink-0">✦</span>
                 <span>{item.details[currentLang]}</span>
               </div>
             </article>
