@@ -232,7 +232,7 @@ export default function ComparisonPage() {
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-gray-600 text-xs">
           <div className="flex items-center gap-2">
             <img src="/icon.webp" alt="Logo" className="w-5 h-5 opacity-50" />
-            <span>3D StoreLink · DagSolution</span>
+            <span>3D StoreLink</span>
           </div>
           <div className="flex items-center gap-6 flex-wrap justify-center">
             <Link to="/" className="hover:text-white transition">{isTr ? 'Ana Sayfa' : 'Home'}</Link>
