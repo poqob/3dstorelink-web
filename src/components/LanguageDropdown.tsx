@@ -40,11 +40,11 @@ export default function LanguageDropdown() {
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Dil Seçimi / Select Language"
         aria-expanded={isOpen}
-        className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-white/5 border border-white/10 text-gray-300 hover:text-white hover:bg-white/10 hover:border-white/20 transition cursor-pointer text-xs font-semibold focus:outline-none"
+        className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 text-gray-300 hover:text-white hover:bg-white/10 hover:border-white/20 transition cursor-pointer flex items-center justify-center focus:outline-none shadow-xs group"
       >
-        {/* Globe icon */}
+        {/* Globe icon only */}
         <svg
-          className="w-4 h-4 text-gray-300"
+          className="w-4 h-4 text-gray-300 group-hover:text-white transition-colors"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -56,20 +56,10 @@ export default function LanguageDropdown() {
           <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
           <path d="M2 12h20" />
         </svg>
-        <span className="uppercase text-[11px] font-bold tracking-wider">{currentLang}</span>
-        <svg
-          className={`w-3 h-3 text-gray-400 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth="2.5"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-        </svg>
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-36 rounded-xl bg-[#0e0e0e] border border-white/15 shadow-2xl py-1.5 z-50 animate-in fade-in zoom-in-95 duration-100 backdrop-blur-md">
+        <div className="absolute right-0 mt-2 w-36 rounded-2xl bg-[#0e0e0e] border border-white/15 shadow-2xl py-1.5 z-50 animate-in fade-in zoom-in-95 duration-100 backdrop-blur-md">
           {languages.map((lang) => {
             const isSelected = currentLang === lang.code;
             return (
@@ -77,7 +67,7 @@ export default function LanguageDropdown() {
                 key={lang.code}
                 type="button"
                 onClick={() => handleSelect(lang.code)}
-                className={`w-full flex items-center justify-between px-3 py-2 text-xs transition cursor-pointer text-left ${
+                className={`w-full flex items-center justify-between px-3.5 py-2 text-xs transition cursor-pointer text-left ${
                   isSelected
                     ? 'bg-red-500/10 text-red-400 font-bold'
                     : 'text-gray-300 hover:bg-white/5 hover:text-white'

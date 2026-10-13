@@ -540,13 +540,33 @@ function GuestUploadForm() {
 
 /* ─── Landing Page ──────────────────────────────────────────────────────────── */
 export default function Landing() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { token } = useAuthStore();
+  const currentLang = i18n.language?.startsWith('de') ? 'de' : i18n.language?.startsWith('en') ? 'en' : 'tr';
+  const isTr = currentLang === 'tr';
+  const isDe = currentLang === 'de';
+
   const showcaseRef = useRef<HTMLDivElement>(null);
   const comparisonRef = useRef<HTMLDivElement>(null);
+  const embedRef = useRef<HTMLDivElement>(null);
   const faqRef = useRef<HTMLDivElement>(null);
   const uploadRef = useRef<HTMLDivElement>(null);
   const [activeEmbed, setActiveEmbed] = useState(-1);
+  const [embedCopied, setEmbedCopied] = useState(false);
+
+  const embedCodeSample = `<iframe
+  src="https://view.3dstorelink.com/model-slug?autoRotate=1&enableAR=1&bgColor=111111"
+  width="100%"
+  height="500"
+  frameborder="0"
+  allow="xr-spatial-tracking"
+></iframe>`;
+
+  const copyEmbedCode = () => {
+    navigator.clipboard.writeText(embedCodeSample);
+    setEmbedCopied(true);
+    setTimeout(() => setEmbedCopied(false), 2000);
+  };
 
   const { data: heroData, isLoading: _isLoadingHero } = useQuery({
     queryKey: ['hero-models'],
@@ -580,12 +600,11 @@ export default function Landing() {
             </Link>
           </div>
           <div className="flex items-center gap-3 sm:gap-4">
-            <LanguageDropdown />
             <Link
-              to="/about"
+              to="/blog"
               className="text-gray-400 hover:text-white text-sm font-medium transition hidden lg:block"
             >
-              {t('nav.platform')}
+              Blog
             </Link>
             <button
               onClick={() => scrollTo(showcaseRef)}
@@ -617,6 +636,7 @@ export default function Landing() {
             >
               {token ? t('nav.dashboard') : t('nav.login')}
             </a>
+            <LanguageDropdown />
           </div>
         </div>
       </nav>
@@ -756,6 +776,84 @@ export default function Landing() {
         </div>
       </section>
 
+      {/* ── Single-Line Embed Feature ── */}
+      <section ref={embedRef} id="integration" className="py-24 px-6 border-t border-white/5 scroll-mt-16 bg-white/[0.01]">
+        <div className="max-w-5xl mx-auto">
+          <div className="bg-gradient-to-br from-[#0d0d0f] via-[#080809] to-black rounded-3xl p-8 sm:p-12 border border-white/10 shadow-2xl relative overflow-hidden">
+            <div className="max-w-2xl mb-8">
+              <p className="text-xs uppercase tracking-widest text-red-400 font-semibold mb-2">
+                {isTr ? 'GELİŞTİRİCİ & ENTEGRASYON' : isDe ? 'ENTWICKLER & INTEGRATION' : 'DEVELOPER & INTEGRATION'}
+              </p>
+              <h2 className="text-2xl sm:text-4xl font-black mb-4 tracking-tight">
+                {isTr
+                  ? 'Tek Satır Kodla Tüm Sitelerde Yayında'
+                  : isDe
+                  ? 'Eine Zeile Code. Sofortiges interaktives 3D.'
+                  : 'One Line of Code. Instant Interactive 3D.'}
+              </h2>
+              <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
+                {isTr
+                  ? 'Kendi web sitenize, e-ticaret mağazanıza (Shopify, WooCommerce, İkas) veya blog yazılarınıza 3D & AR model eklemek için hiçbir harici kütüphaneye veya sunucu yapılandırmasına ihtiyacınız yoktur. Tek satır iframe ile anında entegre edin.'
+                  : isDe
+                  ? 'Keine komplexen WebGL-Bibliotheken, keine Serverkonfigurationen. Kopieren Sie Ihren Einbettungscode und binden Sie ihn überall im Web ein.'
+                  : 'No complex WebGL libraries, no server configs. Copy your custom embed code and place it anywhere on the web in seconds.'}
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+              <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5">
+                <div className="text-red-400 font-bold text-xs uppercase mb-1">⚡ &lt; 30 Saniye</div>
+                <div className="text-white text-sm font-semibold">
+                  {isTr ? 'Hızlı Entegrasyon' : isDe ? 'Schnelle Integration' : 'Instant Embed'}
+                </div>
+                <div className="text-gray-500 text-xs mt-1">
+                  {isTr ? 'Harici kütüphane veya SDK yüklemesi gerekmez' : isDe ? 'Keine SDKs oder Bibliotheken nötig' : 'Zero dependencies or SDKs needed'}
+                </div>
+              </div>
+              <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5">
+                <div className="text-red-400 font-bold text-xs uppercase mb-1">📱 1:1 Mobil AR</div>
+                <div className="text-white text-sm font-semibold">
+                  {isTr ? 'Uygulamasız AR' : isDe ? 'App-freies mobiles AR' : 'Zero-App AR'}
+                </div>
+                <div className="text-gray-500 text-xs mt-1">
+                  {isTr ? 'Apple Quick Look ve SceneViewer yerleşik' : isDe ? 'Apple Quick Look & SceneViewer nativ' : 'Native Apple Quick Look & SceneViewer'}
+                </div>
+              </div>
+              <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5">
+                <div className="text-red-400 font-bold text-xs uppercase mb-1">🛡️ CAD IP Koruması</div>
+                <div className="text-white text-sm font-semibold">
+                  {isTr ? 'Güvenli Görsel Mesh' : isDe ? 'CAD-Geometrieschutz' : 'CAD IP Protection'}
+                </div>
+                <div className="text-gray-500 text-xs mt-1">
+                  {isTr ? 'Orijinal parametrik CAD çiziminiz gizli kalır' : isDe ? 'Original-CAD bleibt geschützt' : 'Original parametric CAD files stay protected'}
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-[#050507] rounded-2xl border border-white/10 p-5 font-mono text-xs text-gray-300 relative shadow-inner">
+              <div className="flex items-center justify-between pb-3 mb-3 border-b border-white/5 text-[11px] text-gray-500 font-sans">
+                <span className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-red-500/80"></span>
+                  <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
+                  <span className="ml-2 font-mono text-gray-400">embed-snippet.html</span>
+                </span>
+                <button
+                  type="button"
+                  onClick={copyEmbedCode}
+                  className="px-3.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs font-sans font-semibold transition flex items-center gap-1.5 cursor-pointer shadow-sm"
+                >
+                  {embedCopied ? (isTr ? '✓ Kopyalandı' : isDe ? '✓ Kopiert' : '✓ Copied') : (isTr ? 'Kodu Kopyala' : isDe ? 'Code kopieren' : 'Copy Code')}
+                </button>
+              </div>
+              <pre className="overflow-x-auto py-1 text-red-300/90 leading-relaxed font-mono">
+                {embedCodeSample}
+              </pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── Guest Upload ── */}
       <section ref={uploadRef} id="upload" className="py-24 px-6 border-t border-white/5 scroll-mt-16">
         <div className="max-w-2xl mx-auto">
@@ -838,8 +936,8 @@ export default function Landing() {
             <span>3D StoreLink · DagSolution</span>
           </div>
           <div className="flex items-center gap-6 flex-wrap justify-center">
-            <Link to="/about" className="hover:text-white transition font-medium">
-              {t('nav.platform')}
+            <Link to="/blog" className="hover:text-white transition font-medium">
+              Blog
             </Link>
             <Link to="/karsilastirma" className="hover:text-white transition font-medium">
               {t('nav.comparison')}

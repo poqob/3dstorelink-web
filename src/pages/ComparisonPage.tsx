@@ -77,12 +77,11 @@ export default function ComparisonPage() {
             </Link>
           </div>
           <div className="flex items-center gap-4 text-sm font-medium">
-            <LanguageDropdown />
             <Link to="/" className="text-gray-400 hover:text-white transition">
               {isTr ? 'Ana Sayfa' : isDe ? 'Startseite' : 'Home'}
             </Link>
-            <Link to="/about" className="text-gray-400 hover:text-white transition hidden sm:block">
-              {isTr ? 'Platform' : isDe ? 'Plattform' : 'Platform'}
+            <Link to="/blog" className="text-gray-400 hover:text-white transition hidden sm:block">
+              Blog
             </Link>
             <Link to="/sozluk" className="text-gray-400 hover:text-white transition hidden md:block">
               {isTr ? 'Sözlük' : isDe ? 'Glossar' : 'Glossary'}
@@ -93,6 +92,7 @@ export default function ComparisonPage() {
             >
               {token ? (isTr ? 'Dashboard' : 'Dashboard') : (isTr ? 'Model Yükle' : isDe ? 'Modell hochladen' : 'Upload Model')}
             </Link>
+            <LanguageDropdown />
           </div>
         </div>
       </nav>
@@ -241,7 +241,7 @@ export default function ComparisonPage() {
           </div>
           <div className="flex items-center gap-6 flex-wrap justify-center">
             <Link to="/" className="hover:text-white transition">{isTr ? 'Ana Sayfa' : 'Home'}</Link>
-            <Link to="/about" className="hover:text-white transition">{isTr ? 'Platform' : 'Platform'}</Link>
+            <Link to="/blog" className="hover:text-white transition">Blog</Link>
             <Link to="/sozluk" className="hover:text-white transition">{isTr ? 'Sözlük' : 'Glossary'}</Link>
             <a href="mailto:info@3dstorelink.com" className="hover:text-white transition">info@3dstorelink.com</a>
             <a href="https://www.instagram.com/3dstorelink/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">Instagram</a>
