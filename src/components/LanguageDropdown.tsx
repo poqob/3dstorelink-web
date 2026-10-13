@@ -69,7 +69,7 @@ export default function LanguageDropdown() {
                 onClick={() => handleSelect(lang.code)}
                 className={`w-full flex items-center justify-between px-3.5 py-2 text-xs transition cursor-pointer text-left ${
                   isSelected
-                    ? 'bg-red-500/10 text-red-400 font-bold'
+                    ? 'bg-white/10 text-white font-bold'
                     : 'text-gray-300 hover:bg-white/5 hover:text-white'
                 }`}
               >

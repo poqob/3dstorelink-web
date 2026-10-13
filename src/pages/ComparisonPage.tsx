@@ -67,9 +67,9 @@ export default function ComparisonPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#050505] text-white font-sans selection:bg-red-500 selection:text-white">
+    <div className="min-h-screen bg-[#050505] text-white font-sans selection:bg-zinc-700 selection:text-white">
       {/* ── Navbar ── */}
-      <nav className="fixed top-0 left-0 right-0 z-40 bg-black/60 backdrop-blur-xl border-b border-white/5">
+      <nav className="fixed top-0 left-0 right-0 z-40 bg-black/70 backdrop-blur-xl border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
             <Link to="/" className="hover:opacity-90 transition">
@@ -82,6 +82,9 @@ export default function ComparisonPage() {
             </Link>
             <Link to="/blog" className="text-gray-400 hover:text-white transition hidden sm:block">
               Blog
+            </Link>
+            <Link to="/karsilastirma" className="text-white font-bold border-b-2 border-zinc-300 pb-0.5">
+              {isTr ? 'Karşılaştırma' : isDe ? 'Vergleich' : 'Comparison'}
             </Link>
             <Link to="/sozluk" className="text-gray-400 hover:text-white transition hidden md:block">
               {isTr ? 'Sözlük' : isDe ? 'Glossar' : 'Glossary'}
@@ -105,7 +108,7 @@ export default function ComparisonPage() {
           <span className="text-gray-300">{isTr ? 'Karşılaştırma' : isDe ? 'Vergleich' : 'Comparison'}</span>
         </nav>
 
-        <p className="text-xs uppercase tracking-widest text-red-400 font-semibold mb-3">
+        <p className="text-xs uppercase tracking-widest text-zinc-400 font-mono font-bold mb-3">
           {isTr ? 'TEKNİK BENCHMARK & KARŞILAŞTIRMA' : isDe ? 'TECHNISCHER BENCHMARK & VERGLEICH' : 'TECHNICAL BENCHMARK & COMPARISON'}
         </p>
         <h1 className="text-3xl sm:text-5xl font-black tracking-tight mb-6">
@@ -122,15 +125,18 @@ export default function ComparisonPage() {
 
       {/* ── Table Section ── */}
       <section className="px-6 pb-20 max-w-7xl mx-auto">
-        <div className="overflow-x-auto rounded-2xl border border-white/10 bg-white/[0.02] shadow-2xl">
+        <div className="overflow-x-auto rounded-2xl border border-white/10 bg-[#0a0a0c] shadow-2xl">
           <table className="w-full text-left border-collapse text-sm">
             <thead>
               <tr className="border-b border-white/10 bg-white/[0.04]">
                 <th className="py-5 px-6 font-semibold text-gray-300 w-1/4">
                   {isTr ? 'Kriter / Özellik' : isDe ? 'Kriterium / Feature' : 'Capability / Feature'}
                 </th>
-                <th className="py-5 px-6 font-bold text-red-400 bg-red-500/10 border-x border-red-500/20 w-1/3">
-                  3D StoreLink (3D & AR)
+                <th className="py-5 px-6 font-bold text-white bg-gradient-to-b from-white/[0.12] to-white/[0.04] border-x border-white/20 w-1/3 shadow-inner">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-zinc-200 animate-pulse shadow-[0_0_6px_rgba(255,255,255,0.8)]" />
+                    <span>3D StoreLink (3D & AR)</span>
+                  </div>
                 </th>
                 <th className="py-5 px-6 font-semibold text-gray-300 w-1/4">Sketchfab</th>
                 <th className="py-5 px-6 font-semibold text-gray-400 w-1/4">
@@ -142,7 +148,7 @@ export default function ComparisonPage() {
               {rows.map((r, i) => (
                 <tr key={i} className="hover:bg-white/[0.02] transition">
                   <td className="py-5 px-6 font-medium text-white">{r.feature}</td>
-                  <td className="py-5 px-6 border-x border-red-500/20 bg-red-500/[0.04] text-red-300 font-semibold">
+                  <td className="py-5 px-6 border-x border-white/15 bg-white/[0.03] text-zinc-100 font-semibold">
                     {r.storelink}
                   </td>
                   <td className="py-5 px-6 text-gray-300">{r.sketchfab}</td>

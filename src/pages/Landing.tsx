@@ -732,7 +732,7 @@ export default function Landing() {
       <section ref={comparisonRef} id="comparison" className="py-24 px-6 border-t border-white/5 scroll-mt-16 bg-white/[0.01]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <p className="text-xs uppercase tracking-widest text-red-400 font-semibold mb-2">{t('comparison.tag')}</p>
+            <p className="text-xs uppercase tracking-widest text-zinc-400 font-mono font-bold mb-2">{t('comparison.tag')}</p>
             <h2 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">
               {t('comparison.title1')}
               <span className="text-gray-500"> {t('comparison.title2')}</span>
@@ -742,14 +742,17 @@ export default function Landing() {
             </p>
           </div>
 
-          <div className="overflow-x-auto rounded-2xl border border-white/10 bg-white/[0.02] shadow-2xl">
+          <div className="overflow-x-auto rounded-2xl border border-white/10 bg-[#0a0a0c] shadow-2xl">
             <table className="w-full text-left border-collapse text-sm">
               <thead>
                 <tr className="border-b border-white/10 bg-white/[0.04]">
                   <th className="py-4 px-6 font-semibold text-gray-300 w-1/3">{t('comparison.col_metric')}</th>
                   <th className="py-4 px-6 font-semibold text-gray-400 w-1/3">{t('comparison.col_traditional')}</th>
-                  <th className="py-4 px-6 font-bold text-white bg-red-500/10 border-x border-red-500/20 w-1/3">
-                    {t('comparison.col_3dstorelink')}
+                  <th className="py-4 px-6 font-bold text-white bg-gradient-to-b from-white/[0.12] to-white/[0.04] border-x border-white/20 w-1/3 shadow-inner">
+                    <div className="flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-zinc-200 animate-pulse shadow-[0_0_6px_rgba(255,255,255,0.8)]" />
+                      <span>{t('comparison.col_3dstorelink')}</span>
+                    </div>
                   </th>
                 </tr>
               </thead>
@@ -765,7 +768,7 @@ export default function Landing() {
                   <tr key={idx} className="hover:bg-white/[0.02] transition">
                     <td className="py-4 px-6 font-medium text-white">{row.title}</td>
                     <td className="py-4 px-6 text-gray-400">{row.trad}</td>
-                    <td className={`py-4 px-6 border-x border-red-500/20 bg-red-500/[0.04] ${row.highlight ? 'text-red-400 font-semibold' : 'text-gray-200'}`}>
+                    <td className={`py-4 px-6 border-x border-white/15 bg-white/[0.03] ${row.highlight ? 'text-zinc-100 font-semibold' : 'text-gray-300'}`}>
                       {row.store}
                     </td>
                   </tr>
@@ -781,7 +784,7 @@ export default function Landing() {
         <div className="max-w-5xl mx-auto">
           <div className="bg-gradient-to-br from-[#0d0d0f] via-[#080809] to-black rounded-3xl p-8 sm:p-12 border border-white/10 shadow-2xl relative overflow-hidden">
             <div className="max-w-2xl mb-8">
-              <p className="text-xs uppercase tracking-widest text-red-400 font-semibold mb-2">
+              <p className="text-xs uppercase tracking-widest text-zinc-400 font-mono font-bold mb-2">
                 {isTr ? 'GELİŞTİRİCİ & ENTEGRASYON' : isDe ? 'ENTWICKLER & INTEGRATION' : 'DEVELOPER & INTEGRATION'}
               </p>
               <h2 className="text-2xl sm:text-4xl font-black mb-4 tracking-tight">
@@ -802,7 +805,7 @@ export default function Landing() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
               <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5">
-                <div className="text-red-400 font-bold text-xs uppercase mb-1">⚡ &lt; 30 Saniye</div>
+                <div className="text-zinc-300 font-bold text-xs uppercase mb-1">⚡ &lt; 30 Saniye</div>
                 <div className="text-white text-sm font-semibold">
                   {isTr ? 'Hızlı Entegrasyon' : isDe ? 'Schnelle Integration' : 'Instant Embed'}
                 </div>
@@ -811,7 +814,7 @@ export default function Landing() {
                 </div>
               </div>
               <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5">
-                <div className="text-red-400 font-bold text-xs uppercase mb-1">📱 1:1 Mobil AR</div>
+                <div className="text-zinc-300 font-bold text-xs uppercase mb-1">📱 1:1 Mobil AR</div>
                 <div className="text-white text-sm font-semibold">
                   {isTr ? 'Uygulamasız AR' : isDe ? 'App-freies mobiles AR' : 'Zero-App AR'}
                 </div>
@@ -820,7 +823,7 @@ export default function Landing() {
                 </div>
               </div>
               <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5">
-                <div className="text-red-400 font-bold text-xs uppercase mb-1">🛡️ CAD IP Koruması</div>
+                <div className="text-zinc-300 font-bold text-xs uppercase mb-1">🛡️ CAD IP Koruması</div>
                 <div className="text-white text-sm font-semibold">
                   {isTr ? 'Güvenli Görsel Mesh' : isDe ? 'CAD-Geometrieschutz' : 'CAD IP Protection'}
                 </div>
@@ -846,7 +849,7 @@ export default function Landing() {
                   {embedCopied ? (isTr ? '✓ Kopyalandı' : isDe ? '✓ Kopiert' : '✓ Copied') : (isTr ? 'Kodu Kopyala' : isDe ? 'Code kopieren' : 'Copy Code')}
                 </button>
               </div>
-              <pre className="overflow-x-auto py-1 text-red-300/90 leading-relaxed font-mono">
+              <pre className="overflow-x-auto py-1 text-zinc-200 leading-relaxed font-mono">
                 {embedCodeSample}
               </pre>
             </div>
@@ -889,7 +892,7 @@ export default function Landing() {
       <section ref={faqRef} id="faq" className="py-24 px-6 border-t border-white/5 scroll-mt-16">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-14">
-            <p className="text-xs uppercase tracking-widest text-red-400 font-semibold mb-2">{t('faq.tag')}</p>
+            <p className="text-xs uppercase tracking-widest text-zinc-400 font-mono font-bold mb-2">{t('faq.tag')}</p>
             <h2 className="text-3xl sm:text-4xl font-black tracking-tight mb-3">
               {t('faq.title1')}
               <span className="text-gray-500"> {t('faq.title2')}</span>
@@ -911,7 +914,7 @@ export default function Landing() {
                 key={idx}
                 className="group border border-white/10 rounded-2xl bg-white/[0.02] hover:border-white/20 transition overflow-hidden"
               >
-                <summary className="flex items-center justify-between p-6 cursor-pointer list-none select-none font-semibold text-white hover:text-red-400 transition">
+                <summary className="flex items-center justify-between p-6 cursor-pointer list-none select-none font-semibold text-white hover:text-zinc-200 transition">
                   <span className="pr-4">{faq.q}</span>
                   <span className="text-gray-500 group-open:rotate-180 transition-transform duration-200 shrink-0">
                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
