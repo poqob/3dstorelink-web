@@ -570,6 +570,8 @@ export default function Landing() {
   const { t } = useTranslation();
   const { token } = useAuthStore();
   const showcaseRef = useRef<HTMLDivElement>(null);
+  const comparisonRef = useRef<HTMLDivElement>(null);
+  const faqRef = useRef<HTMLDivElement>(null);
   const uploadRef = useRef<HTMLDivElement>(null);
   const [activeEmbed, setActiveEmbed] = useState(-1);
 
@@ -608,7 +610,7 @@ export default function Landing() {
             <LanguageSwitcher />
             <Link
               to="/about"
-              className="text-gray-400 hover:text-white text-sm font-medium transition hidden sm:block"
+              className="text-gray-400 hover:text-white text-sm font-medium transition hidden lg:block"
             >
               {t('nav.platform')}
             </Link>
@@ -617,6 +619,18 @@ export default function Landing() {
               className="text-gray-400 hover:text-white text-sm font-medium transition hidden sm:block"
             >
               {t('nav.showcase')}
+            </button>
+            <button
+              onClick={() => scrollTo(comparisonRef)}
+              className="text-gray-400 hover:text-white text-sm font-medium transition hidden md:block"
+            >
+              {t('nav.comparison')}
+            </button>
+            <button
+              onClick={() => scrollTo(faqRef)}
+              className="text-gray-400 hover:text-white text-sm font-medium transition hidden md:block"
+            >
+              {t('nav.faq')}
             </button>
             <button
               onClick={() => scrollTo(uploadRef)}
@@ -721,6 +735,57 @@ export default function Landing() {
         </div>
       </section>
 
+      {/* ── Comparison Matrix (GEO & Conversion) ── */}
+      <section ref={comparisonRef} id="comparison" className="py-24 px-6 border-t border-white/5 scroll-mt-16 bg-white/[0.01]">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <p className="text-xs uppercase tracking-widest text-emerald-400 font-semibold mb-2">{t('comparison.tag')}</p>
+            <h2 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">
+              {t('comparison.title1')}
+              <span className="text-gray-500"> {t('comparison.title2')}</span>
+            </h2>
+            <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
+              {t('comparison.desc')}
+            </p>
+          </div>
+
+          <div className="overflow-x-auto rounded-2xl border border-white/10 bg-white/[0.02] shadow-2xl">
+            <table className="w-full text-left border-collapse text-sm">
+              <thead>
+                <tr className="border-b border-white/10 bg-white/[0.04]">
+                  <th className="py-4 px-6 font-semibold text-gray-300 w-1/3">{t('comparison.col_metric')}</th>
+                  <th className="py-4 px-6 font-semibold text-gray-400 w-1/3">{t('comparison.col_traditional')}</th>
+                  <th className="py-4 px-6 font-bold text-white bg-emerald-500/10 border-x border-emerald-500/20 w-1/3">
+                    <span className="flex items-center gap-2">
+                      <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                      {t('comparison.col_3dstorelink')}
+                    </span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-white/5">
+                {[
+                  { title: t('comparison.row1_title'), trad: t('comparison.row1_trad'), store: t('comparison.row1_3d'), highlight: true },
+                  { title: t('comparison.row2_title'), trad: t('comparison.row2_trad'), store: t('comparison.row2_3d'), highlight: true },
+                  { title: t('comparison.row3_title'), trad: t('comparison.row3_trad'), store: t('comparison.row3_3d'), highlight: true },
+                  { title: t('comparison.row4_title'), trad: t('comparison.row4_trad'), store: t('comparison.row4_3d'), highlight: false },
+                  { title: t('comparison.row5_title'), trad: t('comparison.row5_trad'), store: t('comparison.row5_3d'), highlight: false },
+                  { title: t('comparison.row6_title'), trad: t('comparison.row6_trad'), store: t('comparison.row6_3d'), highlight: false },
+                ].map((row, idx) => (
+                  <tr key={idx} className="hover:bg-white/[0.02] transition">
+                    <td className="py-4 px-6 font-medium text-white">{row.title}</td>
+                    <td className="py-4 px-6 text-gray-400">{row.trad}</td>
+                    <td className={`py-4 px-6 border-x border-emerald-500/20 bg-emerald-500/[0.04] ${row.highlight ? 'text-emerald-300 font-semibold' : 'text-gray-200'}`}>
+                      {row.store}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
       {/* ── Guest Upload ── */}
       <section ref={uploadRef} id="upload" className="py-24 px-6 border-t border-white/5 scroll-mt-16">
         <div className="max-w-2xl mx-auto">
@@ -752,6 +817,49 @@ export default function Landing() {
         </div>
       </section>
 
+      {/* ── FAQ Section (GEO & Rich Results) ── */}
+      <section ref={faqRef} id="faq" className="py-24 px-6 border-t border-white/5 scroll-mt-16">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-14">
+            <p className="text-xs uppercase tracking-widest text-emerald-400 font-semibold mb-2">{t('faq.tag')}</p>
+            <h2 className="text-3xl sm:text-4xl font-black tracking-tight mb-3">
+              {t('faq.title1')}
+              <span className="text-gray-500"> {t('faq.title2')}</span>
+            </h2>
+            <p className="text-gray-400 text-sm max-w-lg mx-auto">
+              {t('faq.desc')}
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            {[
+              { q: t('faq.q1'), a: t('faq.a1') },
+              { q: t('faq.q2'), a: t('faq.a2') },
+              { q: t('faq.q3'), a: t('faq.a3') },
+              { q: t('faq.q4'), a: t('faq.a4') },
+              { q: t('faq.q5'), a: t('faq.a5') },
+            ].map((faq, idx) => (
+              <details
+                key={idx}
+                className="group border border-white/10 rounded-2xl bg-white/[0.02] hover:border-white/20 transition overflow-hidden"
+              >
+                <summary className="flex items-center justify-between p-6 cursor-pointer list-none select-none font-semibold text-white hover:text-emerald-300 transition">
+                  <span className="pr-4">{faq.q}</span>
+                  <span className="text-gray-500 group-open:rotate-180 transition-transform duration-200 shrink-0">
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </span>
+                </summary>
+                <div className="px-6 pb-6 text-gray-400 text-sm leading-relaxed border-t border-white/5 pt-4">
+                  {faq.a}
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── Footer ── */}
       <footer className="border-t border-white/5 py-10 px-6">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-gray-600 text-xs">
@@ -763,6 +871,15 @@ export default function Landing() {
             <Link to="/about" className="hover:text-white transition font-medium">
               {t('nav.platform')}
             </Link>
+            <Link to="/karsilastirma" className="hover:text-white transition font-medium">
+              {t('nav.comparison')}
+            </Link>
+            <Link to="/sozluk" className="hover:text-white transition font-medium">
+              {t('nav.glossary')}
+            </Link>
+            <button onClick={() => scrollTo(faqRef)} className="hover:text-white transition font-medium">
+              {t('nav.faq')}
+            </button>
             <a href="mailto:info@3dstorelink.com" className="hover:text-white transition">info@3dstorelink.com</a>
             <a
               href="https://www.instagram.com/3dstorelink/"

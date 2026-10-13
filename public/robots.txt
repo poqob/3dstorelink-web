@@ -3,8 +3,31 @@ Allow: /
 Allow: /about
 Allow: /platform
 Allow: /upload
+Allow: /karsilastirma
+Allow: /sozluk
+Allow: /llms.txt
+Allow: /llms-full.txt
 Disallow: /dashboard/
 Disallow: /api-docs/
 Disallow: /editor/
+
+# AI Crawlers & Search Engines (GEO)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
 
 Sitemap: https://3dstorelink.com/sitemap.xml

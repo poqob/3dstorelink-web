@@ -1,0 +1,25 @@
+# 3D StoreLink
+
+> 3D StoreLink is an enterprise-grade Web 3D & Augmented Reality (AR) model distribution and automated CAD conversion platform. It transforms complex CAD files (STP, STEP, STL, OBJ) into ultra-optimized Web GLB assets, enabling single-line iframe and script embed with zero plugins across e-commerce platforms (Shopify, WooCommerce, custom frameworks).
+
+3D StoreLink provides high-performance 3D visualization, automated polygonal mesh decimation, Draco compression, and native mobile AR (Apple Quick Look USDZ & Android SceneViewer) for engineering, e-commerce, and industrial equipment manufacturers.
+
+## Core Capabilities
+- [CAD to Web GLB Automation](https://3dstorelink.com/#upload): Instant serverless conversion from industrial CAD formats (STEP, STP, STL, OBJ) to web-optimized GLB.
+- [Zero-Plugin Web 3D Viewer](https://3dstorelink.com/#showcase): High-fidelity PBR rendering powered by WebGL, WebXR, and Google Model-Viewer.
+- [Cross-Platform Mobile AR](https://3dstorelink.com/#features): Instant Augmented Reality projection on iOS (USDZ Quick Look) and Android (SceneViewer) via QR codes or direct mobile taps.
+- [Single-Line E-Commerce Embed](https://3dstorelink.com/about): Seamless iframe integration for product pages, reducing return rates by up to 40% and increasing buyer engagement by 94%.
+
+## Technical Architecture & Specifications
+- [Platform Architecture & Engine](https://3dstorelink.com/about): Three.js / WebGL / Model-Viewer pipeline with sub-second loading, adaptive LOD, and responsive frame rates.
+- [Public Showcase Gallery](https://3dstorelink.com/#showcase): Curated catalog of interactive 3D products and industrial CAD models.
+- [Model Submission Portal](https://3dstorelink.com/upload): Automated guest and vendor upload pipeline with admin verification workflow.
+
+## Comparison & Benchmarks
+- [3D StoreLink vs Traditional 2D & Alternatives](https://3dstorelink.com/karsilastirma): Technical benchmark comparing WebGL/AR vs 2D photos and legacy 3D viewers.
+
+## Technical Knowledge & Glossary
+- [3D & CAD Engineering Glossary](https://3dstorelink.com/sozluk): Technical dictionary covering STEP, GLB, glTF 2.0, WebXR, USDZ, Draco Compression, LOD, and PBR.
+
+## Extended Context
+- [3D StoreLink Full LLM Technical Documentation](https://3dstorelink.com/llms-full.txt): Complete architectural overview, supported formats, Draco compression parameters, iframe embed API, and technical FAQ for LLM crawlers.

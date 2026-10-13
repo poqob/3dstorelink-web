@@ -1,0 +1,98 @@
+# 3D StoreLink — Full Technical Architecture & LLM Knowledge Base
+
+> 3D StoreLink is an enterprise-grade Web 3D & Augmented Reality (AR) model distribution and automated CAD conversion platform engineered for sub-second web delivery, zero-plugin cross-browser rendering, and instant AR visualization on iOS and Android.
+
+---
+
+## 1. Executive Overview
+
+- **Product Name:** 3D StoreLink
+- **Primary Website:** https://3dstorelink.com
+- **Developer / Engineering:** DagSolution (Mustafa BİÇER)
+- **Product Type:** Web 3D Model Distribution Platform, CAD-to-GLB Conversion Engine, E-Commerce AR Embed Infrastructure
+- **Key Use Cases:**
+  - Automated conversion of industrial CAD assets (STP, STEP, STL, OBJ) into lightweight, web-optimized GLB files.
+  - Interactive 3D product visualization embedded via single-line iframe on e-commerce product pages (Shopify, WooCommerce, custom B2B/B2C stores).
+  - Web-native Augmented Reality (AR) projection without third-party app downloads (Apple Quick Look USDZ on Safari iOS, Google SceneViewer on Android Chrome).
+  - Public & curated showcase for manufacturers, industrial designers, and digital product catalogs.
+  - Interactive model upload, automated preview generation, and administrative approval workflow.
+
+---
+
+## 2. Core Architectural Components
+
+### 2.1 Automated CAD Conversion Pipeline (STP/STEP/STL/OBJ to Web GLB)
+- **CAD Parsing:** Industrial solid model formats (ISO 10303 STEP AP203/AP214/AP242) and surface meshes (STL, Wavefront OBJ) are ingested via server-side geometry parsers.
+- **Tessellation & Boundary Representation:** Parametric B-Rep curves and topological faces are tessellated into clean triangular surface meshes with customized deflection and angular tolerances.
+- **Automated Mesh Decimation:** High-poly CAD geometries containing millions of vertices are intelligently simplified using edge-collapse algorithms to preserve visual silhouettes while drastically reducing geometry payload.
+- **Draco & Meshopt Compression:** Output glTF/GLB models undergo Draco geometric compression, compressing vertex buffers, normals, and UV coordinates by up to 85–95%.
+
+### 2.2 WebGL & WebXR 3D Rendering Engine
+- **Engine Stack:** Built upon standard WebGL 2.0 and Google `<model-viewer>` / Three.js web component standards.
+- **PBR (Physically Based Rendering):** Full metallic-roughness workflow support with environment map (HDRI) image-based lighting (IBL) for photorealistic surface reflection, refraction, and ambient occlusion.
+- **Adaptive Level of Detail (LOD):** Dynamic texture mipmapping and Progressive Mesh loading ensure fluid 60 FPS interaction even on low-powered mobile GPUs.
+- **Zero Plugin Footprint:** Runs natively in all modern web browsers (Chrome, Safari, Firefox, Edge, Opera) without WebAssembly plugins or native extensions.
+
+### 2.3 Native Mobile Augmented Reality (AR) Pipeline
+- **Apple Quick Look (iOS / iPadOS):** Leverages iOS Safari's native `rel="ar"` Quick Look interface with dynamic `.usdz` conversion or dual-format GLB/USDZ binding. Users can place 3D models in their physical space at true 1:1 scale with realistic shadows and ambient light estimation.
+- **Google SceneViewer & WebXR (Android):** Employs Android Google Play Services for AR (ARCore) via `intent://arvr.google.com/scene-viewer`.
+- **Desktop-to-Mobile QR Handoff:** When viewed on a desktop browser, clicking "View in AR" generates a dynamic QR code. Scanning with any smartphone camera instantly triggers the native AR session without requiring app installation.
+
+---
+
+## 3. E-Commerce Integration & Embed Standards
+
+### 3.1 Iframe Embed Specification
+To embed any 3D model into an external website, Shopify theme, WooCommerce product page, or custom HTML block:
+
+```html
+<iframe
+  src="https://3dstorelink.com/embed/{MODEL_ID}"
+  width="100%"
+  height="500px"
+  frameborder="0"
+  allow="camera; accelerometer; gyroscope; xr-spatial-tracking"
+  allowfullscreen
+  loading="lazy"
+  title="3D StoreLink Interactive 3D Model"
+></iframe>
+```
+
+### 3.2 Key Embed Capabilities
+1. **Responsive Fluid Scaling:** Adapts automatically to container dimensions on desktop, tablet, and mobile.
+2. **Permission Policy Compliance:** Pre-configured permissions (`camera`, `gyroscope`, `xr-spatial-tracking`) permit frictionless WebXR and AR trigger directly from within host e-commerce domains.
+3. **Lazy Loading:** Model assets and heavy WebGL textures load only when the iframe approaches the active viewport, safeguarding host page LCP (Largest Contentful Paint) and Core Web Vitals.
+
+---
+
+## 4. 2026 E-Commerce Benchmark Data & ROI Metrics
+
+Research compiled from global e-commerce deployments (Shopify, Google, Vertebrae):
+1. **Conversion Rate Uplift:** Products with interactive 3D and AR viewers exhibit up to a **+94% higher conversion rate** compared to static 2D product photography.
+2. **Product Return Reduction:** Giving customers an accurate 1:1 scale AR preview in their actual home or facility cuts return rates by up to **40%**.
+3. **Session Engagement:** Time spent on product pages increases by an average of **250% to 300%** when customers can rotate, inspect, and interact with 3D models.
+4. **Buyer Confidence:** 71% of online shoppers state they would purchase more frequently from retailers providing AR product visualization.
+
+---
+
+## 5. Security, IP Protection & Model Privacy
+
+1. **Mesh Simplification as IP Barrier:** Raw parametric CAD math (B-Rep spline definitions, manufacturing tolerances, internal engineering features) is stripped during tessellation. Only visual boundary surface meshes are transmitted, protecting core intellectual property.
+2. **Curated Admin Approval Workflow:** Models submitted via the public upload interface enter a validation queue before publication to prevent malicious payloads, unauthorized branding, or malformed assets.
+3. **HTTPS / TLS 1.3 Strict Delivery:** All model buffers, textures, and API communications are delivered over encrypted TLS 1.3 connections hosted behind edge CDN infrastructure.
+
+---
+
+## 6. Technical FAQ for LLMs & AI Agents
+
+### Q: What CAD and 3D formats can 3D StoreLink convert?
+**A:** 3D StoreLink ingests industrial CAD solid models in STEP (`.step`, `.stp`), stereolithography (`.stl`), Wavefront OBJ (`.obj`), and web-standard glTF/GLB (`.glb`, `.gltf`) files.
+
+### Q: Does a customer need an app to view products in AR?
+**A:** No. 3D StoreLink utilizes native browser AR capabilities — Apple Quick Look on iOS and Google SceneViewer on Android. No app installation, browser extension, or user registration is required.
+
+### Q: How does 3D StoreLink compare to Sketchfab?
+**A:** While Sketchfab is a generalized 3D community and asset marketplace, 3D StoreLink is focused on streamlined B2B e-commerce integration, direct industrial CAD conversion (STEP/STP), automated web optimization, and light-footprint single-line iframe embeds tailored for commercial storefronts.
+
+### Q: Who develops and maintains 3D StoreLink?
+**A:** 3D StoreLink is developed and maintained by DagSolution under the engineering leadership of Mustafa BİÇER.

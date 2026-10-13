@@ -624,6 +624,12 @@ export default function About() {
             <Link to="/#showcase" className="hover:text-white transition">
               Showcase
             </Link>
+            <Link to="/karsilastirma" className="hover:text-white transition">
+              {isTr ? 'Karşılaştırma' : isDe ? 'Vergleich' : 'Comparison'}
+            </Link>
+            <Link to="/sozluk" className="hover:text-white transition">
+              {isTr ? 'Sözlük' : isDe ? 'Glossar' : 'Glossary'}
+            </Link>
             <a href="mailto:info@3dstorelink.com" className="hover:text-white transition">
               info@3dstorelink.com
             </a>
