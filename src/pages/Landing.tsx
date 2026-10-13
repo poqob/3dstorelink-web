@@ -6,6 +6,7 @@ import api from '../services/api';
 import { useAuthStore } from '../store/auth';
 import Typewriter from '../components/Typewriter';
 import LanguageDropdown from '../components/LanguageDropdown';
+import { Box, Check, Upload, Image as ImageIcon, AlertCircle, X } from 'lucide-react';
 
 declare global {
   namespace JSX {
@@ -54,9 +55,11 @@ function ModelModal({ slug, name, onClose }: { slug: string; name: string; onClo
           </div>
           <button
             onClick={onClose}
-            className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition"
+            className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition cursor-pointer"
             aria-label="Kapat"
-          >✕</button>
+          >
+            <X className="w-4 h-4 text-gray-300" />
+          </button>
         </div>
         <div className="aspect-video w-full bg-[#0a0a0a]">
           <iframe
@@ -120,7 +123,7 @@ function ShowcaseGallery() {
   if (models.length === 0) {
     return (
       <div className="text-center py-20 border border-dashed border-white/20 rounded-2xl">
-        <div className="text-5xl mb-4">📦</div>
+        <Box className="w-12 h-12 text-zinc-500 mx-auto mb-3" />
         <p className="text-gray-500">{t('showcase.empty')}</p>
       </div>
     );
@@ -144,7 +147,9 @@ function ShowcaseGallery() {
                   loading="lazy"
                 />
               ) : (
-                <span className="text-5xl">📦</span>
+                <div className="w-full h-full flex items-center justify-center bg-zinc-900/60">
+                  <Box className="w-12 h-12 text-zinc-600" />
+                </div>
               )}
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
                 <span className="text-white text-xs font-bold bg-white/20 backdrop-blur-sm px-3 py-1.5 rounded-full flex items-center gap-1.5">
@@ -324,7 +329,9 @@ function GuestUploadForm() {
   if (success) {
     return (
       <div className="text-center py-12 px-6">
-        <div className="w-16 h-16 rounded-full bg-green-500/10 border border-green-500/30 flex items-center justify-center mx-auto mb-4 text-3xl">✅</div>
+        <div className="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center mx-auto mb-4">
+          <Check className="w-8 h-8 text-emerald-400" />
+        </div>
         <h3 className="text-white text-xl font-bold mb-2">{t('upload.success_title')}</h3>
         <p className="text-gray-400 text-sm max-w-sm mx-auto">
           {t('upload.success_desc')}{' '}
@@ -443,7 +450,7 @@ function GuestUploadForm() {
                   </div>
                 ) : (
                   <div>
-                    <p className="text-2xl mb-2">📂</p>
+                    <Upload className="w-6 h-6 text-zinc-400 mx-auto mb-2" />
                     <p className="text-gray-400 text-sm">{t('upload.file_sel')}</p>
                     <p className="text-gray-600 text-xs mt-1">{SUPPORTED_FORMATS.join(' · ')}</p>
                   </div>
@@ -483,7 +490,7 @@ function GuestUploadForm() {
                   </div>
                 ) : (
                   <div>
-                    <p className="text-2xl mb-2">🖼️</p>
+                    <ImageIcon className="w-6 h-6 text-zinc-400 mx-auto mb-2" />
                     <p className="text-gray-400 text-sm">{t('upload.img_sel')}</p>
                     <p className="text-gray-600 text-xs mt-1">JPG · JPEG · PNG</p>
                   </div>
@@ -525,8 +532,8 @@ function GuestUploadForm() {
       )}
 
       {error && (
-        <div className="bg-red-500/10 border border-red-500/30 rounded-xl px-4 py-3 text-red-400 text-sm flex items-start gap-2">
-          <span className="mt-0.5 flex-shrink-0">⚠️</span>
+        <div className="bg-red-500/10 border border-red-500/30 rounded-xl px-4 py-3 text-red-400 text-sm flex items-start gap-2.5">
+          <AlertCircle className="w-4 h-4 text-red-400 mt-0.5 flex-shrink-0" />
           <div>
             {error}
             {' '}{t('upload.err_contact')}{' '}
@@ -667,21 +674,114 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* ── Features ── */}
-      <section className="py-24 px-6 border-t border-white/5">
+      {/* ── Features & Technical Benchmarks ── */}
+      <section className="py-20 px-6 border-t border-white/5">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            {[
-              { icon: '🌐', title: t('features.f1_title'), desc: t('features.f1_desc') },
-              { icon: '📱', title: t('features.f2_title'), desc: t('features.f2_desc') },
-              { icon: '⚡', title: t('features.f3_title'), desc: t('features.f3_desc') },
-            ].map((f, i) => (
-              <div key={i} className="p-6 rounded-2xl border border-white/10 bg-white/2 hover:bg-white/5 transition group">
-                <div className="text-3xl mb-4">{f.icon}</div>
-                <h3 className="font-bold text-white mb-2">{f.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{f.desc}</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Box 1 */}
+            <div className="p-7 rounded-2xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.04] transition-all flex flex-col justify-between group shadow-sm hover:border-white/20">
+              <div>
+                <div className="flex items-center justify-between gap-3 mb-6">
+                  <span className="text-[11px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-zinc-300 font-semibold">
+                    {t('features.f1_badge')}
+                  </span>
+                  <span className="text-2xl sm:text-3xl font-black font-mono tracking-tight text-white group-hover:text-zinc-200 transition">
+                    {t('features.f1_stat')}
+                  </span>
+                </div>
+                <h3 className="font-bold text-lg text-white mb-2.5 leading-snug">
+                  {t('features.f1_title')}
+                </h3>
+                <p className="text-gray-400 text-sm leading-relaxed mb-6">
+                  {t('features.f1_desc')}
+                </p>
               </div>
-            ))}
+
+              <div className="pt-5 border-t border-white/5 space-y-2.5 text-xs font-mono">
+                <div className="flex items-center justify-between">
+                  <span className="text-gray-500 font-sans">{t('features.f1_m1_label')}</span>
+                  <span className="text-zinc-200 font-semibold">{t('features.f1_m1_val')}</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-gray-500 font-sans">{t('features.f1_m2_label')}</span>
+                  <span className="text-zinc-200 font-semibold">{t('features.f1_m2_val')}</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-gray-500 font-sans">{t('features.f1_m3_label')}</span>
+                  <span className="text-zinc-300 font-sans text-right truncate ml-2">{t('features.f1_m3_val')}</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Box 2 */}
+            <div className="p-7 rounded-2xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.04] transition-all flex flex-col justify-between group shadow-sm hover:border-white/20">
+              <div>
+                <div className="flex items-center justify-between gap-3 mb-6">
+                  <span className="text-[11px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-zinc-300 font-semibold">
+                    {t('features.f2_badge')}
+                  </span>
+                  <span className="text-2xl sm:text-3xl font-black font-mono tracking-tight text-white group-hover:text-zinc-200 transition">
+                    {t('features.f2_stat')}
+                  </span>
+                </div>
+                <h3 className="font-bold text-lg text-white mb-2.5 leading-snug">
+                  {t('features.f2_title')}
+                </h3>
+                <p className="text-gray-400 text-sm leading-relaxed mb-6">
+                  {t('features.f2_desc')}
+                </p>
+              </div>
+
+              <div className="pt-5 border-t border-white/5 space-y-2.5 text-xs font-mono">
+                <div className="flex items-center justify-between">
+                  <span className="text-gray-500 font-sans">{t('features.f2_m1_label')}</span>
+                  <span className="text-emerald-400 font-semibold">{t('features.f2_m1_val')}</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-gray-500 font-sans">{t('features.f2_m2_label')}</span>
+                  <span className="text-zinc-200 font-semibold">{t('features.f2_m2_val')}</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-gray-500 font-sans">{t('features.f2_m3_label')}</span>
+                  <span className="text-zinc-300 font-sans text-right truncate ml-2">{t('features.f2_m3_val')}</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Box 3 */}
+            <div className="p-7 rounded-2xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.04] transition-all flex flex-col justify-between group shadow-sm hover:border-white/20">
+              <div>
+                <div className="flex items-center justify-between gap-3 mb-6">
+                  <span className="text-[11px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-zinc-300 font-semibold">
+                    {t('features.f3_badge')}
+                  </span>
+                  <span className="text-2xl sm:text-3xl font-black font-mono tracking-tight text-white group-hover:text-zinc-200 transition">
+                    {t('features.f3_stat')}
+                  </span>
+                </div>
+                <h3 className="font-bold text-lg text-white mb-2.5 leading-snug">
+                  {t('features.f3_title')}
+                </h3>
+                <p className="text-gray-400 text-sm leading-relaxed mb-6">
+                  {t('features.f3_desc')}
+                </p>
+              </div>
+
+              <div className="pt-5 border-t border-white/5 space-y-2.5 text-xs font-mono">
+                <div className="flex items-center justify-between">
+                  <span className="text-gray-500 font-sans">{t('features.f3_m1_label')}</span>
+                  <span className="text-zinc-200 font-semibold">{t('features.f3_m1_val')}</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-gray-500 font-sans">{t('features.f3_m2_label')}</span>
+                  <span className="text-emerald-400 font-semibold">{t('features.f3_m2_val')}</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-gray-500 font-sans">{t('features.f3_m3_label')}</span>
+                  <span className="text-zinc-300 font-sans text-right truncate ml-2">{t('features.f3_m3_val')}</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
