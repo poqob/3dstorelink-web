@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useAuthStore } from '../store/auth';
 import LanguageDropdown from '../components/LanguageDropdown';
 
 interface GlossaryTerm {
@@ -21,7 +20,6 @@ interface GlossaryTerm {
 
 export default function GlossaryPage() {
   const { i18n } = useTranslation();
-  const { token } = useAuthStore();
   const [search, setSearch] = useState('');
   const [activeCategory, setActiveCategory] = useState('all');
 
@@ -219,12 +217,6 @@ export default function GlossaryPage() {
             </Link>
             <Link to="/sozluk" className="text-white font-bold border-b-2 border-zinc-300 pb-0.5">
               {isTr ? 'Sözlük' : isDe ? 'Glossar' : 'Glossary'}
-            </Link>
-            <Link
-              to="/upload"
-              className="bg-white text-black px-4 py-2 text-sm font-bold rounded-lg hover:bg-gray-200 transition"
-            >
-              {token ? (isTr ? 'Dashboard' : 'Dashboard') : (isTr ? 'Model Yükle' : isDe ? 'Modell hochladen' : 'Upload Model')}
             </Link>
             <LanguageDropdown />
           </div>

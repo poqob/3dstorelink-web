@@ -1,13 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useAuthStore } from '../store/auth';
 import LanguageDropdown from '../components/LanguageDropdown';
 import { ARTICLES, AUTHORS } from '../data/blogArticles';
 
 export default function BlogHub() {
   const { i18n } = useTranslation();
-  const { token } = useAuthStore();
   const [searchParams, setSearchParams] = useSearchParams();
   const [copiedCode, setCopiedCode] = useState(false);
   const [readingProgress, setReadingProgress] = useState(0);
@@ -229,12 +227,6 @@ export default function BlogHub() {
             </Link>
             <Link to="/sozluk" className="text-gray-400 hover:text-white transition hidden md:block">
               {isTr ? 'Sözlük' : isDe ? 'Glossar' : 'Glossary'}
-            </Link>
-            <Link
-              to="/upload"
-              className="bg-white text-black px-4 py-2 text-sm font-bold rounded-lg hover:bg-gray-200 transition"
-            >
-              {token ? 'Dashboard' : isTr ? 'Model Yükle' : isDe ? 'Modell hochladen' : 'Upload Model'}
             </Link>
             <LanguageDropdown />
           </div>

@@ -1,12 +1,10 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useAuthStore } from '../store/auth';
 import LanguageDropdown from '../components/LanguageDropdown';
 
 export default function ComparisonPage() {
   const { i18n } = useTranslation();
-  const { token } = useAuthStore();
 
   const currentLang = i18n.language?.startsWith('de') ? 'de' : i18n.language?.startsWith('en') ? 'en' : 'tr';
   const isTr = currentLang === 'tr';
@@ -89,12 +87,6 @@ export default function ComparisonPage() {
             <Link to="/sozluk" className="text-gray-400 hover:text-white transition hidden md:block">
               {isTr ? 'Sözlük' : isDe ? 'Glossar' : 'Glossary'}
             </Link>
-            <Link
-              to="/upload"
-              className="bg-white text-black px-4 py-2 text-sm font-bold rounded-lg hover:bg-gray-200 transition"
-            >
-              {token ? (isTr ? 'Dashboard' : 'Dashboard') : (isTr ? 'Model Yükle' : isDe ? 'Modell hochladen' : 'Upload Model')}
-            </Link>
             <LanguageDropdown />
           </div>
         </div>
@@ -166,9 +158,8 @@ export default function ComparisonPage() {
           {isTr ? 'Neden 3D StoreLink E-Ticaret İçin Daha Uygun?' : isDe ? 'Warum 3D StoreLink für E-Commerce?' : 'Why 3D StoreLink Wins in E-Commerce'}
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="p-8 rounded-2xl border border-white/10 bg-white/[0.02]">
-            <div className="text-3xl mb-4">⚡</div>
-            <h3 className="text-xl font-bold mb-3">
+          <div className="p-8 rounded-2xl border border-white/10 bg-[#0c0c0e]/80 hover:border-zinc-400/40 hover:bg-white/[0.03] transition-all">
+            <h3 className="text-xl font-bold mb-3 text-white">
               {isTr ? 'Doğrudan CAD Desteği' : isDe ? 'Direkte CAD-Konvertierung' : 'Native CAD Pipeline'}
             </h3>
             <p className="text-gray-400 text-sm leading-relaxed">
@@ -179,9 +170,8 @@ export default function ComparisonPage() {
                 : 'Upload industrial STP and STEP files directly without hiring 3D artists. Our pipeline tessellates and simplifies meshes automatically.'}
             </p>
           </div>
-          <div className="p-8 rounded-2xl border border-white/10 bg-white/[0.02]">
-            <div className="text-3xl mb-4">📱</div>
-            <h3 className="text-xl font-bold mb-3">
+          <div className="p-8 rounded-2xl border border-white/10 bg-[#0c0c0e]/80 hover:border-zinc-400/40 hover:bg-white/[0.03] transition-all">
+            <h3 className="text-xl font-bold mb-3 text-white">
               {isTr ? 'Uygulamasız 1:1 AR' : isDe ? 'App-freies 1:1 AR' : 'Zero-App 1:1 AR'}
             </h3>
             <p className="text-gray-400 text-sm leading-relaxed">
@@ -192,9 +182,8 @@ export default function ComparisonPage() {
                 : 'Customers place products at 1:1 true scale in their real space directly through Safari & Chrome with zero app downloads.'}
             </p>
           </div>
-          <div className="p-8 rounded-2xl border border-white/10 bg-white/[0.02]">
-            <div className="text-3xl mb-4">📈</div>
-            <h3 className="text-xl font-bold mb-3">
+          <div className="p-8 rounded-2xl border border-white/10 bg-[#0c0c0e]/80 hover:border-zinc-400/40 hover:bg-white/[0.03] transition-all">
+            <h3 className="text-xl font-bold mb-3 text-white">
               {isTr ? 'Ölçülebilir Satış Artışı' : isDe ? 'Messbare ROI-Steigerung' : 'Measurable ROI & Lift'}
             </h3>
             <p className="text-gray-400 text-sm leading-relaxed">
