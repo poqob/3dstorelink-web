@@ -552,10 +552,10 @@ export default function Landing() {
 
   const isTr = !i18n.language || i18n.language.startsWith('tr');
   const isDe = i18n.language?.startsWith('de');
-  const homePath = isTr ? '/' : isDe ? '/de' : '/en';
-  const blogPath = isTr ? '/blog' : isDe ? '/de/blog' : '/en/blog';
-  const comparePath = isTr ? '/karsilastirma' : isDe ? '/de/vergleich' : '/en/compare';
-  const glossaryPath = isTr ? '/sozluk' : isDe ? '/de/glossar' : '/en/glossary';
+  const homePath = isTr ? '/' : isDe ? '/de/' : '/en/';
+  const blogPath = isTr ? '/blog/' : isDe ? '/de/blog/' : '/en/blog/';
+  const comparePath = isTr ? '/karsilastirma/' : isDe ? '/de/vergleich/' : '/en/compare/';
+  const glossaryPath = isTr ? '/sozluk/' : isDe ? '/de/glossar/' : '/en/glossary/';
 
   const showcaseRef = useRef<HTMLDivElement>(null);
   const comparisonRef = useRef<HTMLDivElement>(null);

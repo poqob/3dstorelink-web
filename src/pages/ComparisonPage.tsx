@@ -11,11 +11,11 @@ export default function ComparisonPage() {
   const isTr = currentLang === 'tr';
   const isDe = currentLang === 'de';
 
-  const homePath = isTr ? '/' : isDe ? '/de' : '/en';
-  const blogPath = isTr ? '/blog' : isDe ? '/de/blog' : '/en/blog';
-  const comparePath = isTr ? '/karsilastirma' : isDe ? '/de/vergleich' : '/en/compare';
-  const glossaryPath = isTr ? '/sozluk' : isDe ? '/de/glossar' : '/en/glossary';
-  const uploadPath = isTr ? '/upload' : isDe ? '/de/upload' : '/en/upload';
+  const homePath = isTr ? '/' : isDe ? '/de/' : '/en/';
+  const blogPath = isTr ? '/blog/' : isDe ? '/de/blog/' : '/en/blog/';
+  const comparePath = isTr ? '/karsilastirma/' : isDe ? '/de/vergleich/' : '/en/compare/';
+  const glossaryPath = isTr ? '/sozluk/' : isDe ? '/de/glossar/' : '/en/glossary/';
+  const uploadPath = isTr ? '/upload/' : isDe ? '/de/upload/' : '/en/upload/';
 
   const title = isTr
     ? '3D StoreLink vs Sketchfab & 2D | 2026 Teknik Karşılaştırma Matrisi'

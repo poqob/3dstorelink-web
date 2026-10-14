@@ -19,11 +19,11 @@ export default function BlogHub() {
   const isTr = currentLang === 'tr';
   const isDe = currentLang === 'de';
 
-  const homePath = isTr ? '/' : isDe ? '/de' : '/en';
-  const blogPath = isTr ? '/blog' : isDe ? '/de/blog' : '/en/blog';
-  const comparePath = isTr ? '/karsilastirma' : isDe ? '/de/vergleich' : '/en/compare';
-  const glossaryPath = isTr ? '/sozluk' : isDe ? '/de/glossar' : '/en/glossary';
-  const uploadPath = isTr ? '/upload' : isDe ? '/de/upload' : '/en/upload';
+  const homePath = isTr ? '/' : isDe ? '/de/' : '/en/';
+  const blogPath = isTr ? '/blog/' : isDe ? '/de/blog/' : '/en/blog/';
+  const comparePath = isTr ? '/karsilastirma/' : isDe ? '/de/vergleich/' : '/en/compare/';
+  const glossaryPath = isTr ? '/sozluk/' : isDe ? '/de/glossar/' : '/en/glossary/';
+  const uploadPath = isTr ? '/upload/' : isDe ? '/de/upload/' : '/en/upload/';
 
   const querySlug = searchParams.get('post');
   const targetSlug = routeSlug || querySlug;
@@ -31,7 +31,7 @@ export default function BlogHub() {
 
   const getArticleUrl = (art: Article) => {
     const slug = getArticleSlug(art, currentLang);
-    return isTr ? `/blog/${slug}` : isDe ? `/de/blog/${slug}` : `/en/blog/${slug}`;
+    return isTr ? `/blog/${slug}/` : isDe ? `/de/blog/${slug}/` : `/en/blog/${slug}/`;
   };
 
   // If accessed via legacy query parameter '?post=', cleanly redirect to RESTful route
@@ -410,7 +410,7 @@ export default function BlogHub() {
                     : 'Test your CAD or 3D model live in seconds.'}
                 </p>
                 <Link
-                  to="/upload"
+                  to={uploadPath}
                   className="inline-block w-full py-2.5 px-3 rounded-xl bg-white text-black font-bold text-xs hover:bg-zinc-200 transition text-center shadow-md"
                 >
                   {isTr ? 'Modelini Yükle →' : isDe ? 'Modell hochladen →' : 'Upload Model →'}

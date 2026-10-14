@@ -128,10 +128,10 @@ function renderLandingBody(lang: Lang): { body: string; title: string; descripti
   const isTr = lang === 'tr';
   const isDe = lang === 'de';
 
-  const homePath = isTr ? '/' : isDe ? '/de' : '/en';
-  const blogPath = isTr ? '/blog' : isDe ? '/de/blog' : '/en/blog';
-  const comparePath = isTr ? '/karsilastirma' : isDe ? '/de/vergleich' : '/en/compare';
-  const glossaryPath = isTr ? '/sozluk' : isDe ? '/de/glossar' : '/en/glossary';
+  const homePath = isTr ? '/' : isDe ? '/de/' : '/en/';
+  const blogPath = isTr ? '/blog/' : isDe ? '/de/blog/' : '/en/blog/';
+  const comparePath = isTr ? '/karsilastirma/' : isDe ? '/de/vergleich/' : '/en/compare/';
+  const glossaryPath = isTr ? '/sozluk/' : isDe ? '/de/glossar/' : '/en/glossary/';
 
   const title = isTr
     ? '3D StoreLink | Web 3D & AR Model Dağıtım ve CAD Dönüştürme Platformu'
@@ -157,7 +157,7 @@ function renderLandingBody(lang: Lang): { body: string; title: string; descripti
       ${description}
     </p>
     <div class="flex flex-wrap items-center justify-center gap-4">
-      <a href="${isTr ? '/upload' : isDe ? '/de/upload' : '/en/upload'}" class="px-7 py-3.5 bg-white text-black font-bold rounded-xl hover:bg-zinc-200 transition">
+      <a href="${isTr ? '/upload/' : isDe ? '/de/upload/' : '/en/upload/'}" class="px-7 py-3.5 bg-white text-black font-bold rounded-xl hover:bg-zinc-200 transition">
         ${isTr ? 'Model Yükle' : isDe ? 'Modell hochladen' : 'Upload Model'}
       </a>
       <a href="${comparePath}" class="px-7 py-3.5 border border-white/20 text-white font-bold rounded-xl hover:bg-white/5 transition">
@@ -364,8 +364,8 @@ function renderBlogHubBody(lang: Lang): { body: string; title: string; descripti
   const isTr = lang === 'tr';
   const isDe = lang === 'de';
 
-  const homePath = isTr ? '/' : isDe ? '/de' : '/en';
-  const blogPath = isTr ? '/blog' : isDe ? '/de/blog' : '/en/blog';
+  const homePath = isTr ? '/' : isDe ? '/de/' : '/en/';
+  const blogPath = isTr ? '/blog/' : isDe ? '/de/blog/' : '/en/blog/';
 
   const title = isTr
     ? '3D StoreLink Rehber & Blog | Web 3D, CAD & AR Mimarisi'
@@ -381,7 +381,7 @@ function renderBlogHubBody(lang: Lang): { body: string; title: string; descripti
 
   const articlesHtml = ARTICLES.map((art) => {
     const slug = getArticleSlug(art, lang);
-    const artUrl = isTr ? `/blog/${slug}` : isDe ? `/de/blog/${slug}` : `/en/blog/${slug}`;
+    const artUrl = isTr ? `/blog/${slug}/` : isDe ? `/de/blog/${slug}/` : `/en/blog/${slug}/`;
     const takeaways = art.keyTakeaways[lang]?.slice(0, 3) || [];
 
     return `
@@ -489,7 +489,7 @@ function renderBlogHubBody(lang: Lang): { body: string; title: string; descripti
         hasPart: ARTICLES.map((art) => ({
           '@type': 'BlogPosting',
           headline: art.title[lang],
-          url: `${DOMAIN}${isTr ? `/blog/${getArticleSlug(art, lang)}` : isDe ? `/de/blog/${getArticleSlug(art, lang)}` : `/en/blog/${getArticleSlug(art, lang)}`}`,
+          url: `${DOMAIN}${isTr ? `/blog/${getArticleSlug(art, lang)}/` : isDe ? `/de/blog/${getArticleSlug(art, lang)}/` : `/en/blog/${getArticleSlug(art, lang)}/`}`,
         })),
       },
     ],
@@ -505,10 +505,10 @@ function renderArticleBody(article: Article, lang: Lang): { body: string; title:
   const isTr = lang === 'tr';
   const isDe = lang === 'de';
 
-  const homePath = isTr ? '/' : isDe ? '/de' : '/en';
-  const blogPath = isTr ? '/blog' : isDe ? '/de/blog' : '/en/blog';
+  const homePath = isTr ? '/' : isDe ? '/de/' : '/en/';
+  const blogPath = isTr ? '/blog/' : isDe ? '/de/blog/' : '/en/blog/';
   const slug = getArticleSlug(article, lang);
-  const articlePath = isTr ? `/blog/${slug}` : isDe ? `/de/blog/${slug}` : `/en/blog/${slug}`;
+  const articlePath = isTr ? `/blog/${slug}/` : isDe ? `/de/blog/${slug}/` : `/en/blog/${slug}/`;
   const articleUrl = `${DOMAIN}${articlePath}`;
 
   const title = `${article.title[lang]} | 3D StoreLink`;
@@ -752,8 +752,8 @@ function renderComparisonBody(lang: Lang): { body: string; title: string; descri
   </main>
   `;
 
-  const homePath = isTr ? '/' : isDe ? '/de' : '/en';
-  const comparePath = isTr ? '/karsilastirma' : isDe ? '/de/vergleich' : '/en/compare';
+  const homePath = isTr ? '/' : isDe ? '/de/' : '/en/';
+  const comparePath = isTr ? '/karsilastirma/' : isDe ? '/de/vergleich/' : '/en/compare/';
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -825,8 +825,8 @@ function renderGlossaryBody(lang: Lang): { body: string; title: string; descript
   const isTr = lang === 'tr';
   const isDe = lang === 'de';
 
-  const homePath = isTr ? '/' : isDe ? '/de' : '/en';
-  const glossaryPath = isTr ? '/sozluk' : isDe ? '/de/glossar' : '/en/glossary';
+  const homePath = isTr ? '/' : isDe ? '/de/' : '/en/';
+  const glossaryPath = isTr ? '/sozluk/' : isDe ? '/de/glossar/' : '/en/glossary/';
 
   const title = isTr
     ? '3D & CAD Mühendislik Terimleri Sözlüğü | 3D StoreLink Kılavuzu'
@@ -901,6 +901,61 @@ function renderGlossaryBody(lang: Lang): { body: string; title: string; descript
 }
 
 /**
+ * Generates Upload page HTML.
+ */
+function renderUploadBody(lang: Lang): { body: string; title: string; description: string; jsonLd: object } {
+  const isTr = lang === 'tr';
+  const isDe = lang === 'de';
+
+  const homePath = isTr ? '/' : isDe ? '/de/' : '/en/';
+  const uploadPath = isTr ? '/upload/' : isDe ? '/de/upload/' : '/en/upload/';
+
+  const title = isTr
+    ? '3D Model Yükle | CAD & Web GLB Dönüştürücü - 3D StoreLink'
+    : isDe
+    ? '3D-Modell hochladen | CAD- & Web-GLB-Konverter - 3D StoreLink'
+    : 'Upload 3D Model | Industrial CAD to Web GLB Converter - 3D StoreLink';
+
+  const description = isTr
+    ? 'STEP, STP, STL, OBJ veya GLB formatındaki 3D modellerinizi yükleyin. Web ve AR için otomatik optimize edilmiş GLB çıktısı alın.'
+    : isDe
+    ? 'Laden Sie Ihre 3D-Modelle im STEP-, STP-, STL-, OBJ- oder GLB-Format hoch und erhalten Sie optimierte Web-GLB-Dateien.'
+    : 'Upload STEP, STP, STL, OBJ, or GLB models for automated mesh optimization, Draco compression, and instant Web AR preview.';
+
+  const body = `
+  <header class="pt-32 pb-12 px-6 max-w-4xl mx-auto text-center">
+    <p class="text-xs uppercase tracking-widest text-zinc-400 font-mono font-bold mb-3">
+      ${isTr ? 'HIZLI CAD DÖNÜŞTÜRÜCÜ' : isDe ? 'SCHNELLER CAD-KONVERTER' : 'FAST CAD CONVERTER'}
+    </p>
+    <h1 class="text-3xl sm:text-5xl font-black text-white tracking-tight mb-4">
+      ${isTr ? '3D Modelinizi Yükleyin' : isDe ? '3D-Modell hochladen' : 'Upload Your 3D Model'}
+    </h1>
+    <p class="text-zinc-400 text-base sm:text-lg max-w-xl mx-auto leading-relaxed mb-8">
+      ${description}
+    </p>
+  </header>
+  <main class="max-w-xl mx-auto px-6 pb-24 text-center">
+    <div class="p-8 rounded-3xl bg-white/[0.02] border border-white/10">
+      <p class="text-sm text-zinc-300 mb-6 font-mono">GLB, GLTF, STEP, STP, OBJ, FBX (Max 20MB)</p>
+      <a href="${homePath}" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white text-black font-bold hover:bg-zinc-200 transition">
+        ${isTr ? 'Ana Sayfa' : isDe ? 'Startseite' : 'Home'}
+      </a>
+    </div>
+  </main>
+  `;
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: title,
+    description,
+    url: `${DOMAIN}${uploadPath}`,
+  };
+
+  return { body, title, description, jsonLd };
+}
+
+/**
  * Main Prerender Execution.
  */
 function prerenderAll() {
@@ -920,13 +975,13 @@ function prerenderAll() {
 
     // Determine target file path
     // e.g. "/" -> "dist/index.html"
-    // e.g. "/en" -> "dist/en/index.html"
-    // e.g. "/blog/slug" -> "dist/blog/slug/index.html"
+    // e.g. "/en/" -> "dist/en/index.html"
+    // e.g. "/blog/slug/" -> "dist/blog/slug/index.html"
     let targetFile = '';
-    if (routePath === '/') {
+    if (routePath === '/' || routePath === '') {
       targetFile = path.join(DIST_DIR, 'index.html');
     } else {
-      const clean = routePath.startsWith('/') ? routePath.slice(1) : routePath;
+      const clean = routePath.replace(/^\/+|\/+$/g, '');
       targetFile = path.join(DIST_DIR, clean, 'index.html');
     }
 
@@ -940,37 +995,42 @@ function prerenderAll() {
 
   // 1. Landing Pages
   writeRoute('/', 'tr', () => renderLandingBody('tr'));
-  writeRoute('/en', 'en', () => renderLandingBody('en'));
-  writeRoute('/de', 'de', () => renderLandingBody('de'));
+  writeRoute('/en/', 'en', () => renderLandingBody('en'));
+  writeRoute('/de/', 'de', () => renderLandingBody('de'));
 
   // 2. Blog Hub Pages
-  writeRoute('/blog', 'tr', () => renderBlogHubBody('tr'));
-  writeRoute('/en/blog', 'en', () => renderBlogHubBody('en'));
-  writeRoute('/de/blog', 'de', () => renderBlogHubBody('de'));
+  writeRoute('/blog/', 'tr', () => renderBlogHubBody('tr'));
+  writeRoute('/en/blog/', 'en', () => renderBlogHubBody('en'));
+  writeRoute('/de/blog/', 'de', () => renderBlogHubBody('de'));
 
   // 3. Articles (4 articles x 3 languages = 12 pages)
   for (const article of ARTICLES) {
     for (const lang of langs) {
       const slug = getArticleSlug(article, lang);
-      const routePath = lang === 'tr' ? `/blog/${slug}` : `/${lang}/blog/${slug}`;
+      const routePath = lang === 'tr' ? `/blog/${slug}/` : `/${lang}/blog/${slug}/`;
       writeRoute(routePath, lang, () => renderArticleBody(article, lang));
     }
   }
 
   // 4. Comparison Pages
-  writeRoute('/karsilastirma', 'tr', () => renderComparisonBody('tr'));
-  writeRoute('/en/compare', 'en', () => renderComparisonBody('en'));
-  writeRoute('/de/vergleich', 'de', () => renderComparisonBody('de'));
+  writeRoute('/karsilastirma/', 'tr', () => renderComparisonBody('tr'));
+  writeRoute('/en/compare/', 'en', () => renderComparisonBody('en'));
+  writeRoute('/de/vergleich/', 'de', () => renderComparisonBody('de'));
 
   // 5. Glossary Pages
-  writeRoute('/sozluk', 'tr', () => renderGlossaryBody('tr'));
-  writeRoute('/en/glossary', 'en', () => renderGlossaryBody('en'));
-  writeRoute('/de/glossar', 'de', () => renderGlossaryBody('de'));
+  writeRoute('/sozluk/', 'tr', () => renderGlossaryBody('tr'));
+  writeRoute('/en/glossary/', 'en', () => renderGlossaryBody('en'));
+  writeRoute('/de/glossar/', 'de', () => renderGlossaryBody('de'));
 
-  // 6. Ensure 404.html is copied from root index.html
+  // 6. Upload Pages
+  writeRoute('/upload/', 'tr', () => renderUploadBody('tr'));
+  writeRoute('/en/upload/', 'en', () => renderUploadBody('en'));
+  writeRoute('/de/upload/', 'de', () => renderUploadBody('de'));
+
+  // 7. Ensure 404.html is copied from root index.html
   fs.copyFileSync(path.join(DIST_DIR, 'index.html'), path.join(DIST_DIR, '404.html'));
 
-  // 7. Generate Multilingual Sitemap.xml
+  // 8. Generate Multilingual Sitemap.xml
   generateSitemap();
 
   console.log(`\n🎉 Pre-rendering complete! Successfully generated ${pagesCount} rich, localized static HTML pages.`);
@@ -986,35 +1046,35 @@ function generateSitemap() {
   const sitemapRoutes: Array<{ path: string; changefreq: string; priority: number }> = [
     // Landing
     { path: '/', changefreq: 'daily', priority: 1.0 },
-    { path: '/en', changefreq: 'daily', priority: 1.0 },
-    { path: '/de', changefreq: 'daily', priority: 1.0 },
+    { path: '/en/', changefreq: 'daily', priority: 1.0 },
+    { path: '/de/', changefreq: 'daily', priority: 1.0 },
 
     // Blog Hub
-    { path: '/blog', changefreq: 'weekly', priority: 0.95 },
-    { path: '/en/blog', changefreq: 'weekly', priority: 0.95 },
-    { path: '/de/blog', changefreq: 'weekly', priority: 0.95 },
+    { path: '/blog/', changefreq: 'weekly', priority: 0.95 },
+    { path: '/en/blog/', changefreq: 'weekly', priority: 0.95 },
+    { path: '/de/blog/', changefreq: 'weekly', priority: 0.95 },
 
     // Comparison
-    { path: '/karsilastirma', changefreq: 'weekly', priority: 0.85 },
-    { path: '/en/compare', changefreq: 'weekly', priority: 0.85 },
-    { path: '/de/vergleich', changefreq: 'weekly', priority: 0.85 },
+    { path: '/karsilastirma/', changefreq: 'weekly', priority: 0.85 },
+    { path: '/en/compare/', changefreq: 'weekly', priority: 0.85 },
+    { path: '/de/vergleich/', changefreq: 'weekly', priority: 0.85 },
 
     // Glossary
-    { path: '/sozluk', changefreq: 'weekly', priority: 0.85 },
-    { path: '/en/glossary', changefreq: 'weekly', priority: 0.85 },
-    { path: '/de/glossar', changefreq: 'weekly', priority: 0.85 },
+    { path: '/sozluk/', changefreq: 'weekly', priority: 0.85 },
+    { path: '/en/glossary/', changefreq: 'weekly', priority: 0.85 },
+    { path: '/de/glossar/', changefreq: 'weekly', priority: 0.85 },
 
     // Upload
-    { path: '/upload', changefreq: 'monthly', priority: 0.8 },
-    { path: '/en/upload', changefreq: 'monthly', priority: 0.8 },
-    { path: '/de/upload', changefreq: 'monthly', priority: 0.8 },
+    { path: '/upload/', changefreq: 'monthly', priority: 0.8 },
+    { path: '/en/upload/', changefreq: 'monthly', priority: 0.8 },
+    { path: '/de/upload/', changefreq: 'monthly', priority: 0.8 },
   ];
 
   const langs: Lang[] = ['tr', 'en', 'de'];
   for (const article of ARTICLES) {
     for (const lang of langs) {
       const slug = getArticleSlug(article, lang);
-      const artPath = lang === 'tr' ? `/blog/${slug}` : `/${lang}/blog/${slug}`;
+      const artPath = lang === 'tr' ? `/blog/${slug}/` : `/${lang}/blog/${slug}/`;
       sitemapRoutes.push({ path: artPath, changefreq: 'weekly', priority: 0.9 });
     }
   }

@@ -2,3 +2,35 @@
 /login https://dash.3dstorelink.com/login 302
 /dashboard https://dash.3dstorelink.com/dashboard 302
 /dashboard/* https://dash.3dstorelink.com/dashboard/:splat 302
+
+# Trailing slash 301 redirects for static pages
+/en /en/ 301
+/de /de/ 301
+/blog /blog/ 301
+/en/blog /en/blog/ 301
+/de/blog /de/blog/ 301
+/karsilastirma /karsilastirma/ 301
+/sozluk /sozluk/ 301
+/upload /upload/ 301
+/en/compare /en/compare/ 301
+/de/vergleich /de/vergleich/ 301
+/en/glossary /en/glossary/ 301
+/de/glossar /de/glossar/ 301
+/en/upload /en/upload/ 301
+/de/upload /de/upload/ 301
+
+# Trailing slash 301 redirects for blog articles
+/blog/2026-e-ticaret-3d-ve-ar-donusum-ve-iade-raporu /blog/2026-e-ticaret-3d-ve-ar-donusum-ve-iade-raporu/ 301
+/blog/endustriyel-cad-stp-step-webgl-draco-optimizasyon-rehberi /blog/endustriyel-cad-stp-step-webgl-draco-optimizasyon-rehberi/ 301
+/blog/shopify-woocommerce-web-sitelerine-3d-model-ekleme-rehberi /blog/shopify-woocommerce-web-sitelerine-3d-model-ekleme-rehberi/ 301
+/blog/uygulamasiz-web-ar-apple-quick-look-ve-sceneviewer-mimarisi /blog/uygulamasiz-web-ar-apple-quick-look-ve-sceneviewer-mimarisi/ 301
+
+/en/blog/2026-ecommerce-3d-ar-conversion-and-return-benchmark /en/blog/2026-ecommerce-3d-ar-conversion-and-return-benchmark/ 301
+/en/blog/industrial-cad-stp-step-webgl-draco-optimization-guide /en/blog/industrial-cad-stp-step-webgl-draco-optimization-guide/ 301
+/en/blog/how-to-embed-3d-models-in-shopify-and-woocommerce /en/blog/how-to-embed-3d-models-in-shopify-and-woocommerce/ 301
+/en/blog/app-free-web-ar-apple-quick-look-and-sceneviewer-architecture /en/blog/app-free-web-ar-apple-quick-look-and-sceneviewer-architecture/ 301
+
+/de/blog/2026-ecommerce-3d-ar-conversion-und-retouren-report /de/blog/2026-ecommerce-3d-ar-conversion-und-retouren-report/ 301
+/de/blog/industrielle-cad-stp-step-webgl-draco-optimierung-leitfaden /de/blog/industrielle-cad-stp-step-webgl-draco-optimierung-leitfaden/ 301
+/de/blog/3d-modelle-in-shopify-und-woocommerce-einbinden-anleitung /de/blog/3d-modelle-in-shopify-und-woocommerce-einbinden-anleitung/ 301
+/de/blog/app-freies-web-ar-apple-quick-look-und-sceneviewer-architektur /de/blog/app-freies-web-ar-apple-quick-look-und-sceneviewer-architektur/ 301

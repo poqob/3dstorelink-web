@@ -56,8 +56,8 @@ export default function App() {
         <Route path="/en/glossary" element={<GlossaryPage />} />
         <Route path="/en/upload" element={<PublicUpload />} />
         {/* EN Aliases */}
-        <Route path="/en/karsilastirma" element={<Navigate to="/en/compare" replace />} />
-        <Route path="/en/sozluk" element={<Navigate to="/en/glossary" replace />} />
+        <Route path="/en/karsilastirma" element={<Navigate to="/en/compare/" replace />} />
+        <Route path="/en/sozluk" element={<Navigate to="/en/glossary/" replace />} />
 
         {/* ─── GERMAN (/de) ROUTES ─── */}
         <Route path="/de" element={<Landing />} />
@@ -67,22 +67,22 @@ export default function App() {
         <Route path="/de/glossar" element={<GlossaryPage />} />
         <Route path="/de/upload" element={<PublicUpload />} />
         {/* DE Aliases */}
-        <Route path="/de/karsilastirma" element={<Navigate to="/de/vergleich" replace />} />
-        <Route path="/de/compare" element={<Navigate to="/de/vergleich" replace />} />
-        <Route path="/de/sozluk" element={<Navigate to="/de/glossar" replace />} />
-        <Route path="/de/glossary" element={<Navigate to="/de/glossar" replace />} />
+        <Route path="/de/karsilastirma" element={<Navigate to="/de/vergleich/" replace />} />
+        <Route path="/de/compare" element={<Navigate to="/de/vergleich/" replace />} />
+        <Route path="/de/sozluk" element={<Navigate to="/de/glossar/" replace />} />
+        <Route path="/de/glossary" element={<Navigate to="/de/glossar/" replace />} />
 
         {/* ─── ROOT ALIASES & REDIRECTS ─── */}
-        <Route path="/compare" element={<Navigate to="/en/compare" replace />} />
-        <Route path="/glossary" element={<Navigate to="/en/glossary" replace />} />
-        <Route path="/vergleich" element={<Navigate to="/de/vergleich" replace />} />
-        <Route path="/glossar" element={<Navigate to="/de/glossar" replace />} />
-        <Route path="/about" element={<Navigate to="/blog" replace />} />
-        <Route path="/platform" element={<Navigate to="/blog" replace />} />
-        <Route path="/en/about" element={<Navigate to="/en/blog" replace />} />
-        <Route path="/en/platform" element={<Navigate to="/en/blog" replace />} />
-        <Route path="/de/about" element={<Navigate to="/de/blog" replace />} />
-        <Route path="/de/platform" element={<Navigate to="/de/blog" replace />} />
+        <Route path="/compare" element={<Navigate to="/en/compare/" replace />} />
+        <Route path="/glossary" element={<Navigate to="/en/glossary/" replace />} />
+        <Route path="/vergleich" element={<Navigate to="/de/vergleich/" replace />} />
+        <Route path="/glossar" element={<Navigate to="/de/glossar/" replace />} />
+        <Route path="/about" element={<Navigate to="/blog/" replace />} />
+        <Route path="/platform" element={<Navigate to="/blog/" replace />} />
+        <Route path="/en/about" element={<Navigate to="/en/blog/" replace />} />
+        <Route path="/en/platform" element={<Navigate to="/en/blog/" replace />} />
+        <Route path="/de/about" element={<Navigate to="/de/blog/" replace />} />
+        <Route path="/de/platform" element={<Navigate to="/de/blog/" replace />} />
 
         {/* ─── CATCH-ALL ─── */}
         <Route path="*" element={<Navigate to="/" replace />} />

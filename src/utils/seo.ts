@@ -13,28 +13,28 @@ export interface RouteMapping {
 export const STATIC_ROUTES: Record<string, RouteMapping> = {
   home: {
     tr: '/',
-    en: '/en',
-    de: '/de',
+    en: '/en/',
+    de: '/de/',
   },
   compare: {
-    tr: '/karsilastirma',
-    en: '/en/compare',
-    de: '/de/vergleich',
+    tr: '/karsilastirma/',
+    en: '/en/compare/',
+    de: '/de/vergleich/',
   },
   glossary: {
-    tr: '/sozluk',
-    en: '/en/glossary',
-    de: '/de/glossar',
+    tr: '/sozluk/',
+    en: '/en/glossary/',
+    de: '/de/glossar/',
   },
   blog: {
-    tr: '/blog',
-    en: '/en/blog',
-    de: '/de/blog',
+    tr: '/blog/',
+    en: '/en/blog/',
+    de: '/de/blog/',
   },
   upload: {
-    tr: '/upload',
-    en: '/en/upload',
-    de: '/de/upload',
+    tr: '/upload/',
+    en: '/en/upload/',
+    de: '/de/upload/',
   },
 };
 
@@ -43,7 +43,7 @@ export const STATIC_ROUTES: Record<string, RouteMapping> = {
  */
 export function findArticleBySlug(slug: string | null | undefined): Article | undefined {
   if (!slug) return undefined;
-  const normalized = slug.trim().toLowerCase();
+  const normalized = slug.trim().toLowerCase().replace(/\/+$/, '');
   return ARTICLES.find((a) => {
     if (a.slug.toLowerCase() === normalized) return true;
     if (a.slugs?.tr.toLowerCase() === normalized) return true;
@@ -62,6 +62,7 @@ export function getArticleSlug(article: Article, lang: Lang): string {
 
 /**
  * Resolves canonical & alternate hreflangs for any given pathname.
+ * Enforces canonical trailing slashes across all canonical and alternate URLs.
  */
 export function getAlternateUrls(pathname: string): {
   canonical: string;
@@ -71,8 +72,13 @@ export function getAlternateUrls(pathname: string): {
   xDefault: string;
   currentLang: Lang;
 } {
-  // Strip trailing slashes for consistency (except single /)
-  const cleanPath = pathname.length > 1 && pathname.endsWith('/') ? pathname.slice(0, -1) : pathname;
+  let normalized = (pathname || '/').trim();
+  if (!normalized.startsWith('/')) {
+    normalized = `/${normalized}`;
+  }
+  // Strip trailing slashes first for clean prefix/equality matching
+  const cleanPath = normalized.length > 1 && normalized.endsWith('/') ? normalized.slice(0, -1) : normalized;
+  const pathWithSlash = cleanPath === '/' ? '/' : `${cleanPath}/`;
 
   let currentLang: Lang = 'tr';
   if (cleanPath === '/en' || cleanPath.startsWith('/en/')) {
@@ -83,7 +89,7 @@ export function getAlternateUrls(pathname: string): {
 
   // Check static routes
   for (const mapping of Object.values(STATIC_ROUTES)) {
-    if (cleanPath === mapping.tr || cleanPath === mapping.en || cleanPath === mapping.de) {
+    if (pathWithSlash === mapping.tr || pathWithSlash === mapping.en || pathWithSlash === mapping.de) {
       return {
         canonical: `${DOMAIN}${mapping[currentLang]}`,
         tr: `${DOMAIN}${mapping.tr}`,
@@ -107,11 +113,12 @@ export function getAlternateUrls(pathname: string): {
   }
 
   if (slug) {
+    slug = slug.replace(/\/+$/, '');
     const article = findArticleBySlug(slug);
     if (article) {
-      const trPath = `/blog/${getArticleSlug(article, 'tr')}`;
-      const enPath = `/en/blog/${getArticleSlug(article, 'en')}`;
-      const dePath = `/de/blog/${getArticleSlug(article, 'de')}`;
+      const trPath = `/blog/${getArticleSlug(article, 'tr')}/`;
+      const enPath = `/en/blog/${getArticleSlug(article, 'en')}/`;
+      const dePath = `/de/blog/${getArticleSlug(article, 'de')}/`;
 
       const activePath = currentLang === 'en' ? enPath : currentLang === 'de' ? dePath : trPath;
 
@@ -128,11 +135,11 @@ export function getAlternateUrls(pathname: string): {
 
   // Default fallback to home
   return {
-    canonical: `${DOMAIN}${cleanPath}`,
+    canonical: `${DOMAIN}${pathWithSlash}`,
     tr: `${DOMAIN}/`,
-    en: `${DOMAIN}/en`,
-    de: `${DOMAIN}/de`,
-    xDefault: `${DOMAIN}/en`,
+    en: `${DOMAIN}/en/`,
+    de: `${DOMAIN}/de/`,
+    xDefault: `${DOMAIN}/en/`,
     currentLang,
   };
 }
