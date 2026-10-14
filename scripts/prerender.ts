@@ -287,6 +287,7 @@ function renderLandingBody(lang: Lang): { body: string; title: string; descripti
         url: `${DOMAIN}${homePath}`,
         logo: `${DOMAIN}/brand.png`,
         sameAs: [
+          'https://www.crunchbase.com/organization/3dstorelink',
           'https://www.linkedin.com/company/3dstorelink/',
           'https://www.instagram.com/3dstorelink/',
           'https://www.dagsolution.com',
