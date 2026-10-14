@@ -547,8 +547,15 @@ function GuestUploadForm() {
 
 /* ─── Landing Page ──────────────────────────────────────────────────────────── */
 export default function Landing() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { token } = useAuthStore();
+
+  const isTr = !i18n.language || i18n.language.startsWith('tr');
+  const isDe = i18n.language?.startsWith('de');
+  const homePath = isTr ? '/' : isDe ? '/de' : '/en';
+  const blogPath = isTr ? '/blog' : isDe ? '/de/blog' : '/en/blog';
+  const comparePath = isTr ? '/karsilastirma' : isDe ? '/de/vergleich' : '/en/compare';
+  const glossaryPath = isTr ? '/sozluk' : isDe ? '/de/glossar' : '/en/glossary';
 
   const showcaseRef = useRef<HTMLDivElement>(null);
   const comparisonRef = useRef<HTMLDivElement>(null);
@@ -572,24 +579,61 @@ export default function Landing() {
   }, [heroData, activeEmbed]);
 
   const currentEmbed = heroEmbeds[activeEmbed === -1 ? 0 : activeEmbed] || heroEmbeds[0];
+  const currentLang = isDe ? 'de' : isTr ? 'tr' : 'en';
 
   const scrollTo = (ref: React.RefObject<HTMLDivElement | null>) => {
     ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
+  const landingJsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebSite',
+        '@id': 'https://3dstorelink.com/#website',
+        url: 'https://3dstorelink.com',
+        name: '3D StoreLink',
+        inLanguage: currentLang,
+      },
+      {
+        '@type': 'SoftwareApplication',
+        '@id': 'https://3dstorelink.com/#software',
+        name: '3D StoreLink',
+        url: `https://3dstorelink.com${homePath}`,
+        applicationCategory: 'MultimediaApplication',
+        operatingSystem: 'All',
+        description: isTr
+          ? 'CAD ve 3D modellerinizi optimize Web GLB formatına dönüştüren, web sitelerinize tek tıkla 3D & AR entegrasyonu sağlayan dağıtım platformu.'
+          : isDe
+          ? 'Konvertieren Sie CAD-Modelle in optimierte Web-GLB-Formate. Einzeilige 3D- & AR-Einbettung für jeden Online-Shop.'
+          : 'Transform CAD and 3D models into optimized Web GLB assets. Single-line 3D & native mobile AR embed for e-commerce.',
+      },
+      {
+        '@type': 'Organization',
+        '@id': 'https://3dstorelink.com/#organization',
+        name: '3D StoreLink',
+        url: `https://3dstorelink.com${homePath}`,
+        logo: 'https://3dstorelink.com/brand.png',
+      },
+    ],
+  };
+
   return (
     <div className="min-h-screen bg-[#050505] text-white font-sans">
+      {/* Structured Data (JSON-LD) */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(landingJsonLd) }} />
+
       {/* ── Navbar ── */}
       <nav className="fixed top-0 left-0 right-0 z-40 bg-black/60 backdrop-blur-xl border-b border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <Link to="/" className="hover:opacity-90 transition">
+            <Link to={homePath} className="hover:opacity-90 transition">
               <img src="/brand-dark-theme.webp" alt="3D Store" className="h-16 w-auto" />
             </Link>
           </div>
           <div className="flex items-center gap-3 sm:gap-4">
             <Link
-              to="/blog"
+              to={blogPath}
               className="text-gray-400 hover:text-white text-sm font-medium transition hidden lg:block"
             >
               Blog
@@ -942,13 +986,13 @@ export default function Landing() {
             <span>3D StoreLink</span>
           </div>
           <div className="flex items-center gap-6 flex-wrap justify-center">
-            <Link to="/blog" className="hover:text-white transition font-medium">
+            <Link to={blogPath} className="hover:text-white transition font-medium">
               Blog
             </Link>
-            <Link to="/karsilastirma" className="hover:text-white transition font-medium">
+            <Link to={comparePath} className="hover:text-white transition font-medium">
               {t('nav.comparison')}
             </Link>
-            <Link to="/sozluk" className="hover:text-white transition font-medium">
+            <Link to={glossaryPath} className="hover:text-white transition font-medium">
               {t('nav.glossary')}
             </Link>
             <button onClick={() => scrollTo(faqRef)} className="hover:text-white transition font-medium">

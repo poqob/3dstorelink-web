@@ -1,21 +1,22 @@
 import { useState, useRef, useEffect } from 'react';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { getAlternateUrls, Lang } from '../utils/seo';
 
 export default function LanguageDropdown() {
   const { i18n } = useTranslation();
+  const location = useLocation();
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const currentLang = i18n.language?.startsWith('de')
-    ? 'de'
-    : i18n.language?.startsWith('en')
-    ? 'en'
-    : 'tr';
+  const alternates = getAlternateUrls(location.pathname);
+  const currentLang = alternates.currentLang;
 
-  const languages = [
-    { code: 'tr', label: 'Türkçe', short: 'TR' },
-    { code: 'en', label: 'English', short: 'EN' },
-    { code: 'de', label: 'Deutsch', short: 'DE' },
+  const languages: { code: Lang; label: string; short: string; path: string }[] = [
+    { code: 'tr', label: 'Türkçe', short: 'TR', path: new URL(alternates.tr).pathname },
+    { code: 'en', label: 'English', short: 'EN', path: new URL(alternates.en).pathname },
+    { code: 'de', label: 'Deutsch', short: 'DE', path: new URL(alternates.de).pathname },
   ];
 
   useEffect(() => {
@@ -28,9 +29,12 @@ export default function LanguageDropdown() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const handleSelect = (code: string) => {
+  const handleSelect = (code: Lang, path: string) => {
     i18n.changeLanguage(code);
     setIsOpen(false);
+    if (location.pathname !== path) {
+      navigate(path);
+    }
   };
 
   return (
@@ -63,10 +67,13 @@ export default function LanguageDropdown() {
           {languages.map((lang) => {
             const isSelected = currentLang === lang.code;
             return (
-              <button
+              <Link
                 key={lang.code}
-                type="button"
-                onClick={() => handleSelect(lang.code)}
+                to={lang.path}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleSelect(lang.code, lang.path);
+                }}
                 className={`w-full flex items-center justify-between px-3.5 py-2 text-xs transition cursor-pointer text-left ${
                   isSelected
                     ? 'bg-white/10 text-white font-bold'
@@ -77,7 +84,7 @@ export default function LanguageDropdown() {
                 <span className="text-[10px] uppercase tracking-wider text-gray-500 font-mono">
                   {lang.short}
                 </span>
-              </button>
+              </Link>
             );
           })}
         </div>

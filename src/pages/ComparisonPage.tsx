@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import LanguageDropdown from '../components/LanguageDropdown';
+import { COMPARISON_ROWS } from '../data/comparisonRows';
 
 export default function ComparisonPage() {
   const { i18n } = useTranslation();
@@ -10,81 +11,113 @@ export default function ComparisonPage() {
   const isTr = currentLang === 'tr';
   const isDe = currentLang === 'de';
 
-  useEffect(() => {
-    document.title = isTr
-      ? '3D StoreLink vs Sketchfab & 2D | 2026 Teknik Karşılaştırma Matrisi'
-      : isDe
-      ? '3D StoreLink vs Sketchfab & 2D | 2026 Technischer Vergleich'
-      : '3D StoreLink vs Sketchfab & Traditional 2D | 2026 Technical Benchmark';
-    window.scrollTo(0, 0);
-  }, [isTr, isDe]);
+  const homePath = isTr ? '/' : isDe ? '/de' : '/en';
+  const blogPath = isTr ? '/blog' : isDe ? '/de/blog' : '/en/blog';
+  const comparePath = isTr ? '/karsilastirma' : isDe ? '/de/vergleich' : '/en/compare';
+  const glossaryPath = isTr ? '/sozluk' : isDe ? '/de/glossar' : '/en/glossary';
+  const uploadPath = isTr ? '/upload' : isDe ? '/de/upload' : '/en/upload';
 
-  const rows = [
-    {
-      feature: isTr ? 'Endüstriyel CAD Dosya Desteği (STP, STEP, STL)' : isDe ? 'Industrielles CAD-Dateiformat (STP, STEP, STL)' : 'Industrial CAD Support (STP, STEP, STL)',
-      storelink: isTr ? 'Doğrudan yükleme ve otomatik Web GLB dönüşümü' : isDe ? 'Direkter Upload & automatische Konvertierung' : 'Native upload & automated Web GLB conversion',
-      sketchfab: isTr ? 'Sınırlı CAD desteği, ek eklenti veya manuel dönüşüm gerektirir' : isDe ? 'Eingeschränkt, manuelle Konvertierung erforderlich' : 'Limited, requires manual pre-conversion',
-      trad2d: isTr ? 'CAD gösterilemez; sadece render alınmış durağan görsel' : isDe ? 'Nicht möglich; nur gerenderte statische Fotos' : 'Not possible; static renders only',
-      winner: true,
-    },
-    {
-      feature: isTr ? 'E-Ticaret Tek Satır Iframe / Embed Entegrasyonu' : isDe ? 'E-Commerce Einzeiliger Iframe-Embed' : 'Single-Line E-Commerce Iframe Embed',
-      storelink: isTr ? 'Shopify, WooCommerce, İkas ve özel web sitelerine < 30 sn' : isDe ? 'Shopify, WooCommerce & eigene Seiten < 30 Sek.' : 'Shopify, WooCommerce & custom CMS in < 30s',
-      sketchfab: isTr ? 'Ağır iframe, harici pazar yeri markalaması ve gecikmeli yükleme' : isDe ? 'Schwerer Iframe mit externem Marketplace-Branding' : 'Heavy iframe with external marketplace branding',
-      trad2d: isTr ? 'Çoklu fotoğraf galerisi yüklemesi (açı başına görsel)' : isDe ? 'Manuelle Fotogalerie pro Blickwinkel' : 'Manual multi-angle image gallery upload',
-      winner: true,
-    },
-    {
-      feature: isTr ? 'Uygulamasız Mobil AR (Apple Quick Look & SceneViewer)' : isDe ? 'App-freies mobiles AR (Apple Quick Look & SceneViewer)' : 'Zero-App Mobile AR (Quick Look & SceneViewer)',
-      storelink: isTr ? 'Yerleşik 1:1 gerçek ölçekli AR; iOS ve Android tarayıcısında anında' : isDe ? 'Echtes 1:1 AR direkt im iOS/Android Browser' : 'Native 1:1 true-scale AR in iOS & Android browsers',
-      sketchfab: isTr ? 'Mobil webde sınırlı AR, genellikle uygulama yönlendirmesi ister' : isDe ? 'Eingeschränktes Web-AR, oft App erforderlich' : 'Limited mobile web AR, often pushes app install',
-      trad2d: isTr ? 'Desteklenmiyor' : isDe ? 'Nicht unterstützt' : 'Not supported',
-      winner: true,
-    },
-    {
-      feature: isTr ? 'Otomatik Geometrik Sıkıştırma (Draco / Meshopt)' : isDe ? 'Automatische Geometrie-Kompression (Draco / Meshopt)' : 'Automated Draco & Meshopt Compression',
-      storelink: isTr ? '%85-95 dosya boyutu tasarrufu, mobilde akıcı 60 FPS' : isDe ? '85-95% Dateigrößenreduktion, flüssige 60 FPS' : '85–95% file size reduction, fluid 60 FPS on mobile',
-      sketchfab: isTr ? 'Temel glTF optimizasyonu, büyük modellerde yüksek bellek tüketimi' : isDe ? 'Basis-glTF, hoher Speicherverbrauch bei großen Dateien' : 'Basic glTF, high memory on heavy models',
-      trad2d: isTr ? 'WebP / JPG standart görsel sıkıştırması' : isDe ? 'WebP / JPG Standard-Bildkompression' : 'Standard WebP / JPG image compression',
-      winner: true,
-    },
-    {
-      feature: isTr ? 'Fikri Mülkiyet (CAD IP) & Mesh Güvenliği' : isDe ? 'CAD-IP- & Geometrieschutz' : 'CAD IP & Mesh Security',
-      storelink: isTr ? 'Orijinal parametrik CAD gizli kalır; yalnızca görsel mesh yayınlanır' : isDe ? 'Original-CAD bleibt geschützt; nur visuelles Mesh' : 'Original parametric CAD hidden; visual mesh only',
-      sketchfab: isTr ? 'Model indirmeye açıksa ham dosya kopyalanabilir' : isDe ? 'Modell kann oft kopiert oder heruntergeladen werden' : 'Models can often be scraped or downloaded',
-      trad2d: isTr ? '2D görsel ekran görüntüsüyle kolayca kopyalanabilir' : isDe ? 'Einfach per Screenshot kopierbar' : 'Easily copied via screenshot',
-      winner: true,
-    },
-    {
-      feature: isTr ? 'Dönüşüm Oranı & Ürün İade Etkisi (Benchmark)' : isDe ? 'Conversion- & Retouren-Impact (Benchmark)' : 'Conversion Lift & Return Reduction',
-      storelink: isTr ? '+%94 dönüşüm artışı, %40\'a varan ürün iade azalması' : isDe ? '+94% mehr Verkäufe, bis zu 40% weniger Retouren' : '+94% conversion lift, up to 40% fewer returns',
-      sketchfab: isTr ? 'B2C topluluk odaklı; dönüşüm telemetrisi zayıf' : isDe ? 'Community-Fokus, schwache E-Commerce-Telemetrie' : 'Community focus; weak e-commerce metrics',
-      trad2d: isTr ? 'Yüksek iade oranları (%20-30 boyut/oran belirsizliği)' : isDe ? 'Hohe Retouren (20-30%) wegen Größenunsicherheit' : 'High return rates (20-30%) due to scale mismatches',
-      winner: true,
-    },
-  ];
+  const title = isTr
+    ? '3D StoreLink vs Sketchfab & 2D | 2026 Teknik Karşılaştırma Matrisi'
+    : isDe
+    ? '3D StoreLink vs Sketchfab & 2D | 2026 Technischer Vergleich'
+    : '3D StoreLink vs Sketchfab & Traditional 2D | 2026 Technical Benchmark';
+
+  const description = isTr
+    ? 'E-ticaret ve endüstriyel ürün üreticileri için Web 3D & AR çözümlerini kıyaslıyoruz. Neden modern markalar ağır harici pazar yerleri veya durağan fotoğraflar yerine 3D StoreLink altyapısını tercih ediyor?'
+    : isDe
+    ? 'Vergleich moderner Web-3D- und AR-Lösungen für E-Commerce und Industrieunternehmen. Warum führende Marken auf 3D StoreLink statt statische Fotos oder schwere Marktplatz-Viewer setzen.'
+    : 'Evaluating Web 3D & AR solutions for e-commerce and industrial manufacturing. Why modern storefronts choose 3D StoreLink over heavy third-party marketplaces or static photography.';
+
+  useEffect(() => {
+    document.title = title;
+    window.scrollTo(0, 0);
+  }, [title]);
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: isTr ? 'Ana Sayfa' : isDe ? 'Startseite' : 'Home', item: `https://3dstorelink.com${homePath}` },
+          { '@type': 'ListItem', position: 2, name: isTr ? 'Karşılaştırma' : isDe ? 'Vergleich' : 'Comparison', item: `https://3dstorelink.com${comparePath}` },
+        ],
+      },
+      {
+        '@type': 'WebPage',
+        name: title,
+        description,
+        url: `https://3dstorelink.com${comparePath}`,
+        mainEntity: {
+          '@type': 'Table',
+          about: '3D StoreLink vs Sketchfab vs Traditional 2D E-commerce Comparison',
+        },
+      },
+      {
+        '@type': 'FAQPage',
+        mainEntity: [
+          {
+            '@type': 'Question',
+            name: isTr
+              ? '3D StoreLink ile Sketchfab arasındaki temel fark nedir?'
+              : isDe
+              ? 'Was ist der Hauptunterschied zwischen 3D StoreLink und Sketchfab?'
+              : 'What is the main difference between 3D StoreLink and Sketchfab?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: isTr
+                ? 'Sketchfab genel bir 3D topluluk ve pazar yeridir. 3D StoreLink ise e-ticaret ve endüstriyel üreticiler için doğrudan CAD (STEP/STP) dönüşümü, hafif tek satır iframe embed ve yerleşik mobil AR odaklı ticari bir platformdur.'
+                : isDe
+                ? 'Sketchfab ist ein allgemeiner Marktplatz. 3D StoreLink ist auf direkte CAD-Konvertierung (STEP/STP), schlanke Iframe-Einbettung und native Web-AR für E-Commerce spezialisiert.'
+                : 'While Sketchfab is a generalized 3D community and asset marketplace, 3D StoreLink specializes in automated industrial CAD conversion (STEP/STP), lightweight single-line iframe embeds, and native mobile AR tailored for commercial e-commerce.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: isTr
+              ? '3D ve AR görselleri e-ticaret satışlarını ve iadeleri nasıl etkiler?'
+              : isDe
+              ? 'Wie beeinflussen 3D und AR Verkaufszahlen und Retouren?'
+              : 'How do 3D and AR visuals impact e-commerce sales and return rates?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: isTr
+                ? 'Gerçek ölçekli 3D ve 1:1 AR inceleme, sepete ekleme ve dönüşüm oranlarını ortalama %94 artırırken, boyut ve doku belirsizliğini ortadan kaldırarak iade oranlarını %40 oranında düşürür.'
+                : isDe
+                ? 'Maßstabsgetreue 1:1 AR-Ansichten steigern die Kauf-Conversion um bis zu 94% und senken teure Produktrücksendungen um bis zu 40%.'
+                : 'True 1:1 scale mobile AR preview increases add-to-cart conversions by up to 94% while eliminating spatial and aesthetic uncertainty, cutting product returns by up to 40%.',
+            },
+          },
+        ],
+      },
+    ],
+  };
 
   return (
     <div className="min-h-screen bg-[#050505] text-white font-sans selection:bg-zinc-700 selection:text-white">
+      {/* Structured Data (JSON-LD) */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+
       {/* ── Navbar ── */}
       <nav className="fixed top-0 left-0 right-0 z-40 bg-black/70 backdrop-blur-xl border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <Link to="/" className="hover:opacity-90 transition">
+            <Link to={homePath} className="hover:opacity-90 transition">
               <img src="/brand-dark-theme.webp" alt="3D StoreLink" className="h-16 w-auto" />
             </Link>
           </div>
           <div className="flex items-center gap-4 text-sm font-medium">
-            <Link to="/" className="text-gray-400 hover:text-white transition">
+            <Link to={homePath} className="text-gray-400 hover:text-white transition">
               {isTr ? 'Ana Sayfa' : isDe ? 'Startseite' : 'Home'}
             </Link>
-            <Link to="/blog" className="text-gray-400 hover:text-white transition hidden sm:block">
+            <Link to={blogPath} className="text-gray-400 hover:text-white transition hidden sm:block">
               Blog
             </Link>
-            <Link to="/karsilastirma" className="text-white font-bold border-b-2 border-zinc-300 pb-0.5">
+            <Link to={comparePath} className="text-white font-bold border-b-2 border-zinc-300 pb-0.5">
               {isTr ? 'Karşılaştırma' : isDe ? 'Vergleich' : 'Comparison'}
             </Link>
-            <Link to="/sozluk" className="text-gray-400 hover:text-white transition hidden md:block">
+            <Link to={glossaryPath} className="text-gray-400 hover:text-white transition hidden md:block">
               {isTr ? 'Sözlük' : isDe ? 'Glossar' : 'Glossary'}
             </Link>
             <LanguageDropdown />
@@ -95,7 +128,7 @@ export default function ComparisonPage() {
       {/* ── Header ── */}
       <header className="pt-32 pb-16 px-6 max-w-7xl mx-auto">
         <nav className="flex items-center gap-2 text-xs text-gray-500 mb-6">
-          <Link to="/" className="hover:text-white transition">{isTr ? 'Ana Sayfa' : isDe ? 'Startseite' : 'Home'}</Link>
+          <Link to={homePath} className="hover:text-white transition">{isTr ? 'Ana Sayfa' : isDe ? 'Startseite' : 'Home'}</Link>
           <span>/</span>
           <span className="text-gray-300">{isTr ? 'Karşılaştırma' : isDe ? 'Vergleich' : 'Comparison'}</span>
         </nav>
@@ -137,14 +170,14 @@ export default function ComparisonPage() {
               </tr>
             </thead>
             <tbody className="divide-y divide-white/5">
-              {rows.map((r, i) => (
+              {COMPARISON_ROWS.map((r, i) => (
                 <tr key={i} className="hover:bg-white/[0.02] transition">
-                  <td className="py-5 px-6 font-medium text-white">{r.feature}</td>
+                  <td className="py-5 px-6 font-medium text-white">{r.feature[currentLang]}</td>
                   <td className="py-5 px-6 border-x border-white/15 bg-white/[0.03] text-zinc-100 font-semibold">
-                    {r.storelink}
+                    {r.storelink[currentLang]}
                   </td>
-                  <td className="py-5 px-6 text-gray-300">{r.sketchfab}</td>
-                  <td className="py-5 px-6 text-gray-500">{r.trad2d}</td>
+                  <td className="py-5 px-6 text-gray-300">{r.sketchfab[currentLang]}</td>
+                  <td className="py-5 px-6 text-gray-500">{r.trad2d[currentLang]}</td>
                 </tr>
               ))}
             </tbody>
@@ -212,13 +245,13 @@ export default function ComparisonPage() {
           </p>
           <div className="flex justify-center gap-4">
             <Link
-              to="/upload"
+              to={uploadPath}
               className="bg-white text-black px-7 py-3.5 font-bold rounded-xl hover:bg-gray-200 transition"
             >
               {isTr ? 'Ücretsiz Model Yükle →' : isDe ? 'Modell hochladen →' : 'Upload Free Model →'}
             </Link>
             <Link
-              to="/"
+              to={homePath}
               className="border border-white/20 text-white px-7 py-3.5 font-bold rounded-xl hover:bg-white/5 transition"
             >
               {isTr ? 'Showcase Vitrini' : isDe ? 'Showcase ansehen' : 'Explore Showcase'}
@@ -235,9 +268,10 @@ export default function ComparisonPage() {
             <span>3D StoreLink</span>
           </div>
           <div className="flex items-center gap-6 flex-wrap justify-center">
-            <Link to="/" className="hover:text-white transition">{isTr ? 'Ana Sayfa' : 'Home'}</Link>
-            <Link to="/blog" className="hover:text-white transition">Blog</Link>
-            <Link to="/sozluk" className="hover:text-white transition">{isTr ? 'Sözlük' : 'Glossary'}</Link>
+            <Link to={homePath} className="hover:text-white transition">{isTr ? 'Ana Sayfa' : isDe ? 'Startseite' : 'Home'}</Link>
+            <Link to={blogPath} className="hover:text-white transition">Blog</Link>
+            <Link to={comparePath} className="hover:text-white transition">{isTr ? 'Karşılaştırma' : isDe ? 'Vergleich' : 'Comparison'}</Link>
+            <Link to={glossaryPath} className="hover:text-white transition">{isTr ? 'Sözlük' : isDe ? 'Glossar' : 'Glossary'}</Link>
             <a href="mailto:info@3dstorelink.com" className="hover:text-white transition">info@3dstorelink.com</a>
             <a href="https://www.instagram.com/3dstorelink/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">Instagram</a>
             <a href="https://www.linkedin.com/company/3dstorelink/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">LinkedIn</a>

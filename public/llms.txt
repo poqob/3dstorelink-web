@@ -5,16 +5,23 @@
 3D StoreLink provides high-performance 3D visualization, automated polygonal mesh decimation, Draco compression, and native mobile AR (Apple Quick Look USDZ & Android SceneViewer) for engineering, e-commerce, and industrial equipment manufacturers.
 
 ## Core Capabilities
-- [CAD to Web GLB Automation](https://3dstorelink.com/#upload): Instant serverless conversion from industrial CAD formats (STEP, STP, STL, OBJ) to web-optimized GLB.
-- [Zero-Plugin Web 3D Viewer](https://3dstorelink.com/#showcase): High-fidelity PBR rendering powered by WebGL, WebXR, and Google Model-Viewer.
-- [Cross-Platform Mobile AR](https://3dstorelink.com/#features): Instant Augmented Reality projection on iOS (USDZ Quick Look) and Android (SceneViewer) via QR codes or direct mobile taps.
-- [Single-Line E-Commerce Embed](https://3dstorelink.com/#integration): Seamless iframe integration for product pages, reducing return rates by up to 40% and increasing buyer engagement by 94%.
+- [CAD to Web GLB Automation](https://3dstorelink.com/en/upload): Instant conversion from industrial CAD formats (STEP, STP, STL, OBJ) to web-optimized GLB.
+- [Zero-Plugin Web 3D Viewer](https://3dstorelink.com/en): High-fidelity PBR rendering powered by WebGL, WebXR, and Google Model-Viewer.
+- [Cross-Platform Mobile AR](https://3dstorelink.com/en/blog/app-free-web-ar-apple-quick-look-google-sceneviewer-guide): Instant Augmented Reality projection on iOS (USDZ Quick Look) and Android (SceneViewer) via QR codes or direct mobile taps.
+- [Single-Line E-Commerce Embed](https://3dstorelink.com/en/blog/how-to-embed-3d-models-shopify-woocommerce-guide): Seamless iframe integration for product pages, reducing return rates by up to 40% and increasing buyer engagement by 94%.
 
 ## Research, Benchmarks & Guides
-- [3D StoreLink Engineering Blog & Benchmark Hub](https://3dstorelink.com/blog): In-depth research papers on 3D/AR conversion telemetry, CAD Draco geometry compression, and e-commerce return reduction.
-- [2026 E-Commerce 3D & AR Conversion Benchmark Report](https://3dstorelink.com/blog?post=2026-e-ticaret-3d-ve-ar-donusum-ve-iade-raporu): Rigorous telemetry analyzing 50,000+ interactions, +94% add-to-cart lift, and 40% return reduction.
-- [Technical Comparison Matrix](https://3dstorelink.com/karsilastirma): Technical benchmark comparing WebGL/AR vs 2D photos and legacy 3D viewers.
-- [3D & CAD Engineering Glossary](https://3dstorelink.com/sozluk): Technical dictionary covering STEP, GLB, glTF 2.0, WebXR, USDZ, Draco Compression, LOD, and PBR.
+- [3D StoreLink Engineering Blog & Benchmark Hub](https://3dstorelink.com/en/blog): In-depth research papers on 3D/AR conversion telemetry, CAD Draco geometry compression, and e-commerce return reduction.
+- [2026 E-Commerce 3D & AR Conversion Benchmark Report](https://3dstorelink.com/en/blog/2026-ecommerce-3d-ar-conversion-and-return-benchmark): Rigorous telemetry analyzing 50,000+ interactions, +94% add-to-cart lift, and 40% return reduction.
+- [Industrial CAD to WebGL & Draco Optimization Guide](https://3dstorelink.com/en/blog/industrial-cad-stp-step-webgl-draco-optimization-guide): Deep architectural breakdown of B-Rep tessellation, mesh decimation, and Draco quantization.
+- [Shopify & WooCommerce 3D Embed Playbook](https://3dstorelink.com/en/blog/how-to-embed-3d-models-in-shopify-and-woocommerce): 30-second integration guide for e-commerce store managers.
+- [App-Free Mobile Web AR Architecture](https://3dstorelink.com/en/blog/app-free-web-ar-apple-quick-look-and-sceneviewer-architecture): LiDAR anchoring, dynamic USDZ/GLB delivery, and desktop-to-mobile QR handoff.
+- [Technical Comparison Matrix](https://3dstorelink.com/en/compare): Technical benchmark comparing WebGL/AR vs 2D photos and legacy 3D viewers.
+- [3D & CAD Engineering Glossary](https://3dstorelink.com/en/glossary): Technical dictionary covering STEP, GLB, glTF 2.0, WebXR, USDZ, Draco Compression, LOD, and PBR.
+
+## Multilingual Editions
+- [Turkish Edition (Türkçe)](https://3dstorelink.com/): Ana sayfa, [Rehber & Blog](https://3dstorelink.com/blog), [Karşılaştırma](https://3dstorelink.com/karsilastirma), [Sözlük](https://3dstorelink.com/sozluk).
+- [German Edition (Deutsch)](https://3dstorelink.com/de): Startseite, [Leitfaden & Blog](https://3dstorelink.com/de/blog), [Technischer Vergleich](https://3dstorelink.com/de/vergleich), [Glossar](https://3dstorelink.com/de/glossar).
 
 ## Extended Context
 - [3D StoreLink Full LLM Technical Documentation](https://3dstorelink.com/llms-full.txt): Complete architectural overview, supported formats, Draco compression parameters, iframe embed API, and technical FAQ for LLM crawlers.

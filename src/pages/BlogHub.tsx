@@ -1,12 +1,15 @@
 import { useState, useEffect } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useParams, useSearchParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import LanguageDropdown from '../components/LanguageDropdown';
-import { ARTICLES, AUTHORS } from '../data/blogArticles';
+import { ARTICLES, AUTHORS, Article } from '../data/blogArticles';
+import { findArticleBySlug, getArticleSlug } from '../utils/seo';
 
 export default function BlogHub() {
   const { i18n } = useTranslation();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const { slug: routeSlug } = useParams<{ slug?: string }>();
+  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
   const [copiedCode, setCopiedCode] = useState(false);
   const [readingProgress, setReadingProgress] = useState(0);
   const [activeSection, setActiveSection] = useState<string>('');
@@ -16,8 +19,27 @@ export default function BlogHub() {
   const isTr = currentLang === 'tr';
   const isDe = currentLang === 'de';
 
-  const selectedSlug = searchParams.get('post');
-  const activeArticle = ARTICLES.find((a) => a.slug === selectedSlug);
+  const homePath = isTr ? '/' : isDe ? '/de' : '/en';
+  const blogPath = isTr ? '/blog' : isDe ? '/de/blog' : '/en/blog';
+  const comparePath = isTr ? '/karsilastirma' : isDe ? '/de/vergleich' : '/en/compare';
+  const glossaryPath = isTr ? '/sozluk' : isDe ? '/de/glossar' : '/en/glossary';
+  const uploadPath = isTr ? '/upload' : isDe ? '/de/upload' : '/en/upload';
+
+  const querySlug = searchParams.get('post');
+  const targetSlug = routeSlug || querySlug;
+  const activeArticle = findArticleBySlug(targetSlug);
+
+  const getArticleUrl = (art: Article) => {
+    const slug = getArticleSlug(art, currentLang);
+    return isTr ? `/blog/${slug}` : isDe ? `/de/blog/${slug}` : `/en/blog/${slug}`;
+  };
+
+  // If accessed via legacy query parameter '?post=', cleanly redirect to RESTful route
+  useEffect(() => {
+    if (querySlug && activeArticle && !routeSlug) {
+      navigate(getArticleUrl(activeArticle), { replace: true });
+    }
+  }, [querySlug, activeArticle, routeSlug, navigate]);
 
   useEffect(() => {
     if (activeArticle) {
@@ -122,6 +144,10 @@ export default function BlogHub() {
   };
 
   // Structured Data (JSON-LD) for SEO / GEO / Google AI Overview
+  const activeArticleUrl = activeArticle ? `https://3dstorelink.com${getArticleUrl(activeArticle)}` : '';
+  const blogUrl = `https://3dstorelink.com${blogPath}`;
+  const homeUrl = isTr ? 'https://3dstorelink.com/' : isDe ? 'https://3dstorelink.com/de' : 'https://3dstorelink.com/en';
+
   const jsonLd = activeArticle
     ? {
         '@context': 'https://schema.org',
@@ -129,9 +155,9 @@ export default function BlogHub() {
           {
             '@type': 'BreadcrumbList',
             itemListElement: [
-              { '@type': 'ListItem', position: 1, name: isTr ? 'Ana Sayfa' : 'Home', item: 'https://3dstorelink.com/' },
-              { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://3dstorelink.com/blog' },
-              { '@type': 'ListItem', position: 3, name: activeArticle.title[currentLang], item: `https://3dstorelink.com/blog?post=${activeArticle.slug}` },
+              { '@type': 'ListItem', position: 1, name: isTr ? 'Ana Sayfa' : isDe ? 'Startseite' : 'Home', item: homeUrl },
+              { '@type': 'ListItem', position: 2, name: 'Blog', item: blogUrl },
+              { '@type': 'ListItem', position: 3, name: activeArticle.title[currentLang], item: activeArticleUrl },
             ],
           },
           {
@@ -140,7 +166,7 @@ export default function BlogHub() {
             description: activeArticle.desc[currentLang],
             inLanguage: currentLang,
             datePublished: activeArticle.date.iso,
-            mainEntityOfPage: `https://3dstorelink.com/blog?post=${activeArticle.slug}`,
+            mainEntityOfPage: activeArticleUrl,
             author: activeArticle.authors.map((auth) => ({
               '@type': 'Person',
               name: auth.name,
@@ -177,20 +203,22 @@ export default function BlogHub() {
           {
             '@type': 'BreadcrumbList',
             itemListElement: [
-              { '@type': 'ListItem', position: 1, name: isTr ? 'Ana Sayfa' : 'Home', item: 'https://3dstorelink.com/' },
-              { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://3dstorelink.com/blog' },
+              { '@type': 'ListItem', position: 1, name: isTr ? 'Ana Sayfa' : isDe ? 'Startseite' : 'Home', item: homeUrl },
+              { '@type': 'ListItem', position: 2, name: 'Blog', item: blogUrl },
             ],
           },
           {
             '@type': 'CollectionPage',
-            name: isTr ? '3D StoreLink Rehber & Blog' : '3D StoreLink Guides & Blog',
+            name: isTr ? '3D StoreLink Rehber & Blog' : isDe ? '3D StoreLink Leitfaden & Blog' : '3D StoreLink Guides & Blog',
             description: isTr
               ? 'Web 3D, endüstriyel CAD dönüşümü, 1:1 artırılmış gerçeklik ve e-ticaret dönüşüm telemetrisi rehberleri.'
+              : isDe
+              ? 'Tiefgehende Analysen zu CAD-Konvertierung, WebGL, 1:1 mobiler AR und E-Commerce-Conversion.'
               : 'Engineering guides on Web 3D, CAD streaming, 1:1 mobile AR, and e-commerce conversion benchmarks.',
             hasPart: ARTICLES.map((art) => ({
               '@type': 'BlogPosting',
               headline: art.title[currentLang],
-              url: `https://3dstorelink.com/blog?post=${art.slug}`,
+              url: `https://3dstorelink.com${getArticleUrl(art)}`,
             })),
           },
         ],
@@ -212,20 +240,20 @@ export default function BlogHub() {
       {/* ── Navigation Bar ── */}
       <nav className="fixed top-0 left-0 right-0 z-40 bg-black/80 backdrop-blur-xl border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2.5 transition hover:opacity-90">
+          <Link to={homePath} className="flex items-center gap-2.5 transition hover:opacity-90">
             <img src="/brand-dark-theme.webp" alt="3D StoreLink" className="h-14 sm:h-16 w-auto" />
           </Link>
           <div className="flex items-center gap-4 text-sm font-medium">
-            <Link to="/" className="text-gray-400 hover:text-white transition">
+            <Link to={homePath} className="text-gray-400 hover:text-white transition">
               {isTr ? 'Ana Sayfa' : isDe ? 'Startseite' : 'Home'}
             </Link>
-            <Link to="/blog" className="text-white font-bold border-b-2 border-zinc-300 pb-0.5">
+            <Link to={blogPath} className="text-white font-bold border-b-2 border-zinc-300 pb-0.5">
               Blog
             </Link>
-            <Link to="/karsilastirma" className="text-gray-400 hover:text-white transition hidden md:block">
+            <Link to={comparePath} className="text-gray-400 hover:text-white transition hidden md:block">
               {isTr ? 'Karşılaştırma' : isDe ? 'Vergleich' : 'Comparison'}
             </Link>
-            <Link to="/sozluk" className="text-gray-400 hover:text-white transition hidden md:block">
+            <Link to={glossaryPath} className="text-gray-400 hover:text-white transition hidden md:block">
               {isTr ? 'Sözlük' : isDe ? 'Glossar' : 'Glossary'}
             </Link>
             <LanguageDropdown />
@@ -289,11 +317,11 @@ export default function BlogHub() {
         <div className="pt-28 pb-24 px-4 sm:px-6 max-w-7xl mx-auto">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-xs text-gray-500 mb-8 max-w-4xl lg:max-w-none">
-            <Link to="/" className="hover:text-white transition">{isTr ? 'Ana Sayfa' : 'Home'}</Link>
+            <Link to={homePath} className="hover:text-white transition">{isTr ? 'Ana Sayfa' : isDe ? 'Startseite' : 'Home'}</Link>
             <span>/</span>
-            <button onClick={() => setSearchParams({})} className="hover:text-white transition cursor-pointer">
+            <Link to={blogPath} className="hover:text-white transition">
               Blog
-            </button>
+            </Link>
             <span>/</span>
             <span className="text-gray-300 truncate max-w-xs sm:max-w-md">{activeArticle.title[currentLang]}</span>
           </nav>
@@ -540,17 +568,17 @@ export default function BlogHub() {
 
               {/* Back button & Next steps */}
               <div className="mt-12 pt-8 border-t border-white/10 flex flex-wrap justify-between items-center gap-4">
-                <button
-                  onClick={() => setSearchParams({})}
-                  className="text-xs uppercase tracking-wider font-bold text-zinc-400 hover:text-white flex items-center gap-1.5 transition cursor-pointer"
+                <Link
+                  to={blogPath}
+                  className="text-xs uppercase tracking-wider font-bold text-zinc-400 hover:text-white flex items-center gap-1.5 transition"
                 >
                   ← {isTr ? 'Tüm Rehberlere Dön' : isDe ? 'Zurück zur Übersicht' : 'Back to All Guides'}
-                </button>
+                </Link>
                 <Link
-                  to="/upload"
+                  to={uploadPath}
                   className="bg-white text-black px-5 py-2.5 rounded-xl text-xs font-bold hover:bg-gray-200 transition"
                 >
-                  {isTr ? 'Modelini Hemen Test Et →' : 'Test Your Model Now →'}
+                  {isTr ? 'Modelini Hemen Test Et →' : isDe ? 'Eigenes Modell testen →' : 'Test Your Model Now →'}
                 </Link>
               </div>
             </article>
@@ -706,17 +734,36 @@ export default function BlogHub() {
                     </div>
 
                     <h3 className="text-2xl sm:text-3xl font-extrabold text-white group-hover:text-zinc-200 transition-colors mb-3 leading-tight">
-                      <button
-                        onClick={() => setSearchParams({ post: art.slug })}
-                        className="text-left cursor-pointer hover:underline underline-offset-4"
+                      <Link
+                        to={getArticleUrl(art)}
+                        className="text-left hover:underline underline-offset-4"
                       >
                         {art.title[currentLang]}
-                      </button>
+                      </Link>
                     </h3>
 
-                    <p className="text-zinc-400 text-sm sm:text-base leading-relaxed mb-6">
+                    <p className="text-zinc-400 text-sm sm:text-base leading-relaxed mb-4">
                       {art.desc[currentLang]}
                     </p>
+
+                    {/* Key Takeaways (GEO / Semantic Bullet List for AI Engines) */}
+                    {art.keyTakeaways && art.keyTakeaways[currentLang]?.length > 0 && (
+                      <ul className="space-y-2 mb-6 text-xs sm:text-sm text-zinc-300 font-medium" role="list">
+                        {art.keyTakeaways[currentLang].slice(0, 3).map((takeaway, tIdx) => (
+                          <li key={tIdx} className="flex items-start gap-2.5">
+                            <svg
+                              className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span className="leading-snug">{takeaway}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
 
                     <div className="flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-white/5">
                       <div className="flex items-center gap-3">
@@ -740,13 +787,17 @@ export default function BlogHub() {
                         </div>
                       </div>
 
-                      <button
-                        onClick={() => setSearchParams({ post: art.slug })}
-                        className="inline-flex items-center gap-2 font-bold text-sm text-zinc-300 group-hover:text-white group-hover:translate-x-1 transition-all cursor-pointer"
+                      <Link
+                        to={getArticleUrl(art)}
+                        className="inline-flex items-center gap-2 font-bold text-sm text-zinc-300 group-hover:text-white group-hover:translate-x-1 transition-all"
                       >
-                        <span>{isFlagship ? (isTr ? 'Raporu İncele' : 'Read Full Report') : (isTr ? 'Rehberi Oku' : 'Read Guide')}</span>
+                        <span>
+                          {isFlagship
+                            ? (isTr ? 'Raporu İncele' : isDe ? 'Bericht Lesen' : 'Read Full Report')
+                            : (isTr ? 'Rehberi Oku' : isDe ? 'Leitfaden Lesen' : 'Read Guide')}
+                        </span>
                         <span>→</span>
-                      </button>
+                      </Link>
                     </div>
                   </article>
                 );
@@ -764,10 +815,10 @@ export default function BlogHub() {
             <span>3D StoreLink</span>
           </div>
           <div className="flex items-center gap-6 flex-wrap justify-center">
-            <Link to="/" className="hover:text-white transition">{isTr ? 'Ana Sayfa' : 'Home'}</Link>
-            <Link to="/blog" className="hover:text-white transition">Blog</Link>
-            <Link to="/karsilastirma" className="hover:text-white transition">{isTr ? 'Karşılaştırma' : 'Comparison'}</Link>
-            <Link to="/sozluk" className="hover:text-white transition">{isTr ? 'Sözlük' : 'Glossary'}</Link>
+            <Link to={homePath} className="hover:text-white transition">{isTr ? 'Ana Sayfa' : isDe ? 'Startseite' : 'Home'}</Link>
+            <Link to={blogPath} className="hover:text-white transition">Blog</Link>
+            <Link to={comparePath} className="hover:text-white transition">{isTr ? 'Karşılaştırma' : isDe ? 'Vergleich' : 'Comparison'}</Link>
+            <Link to={glossaryPath} className="hover:text-white transition">{isTr ? 'Sözlük' : isDe ? 'Glossar' : 'Glossary'}</Link>
             <a href="mailto:info@3dstorelink.com" className="hover:text-white transition">info@3dstorelink.com</a>
             <a href="https://www.instagram.com/3dstorelink/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">Instagram</a>
             <a href="https://www.linkedin.com/company/3dstorelink/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">LinkedIn</a>

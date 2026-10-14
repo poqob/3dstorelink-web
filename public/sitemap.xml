@@ -1,81 +1,274 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://3dstorelink.com/</loc>
-    <lastmod>2026-10-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://3dstorelink.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://3dstorelink.com/en" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://3dstorelink.com/de" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://3dstorelink.com/en" />
+    <lastmod>2026-10-14</lastmod>
     <changefreq>daily</changefreq>
-    <priority>1.0</priority>
+    <priority>1.00</priority>
+  </url>
+  <url>
+    <loc>https://3dstorelink.com/en</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://3dstorelink.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://3dstorelink.com/en" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://3dstorelink.com/de" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://3dstorelink.com/en" />
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.00</priority>
+  </url>
+  <url>
+    <loc>https://3dstorelink.com/de</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://3dstorelink.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://3dstorelink.com/en" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://3dstorelink.com/de" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://3dstorelink.com/en" />
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.00</priority>
   </url>
   <url>
     <loc>https://3dstorelink.com/blog</loc>
-    <lastmod>2026-10-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://3dstorelink.com/blog" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://3dstorelink.com/en/blog" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://3dstorelink.com/de/blog" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://3dstorelink.com/en/blog" />
+    <lastmod>2026-10-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://3dstorelink.com/blog?post=2026-e-ticaret-3d-ve-ar-donusum-ve-iade-raporu</loc>
-    <lastmod>2026-10-13</lastmod>
+    <loc>https://3dstorelink.com/en/blog</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://3dstorelink.com/blog" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://3dstorelink.com/en/blog" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://3dstorelink.com/de/blog" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://3dstorelink.com/en/blog" />
+    <lastmod>2026-10-14</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://3dstorelink.com/blog?post=endustriyel-cad-stp-step-webgl-draco-optimizasyon-rehberi</loc>
-    <lastmod>2026-10-13</lastmod>
+    <loc>https://3dstorelink.com/de/blog</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://3dstorelink.com/blog" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://3dstorelink.com/en/blog" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://3dstorelink.com/de/blog" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://3dstorelink.com/en/blog" />
+    <lastmod>2026-10-14</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://3dstorelink.com/blog?post=shopify-woocommerce-web-sitelerine-3d-model-ekleme-rehberi</loc>
-    <lastmod>2026-10-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://3dstorelink.com/blog?post=uygulamasiz-web-ar-apple-quick-look-ve-sceneviewer-mimarisi</loc>
-    <lastmod>2026-10-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.95</priority>
   </url>
   <url>
     <loc>https://3dstorelink.com/karsilastirma</loc>
-    <lastmod>2026-10-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://3dstorelink.com/karsilastirma" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://3dstorelink.com/en/compare" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://3dstorelink.com/de/vergleich" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://3dstorelink.com/en/compare" />
+    <lastmod>2026-10-14</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://3dstorelink.com/en/compare</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://3dstorelink.com/karsilastirma" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://3dstorelink.com/en/compare" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://3dstorelink.com/de/vergleich" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://3dstorelink.com/en/compare" />
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://3dstorelink.com/de/vergleich</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://3dstorelink.com/karsilastirma" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://3dstorelink.com/en/compare" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://3dstorelink.com/de/vergleich" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://3dstorelink.com/en/compare" />
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
   </url>
   <url>
     <loc>https://3dstorelink.com/sozluk</loc>
-    <lastmod>2026-10-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://3dstorelink.com/sozluk" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://3dstorelink.com/en/glossary" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://3dstorelink.com/de/glossar" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://3dstorelink.com/en/glossary" />
+    <lastmod>2026-10-14</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://3dstorelink.com/en/glossary</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://3dstorelink.com/sozluk" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://3dstorelink.com/en/glossary" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://3dstorelink.com/de/glossar" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://3dstorelink.com/en/glossary" />
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://3dstorelink.com/de/glossar</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://3dstorelink.com/sozluk" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://3dstorelink.com/en/glossary" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://3dstorelink.com/de/glossar" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://3dstorelink.com/en/glossary" />
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
   </url>
   <url>
     <loc>https://3dstorelink.com/upload</loc>
-    <lastmod>2026-10-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://3dstorelink.com/upload" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://3dstorelink.com/en/upload" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://3dstorelink.com/de/upload" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://3dstorelink.com/en/upload" />
+    <lastmod>2026-10-14</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://3dstorelink.com/#showcase</loc>
-    <lastmod>2026-10-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://3dstorelink.com/en/upload</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://3dstorelink.com/upload" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://3dstorelink.com/en/upload" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://3dstorelink.com/de/upload" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://3dstorelink.com/en/upload" />
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://3dstorelink.com/#comparison</loc>
-    <lastmod>2026-10-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://3dstorelink.com/de/upload</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://3dstorelink.com/upload" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://3dstorelink.com/en/upload" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://3dstorelink.com/de/upload" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://3dstorelink.com/en/upload" />
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://3dstorelink.com/#integration</loc>
-    <lastmod>2026-10-13</lastmod>
+    <loc>https://3dstorelink.com/blog/2026-e-ticaret-3d-ve-ar-donusum-ve-iade-raporu</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://3dstorelink.com/blog/2026-e-ticaret-3d-ve-ar-donusum-ve-iade-raporu" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://3dstorelink.com/en/blog/2026-ecommerce-3d-ar-conversion-and-return-benchmark" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://3dstorelink.com/de/blog/2026-ecommerce-3d-ar-conversion-und-retouren-report" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://3dstorelink.com/en/blog/2026-ecommerce-3d-ar-conversion-and-return-benchmark" />
+    <lastmod>2026-10-14</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://3dstorelink.com/#faq</loc>
-    <lastmod>2026-10-13</lastmod>
+    <loc>https://3dstorelink.com/en/blog/2026-ecommerce-3d-ar-conversion-and-return-benchmark</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://3dstorelink.com/blog/2026-e-ticaret-3d-ve-ar-donusum-ve-iade-raporu" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://3dstorelink.com/en/blog/2026-ecommerce-3d-ar-conversion-and-return-benchmark" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://3dstorelink.com/de/blog/2026-ecommerce-3d-ar-conversion-und-retouren-report" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://3dstorelink.com/en/blog/2026-ecommerce-3d-ar-conversion-and-return-benchmark" />
+    <lastmod>2026-10-14</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://3dstorelink.com/de/blog/2026-ecommerce-3d-ar-conversion-und-retouren-report</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://3dstorelink.com/blog/2026-e-ticaret-3d-ve-ar-donusum-ve-iade-raporu" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://3dstorelink.com/en/blog/2026-ecommerce-3d-ar-conversion-and-return-benchmark" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://3dstorelink.com/de/blog/2026-ecommerce-3d-ar-conversion-und-retouren-report" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://3dstorelink.com/en/blog/2026-ecommerce-3d-ar-conversion-and-return-benchmark" />
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://3dstorelink.com/blog/endustriyel-cad-stp-step-webgl-draco-optimizasyon-rehberi</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://3dstorelink.com/blog/endustriyel-cad-stp-step-webgl-draco-optimizasyon-rehberi" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://3dstorelink.com/en/blog/industrial-cad-stp-step-webgl-draco-optimization-guide" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://3dstorelink.com/de/blog/industrielle-cad-stp-step-webgl-draco-optimierung-leitfaden" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://3dstorelink.com/en/blog/industrial-cad-stp-step-webgl-draco-optimization-guide" />
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://3dstorelink.com/en/blog/industrial-cad-stp-step-webgl-draco-optimization-guide</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://3dstorelink.com/blog/endustriyel-cad-stp-step-webgl-draco-optimizasyon-rehberi" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://3dstorelink.com/en/blog/industrial-cad-stp-step-webgl-draco-optimization-guide" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://3dstorelink.com/de/blog/industrielle-cad-stp-step-webgl-draco-optimierung-leitfaden" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://3dstorelink.com/en/blog/industrial-cad-stp-step-webgl-draco-optimization-guide" />
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://3dstorelink.com/de/blog/industrielle-cad-stp-step-webgl-draco-optimierung-leitfaden</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://3dstorelink.com/blog/endustriyel-cad-stp-step-webgl-draco-optimizasyon-rehberi" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://3dstorelink.com/en/blog/industrial-cad-stp-step-webgl-draco-optimization-guide" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://3dstorelink.com/de/blog/industrielle-cad-stp-step-webgl-draco-optimierung-leitfaden" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://3dstorelink.com/en/blog/industrial-cad-stp-step-webgl-draco-optimization-guide" />
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://3dstorelink.com/blog/shopify-woocommerce-web-sitelerine-3d-model-ekleme-rehberi</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://3dstorelink.com/blog/shopify-woocommerce-web-sitelerine-3d-model-ekleme-rehberi" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://3dstorelink.com/en/blog/how-to-embed-3d-models-in-shopify-and-woocommerce" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://3dstorelink.com/de/blog/3d-modelle-in-shopify-und-woocommerce-einbinden-anleitung" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://3dstorelink.com/en/blog/how-to-embed-3d-models-in-shopify-and-woocommerce" />
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://3dstorelink.com/en/blog/how-to-embed-3d-models-in-shopify-and-woocommerce</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://3dstorelink.com/blog/shopify-woocommerce-web-sitelerine-3d-model-ekleme-rehberi" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://3dstorelink.com/en/blog/how-to-embed-3d-models-in-shopify-and-woocommerce" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://3dstorelink.com/de/blog/3d-modelle-in-shopify-und-woocommerce-einbinden-anleitung" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://3dstorelink.com/en/blog/how-to-embed-3d-models-in-shopify-and-woocommerce" />
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://3dstorelink.com/de/blog/3d-modelle-in-shopify-und-woocommerce-einbinden-anleitung</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://3dstorelink.com/blog/shopify-woocommerce-web-sitelerine-3d-model-ekleme-rehberi" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://3dstorelink.com/en/blog/how-to-embed-3d-models-in-shopify-and-woocommerce" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://3dstorelink.com/de/blog/3d-modelle-in-shopify-und-woocommerce-einbinden-anleitung" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://3dstorelink.com/en/blog/how-to-embed-3d-models-in-shopify-and-woocommerce" />
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://3dstorelink.com/blog/uygulamasiz-web-ar-apple-quick-look-ve-sceneviewer-mimarisi</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://3dstorelink.com/blog/uygulamasiz-web-ar-apple-quick-look-ve-sceneviewer-mimarisi" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://3dstorelink.com/en/blog/app-free-web-ar-apple-quick-look-and-sceneviewer-architecture" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://3dstorelink.com/de/blog/app-freies-web-ar-apple-quick-look-und-sceneviewer-architektur" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://3dstorelink.com/en/blog/app-free-web-ar-apple-quick-look-and-sceneviewer-architecture" />
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://3dstorelink.com/en/blog/app-free-web-ar-apple-quick-look-and-sceneviewer-architecture</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://3dstorelink.com/blog/uygulamasiz-web-ar-apple-quick-look-ve-sceneviewer-mimarisi" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://3dstorelink.com/en/blog/app-free-web-ar-apple-quick-look-and-sceneviewer-architecture" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://3dstorelink.com/de/blog/app-freies-web-ar-apple-quick-look-und-sceneviewer-architektur" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://3dstorelink.com/en/blog/app-free-web-ar-apple-quick-look-and-sceneviewer-architecture" />
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://3dstorelink.com/de/blog/app-freies-web-ar-apple-quick-look-und-sceneviewer-architektur</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://3dstorelink.com/blog/uygulamasiz-web-ar-apple-quick-look-ve-sceneviewer-mimarisi" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://3dstorelink.com/en/blog/app-free-web-ar-apple-quick-look-and-sceneviewer-architecture" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://3dstorelink.com/de/blog/app-freies-web-ar-apple-quick-look-und-sceneviewer-architektur" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://3dstorelink.com/en/blog/app-free-web-ar-apple-quick-look-and-sceneviewer-architecture" />
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
   </url>
 </urlset>

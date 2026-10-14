@@ -22,6 +22,7 @@ export interface ArticleSection {
 
 export interface Article {
   slug: string;
+  slugs?: { tr: string; en: string; de: string };
   featured?: boolean;
   category: { tr: string; en: string; de: string };
   readTime: { tr: string; en: string; de: string };
@@ -71,6 +72,11 @@ export const ARTICLES: Article[] = [
   /* ── 1. FLAGSHIP BENCHMARK REPORT ── */
   {
     slug: '2026-e-ticaret-3d-ve-ar-donusum-ve-iade-raporu',
+    slugs: {
+      tr: '2026-e-ticaret-3d-ve-ar-donusum-ve-iade-raporu',
+      en: '2026-ecommerce-3d-ar-conversion-and-return-benchmark',
+      de: '2026-ecommerce-3d-ar-conversion-und-retouren-report',
+    },
     featured: true,
     category: {
       tr: 'Sektör Benchmark Raporu // 2026',
@@ -338,6 +344,11 @@ export const ARTICLES: Article[] = [
   /* ── 2. CAD TO WEBGL & DRACO ENGINEERING ── */
   {
     slug: 'endustriyel-cad-stp-step-webgl-draco-optimizasyon-rehberi',
+    slugs: {
+      tr: 'endustriyel-cad-stp-step-webgl-draco-optimizasyon-rehberi',
+      en: 'industrial-cad-stp-step-webgl-draco-optimization-guide',
+      de: 'industrielle-cad-stp-step-webgl-draco-optimierung-leitfaden',
+    },
     category: {
       tr: 'CAD Mimarisi & WebGL',
       en: 'CAD Architecture & WebGL',
@@ -549,6 +560,11 @@ export const ARTICLES: Article[] = [
   /* ── 3. E-COMMERCE IFRAME EMBED GUIDE ── */
   {
     slug: 'shopify-woocommerce-web-sitelerine-3d-model-ekleme-rehberi',
+    slugs: {
+      tr: 'shopify-woocommerce-web-sitelerine-3d-model-ekleme-rehberi',
+      en: 'how-to-embed-3d-models-in-shopify-and-woocommerce',
+      de: '3d-modelle-in-shopify-und-woocommerce-einbinden-anleitung',
+    },
     category: {
       tr: 'E-Ticaret & Entegrasyon',
       en: 'E-Commerce & Integration',
@@ -731,6 +747,11 @@ export const ARTICLES: Article[] = [
   /* ── 4. ZERO-INSTALL MOBILE WEB AR GUIDE ── */
   {
     slug: 'uygulamasiz-web-ar-apple-quick-look-ve-sceneviewer-mimarisi',
+    slugs: {
+      tr: 'uygulamasiz-web-ar-apple-quick-look-ve-sceneviewer-mimarisi',
+      en: 'app-free-web-ar-apple-quick-look-and-sceneviewer-architecture',
+      de: 'app-freies-web-ar-apple-quick-look-und-sceneviewer-architektur',
+    },
     category: {
       tr: 'WebXR & Artırılmış Gerçeklik',
       en: 'WebXR & Augmented Reality',
