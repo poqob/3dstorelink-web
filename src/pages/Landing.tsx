@@ -14,7 +14,7 @@ const getHeroIframeSrc = (slug: string, mode: FrameTheme) => {
   const encSlug = encodeURIComponent(slug);
   const base = `https://view.3dstorelink.com/${encSlug}`;
   if (mode === 'transparent') {
-    return `${base}?theme=transparent&showToolbar=0&showTitle=0&showDimensions=0&enableAR=0&autoRotate=1&autoplay=1&cameraOrbit=0deg%2075deg%20auto&showControls=1&enableDownload=0`;
+    return `${base}?theme=transparent&showTitle=0&showDimensions=0&enableAR=1&autoRotate=1&autoplay=1&cameraOrbit=0deg%2075deg%20auto&showControls=1&enableDownload=0`;
   }
   if (mode === 'technical') {
     return `${base}?theme=technical&showTitle=0&autoRotate=1&autoplay=1&enableAR=1&cameraOrbit=0deg%2075deg%20auto&showControls=1&enableDownload=0`;
