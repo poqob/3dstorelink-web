@@ -10,6 +10,19 @@ import { Box, Check, Upload, Image as ImageIcon, AlertCircle, X, User } from 'lu
 
 type FrameTheme = 'compact' | 'transparent' | 'technical';
 
+const getHeroIframeSrc = (slug: string, mode: FrameTheme) => {
+  const encSlug = encodeURIComponent(slug);
+  const base = `https://view.3dstorelink.com/${encSlug}`;
+  if (mode === 'transparent') {
+    return `${base}?theme=transparent&showToolbar=0&showTitle=0&showDimensions=0&enableAR=0&autoRotate=1&autoplay=1&cameraOrbit=0deg%2075deg%20auto&showControls=1&enableDownload=0`;
+  }
+  if (mode === 'technical') {
+    return `${base}?theme=technical&showTitle=0&autoRotate=1&autoplay=1&enableAR=1&cameraOrbit=0deg%2075deg%20auto&showControls=1&enableDownload=0`;
+  }
+  // compact
+  return `${base}?theme=compact&bgColor=111111&showTitle=0&autoRotate=1&autoplay=1&enableAR=1&cameraOrbit=0deg%2075deg%20auto&showControls=1&enableDownload=0`;
+};
+
 declare global {
   namespace JSX {
     interface IntrinsicElements {
@@ -720,43 +733,10 @@ export default function Landing() {
               frameTheme === 'compact'
                 ? 'border border-white/10 bg-[#111] shadow-2xl'
                 : frameTheme === 'transparent'
-                ? 'border border-dashed border-white/20 bg-[repeating-conic-gradient(rgba(255,255,255,0.04)_0%_25%,transparent_0%_50%)] bg-[length:20px_20px] shadow-none'
-                : 'border border-sky-500/40 shadow-[0_0_40px_rgba(56,189,248,0.12)]'
+                ? 'border-0 bg-transparent shadow-none'
+                : 'border border-sky-500/30 bg-[#0b0f19] shadow-[0_0_30px_rgba(56,189,248,0.12)]'
             }`}
-            style={
-              frameTheme === 'technical'
-                ? {
-                    backgroundColor: '#0b0f19',
-                    backgroundImage:
-                      'linear-gradient(rgba(56, 189, 248, 0.22) 1px, transparent 1px), linear-gradient(90deg, rgba(56, 189, 248, 0.22) 1px, transparent 1px), linear-gradient(rgba(56, 189, 248, 0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(56, 189, 248, 0.06) 1px, transparent 1px)',
-                    backgroundSize: '60px 60px, 60px 60px, 12px 12px, 12px 12px',
-                    backgroundPosition: '-1px -1px, -1px -1px, -1px -1px, -1px -1px',
-                  }
-                : undefined
-            }
           >
-            {/* Technical CAD HUD Elements */}
-            {frameTheme === 'technical' && (
-              <>
-                <div className="absolute top-3.5 left-3.5 w-4 h-4 border-t-2 border-l-2 border-sky-400 pointer-events-none z-20 opacity-80" />
-                <div className="absolute top-3.5 right-3.5 w-4 h-4 border-t-2 border-r-2 border-sky-400 pointer-events-none z-20 opacity-80" />
-                <div className="absolute bottom-3.5 left-3.5 w-4 h-4 border-b-2 border-l-2 border-sky-400 pointer-events-none z-20 opacity-80" />
-                <div className="absolute bottom-3.5 right-3.5 w-4 h-4 border-b-2 border-r-2 border-sky-400 pointer-events-none z-20 opacity-80" />
-                <div className="absolute top-3.5 left-10 flex items-center gap-1.5 px-2.5 py-1 rounded bg-sky-950/80 border border-sky-500/40 text-[10px] font-mono text-sky-400 pointer-events-none z-20 shadow-xs">
-                  <span className="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse" />
-                  <span>CAD / TECHNICAL BLUEPRINT</span>
-                </div>
-              </>
-            )}
-
-            {/* Transparent Floating Badge */}
-            {frameTheme === 'transparent' && (
-              <div className="absolute top-3.5 left-4 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-[10px] font-medium text-gray-300 pointer-events-none z-20">
-                <span className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse" />
-                <span>{t('hero.frame_transparent')}</span>
-              </div>
-            )}
-
             {_isLoadingHero || !currentEmbed || currentEmbed.slug === 'default-key' ? (
               <div className="w-full h-full absolute inset-0 flex items-center justify-center">
                 <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
@@ -764,11 +744,10 @@ export default function Landing() {
             ) : (
               <iframe
                 key={`${currentEmbed.slug}-${frameTheme}`}
-                src={`https://view.3dstorelink.com/${encodeURIComponent(currentEmbed.slug)}?autoRotate=1&autoplay=1&enableAR=1&cameraOrbit=0deg%2075deg%20auto&showControls=1&enableDownload=0&themePreset=${frameTheme}&bgColor=${
-                  frameTheme === 'compact' ? '111111' : frameTheme === 'technical' ? '0b0f19' : 'transparent'
-                }${frameTheme === 'technical' ? '&cadLineColor=38bdf8&cadShowCorners=1' : ''}`}
+                src={getHeroIframeSrc(currentEmbed.slug, frameTheme)}
                 className="w-full h-full absolute inset-0 border-none"
                 allow="xr-spatial-tracking"
+                allowTransparency={true}
                 title={currentEmbed.name || currentEmbed.label || '3D Model'}
               />
             )}
@@ -776,10 +755,6 @@ export default function Landing() {
 
           {/* Frame Theme Switcher (3 Round Icon Buttons) */}
           <div className="flex items-center justify-center gap-3 mt-4">
-            <span className="text-xs text-gray-400 font-medium mr-1 hidden sm:inline">
-              {t('hero.frame_mode')}
-            </span>
-
             {/* 1. Compact / Standart */}
             <button
               type="button"
