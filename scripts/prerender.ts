@@ -209,6 +209,45 @@ function renderLandingBody(lang: Lang): { body: string; title: string; descripti
       </div>
     </section>
 
+    <!-- Engineering Guides & Blog Section -->
+    <section class="mb-20 max-w-7xl mx-auto">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
+        <div>
+          <span class="text-xs font-mono text-zinc-400 font-bold block mb-2 uppercase">${isTr ? 'Mühendislik Rehberleri & Sektör Raporları' : isDe ? 'Engineering-Leitfäden & Branchenberichte' : 'Engineering Guides & Industry Benchmarks'}</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white">${isTr ? 'Web 3D, CAD ve AR Uzmanlık Merkezi' : isDe ? 'Web-3D, CAD und AR Wissenszentrum' : 'Web 3D, CAD & AR Knowledge Hub'}</h2>
+        </div>
+        <a href="${blogPath}" class="text-sm font-semibold text-white hover:text-zinc-300 transition">${isTr ? 'Tüm Makaleleri Oku →' : isDe ? 'Alle Leitfäden lesen →' : 'Browse All Guides →'}</a>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        ${[
+          ARTICLES.find(a => a.slug === 'endustriyel-b2b-makine-dijital-3d-yedek-parca-katalogu'),
+          ARTICLES[0],
+          ARTICLES.find(a => a.slug === 'endustriyel-cad-stp-step-webgl-draco-optimizasyon-rehberi'),
+        ].filter(Boolean).map(art => {
+          if (!art) return '';
+          const slug = getArticleSlug(art, lang);
+          const artUrl = isTr ? `/blog/${slug}/` : isDe ? `/de/blog/${slug}/` : `/en/blog/${slug}/`;
+          return `
+          <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/10 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between text-xs text-zinc-400 mb-3 font-mono">
+                <span class="px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10 text-zinc-300 font-medium">${escapeHtml(art.category[lang])}</span>
+                <span>${escapeHtml(art.readTime[lang])}</span>
+              </div>
+              <h3 class="text-lg font-bold text-white mb-2 leading-snug">
+                <a href="${artUrl}" class="hover:text-blue-400 transition">${escapeHtml(art.title[lang])}</a>
+              </h3>
+              <p class="text-xs text-zinc-400 leading-relaxed mb-4">${escapeHtml(art.desc[lang])}</p>
+            </div>
+            <a href="${artUrl}" class="text-xs font-semibold text-zinc-300 hover:text-white pt-3 border-t border-white/5 inline-flex items-center gap-1">
+              ${isTr ? 'Rehberi İncele →' : isDe ? 'Leitfaden lesen →' : 'Read Guide →'}
+            </a>
+          </div>
+          `;
+        }).join('')}
+      </div>
+    </section>
+
     <!-- FAQ Section (AEO) -->
     <section class="mb-20 max-w-4xl mx-auto">
       <h2 class="text-2xl sm:text-3xl font-extrabold text-white text-center mb-8">

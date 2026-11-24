@@ -7,6 +7,8 @@ import { useAuthStore } from '../store/auth';
 import Typewriter from '../components/Typewriter';
 import LanguageDropdown from '../components/LanguageDropdown';
 import { Box, Check, Upload, Image as ImageIcon, AlertCircle, X, User } from 'lucide-react';
+import { ARTICLES } from '../data/blogArticles';
+import { getArticleSlug } from '../utils/seo';
 
 type FrameTheme = 'compact' | 'transparent' | 'technical';
 
@@ -1004,6 +1006,69 @@ export default function Landing() {
                 ))}
               </tbody>
             </table>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Engineering Guides & Blog Section ── */}
+      <section className="py-24 px-6 border-t border-white/5 bg-white/[0.005]">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+            <div>
+              <p className="text-xs uppercase tracking-widest text-zinc-400 font-mono font-bold mb-2">
+                {isTr ? 'MÜHENDİSLİK REHBERLERİ & SEKTÖR RAPORLARI' : isDe ? 'ENGINEERING-LEITFÄDEN & BRANCHENBERICHTE' : 'ENGINEERING GUIDES & BENCHMARKS'}
+              </p>
+              <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-white">
+                {isTr ? 'Web 3D, CAD ve AR' : isDe ? 'Web-3D, CAD und AR' : 'Web 3D, CAD & AR'}
+                <span className="text-gray-500"> {isTr ? 'Uzmanlık Merkezi' : isDe ? 'Wissenszentrum' : 'Knowledge Hub'}</span>
+              </h2>
+            </div>
+            <Link
+              to={blogPath}
+              className="inline-flex items-center gap-2 text-sm font-semibold text-white hover:text-zinc-300 transition group"
+            >
+              <span>{isTr ? 'Tüm Makaleleri Oku' : isDe ? 'Alle Artikel lesen' : 'Browse All Guides'}</span>
+              <span className="group-hover:translate-x-1 transition-transform" aria-hidden="true">&rarr;</span>
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              ARTICLES.find(a => a.slug === 'endustriyel-b2b-makine-dijital-3d-yedek-parca-katalogu'),
+              ARTICLES[0],
+              ARTICLES.find(a => a.slug === 'endustriyel-cad-stp-step-webgl-draco-optimizasyon-rehberi'),
+            ].filter(Boolean).map((art) => {
+              if (!art) return null;
+              const artLang = isTr ? 'tr' : isDe ? 'de' : 'en';
+              const slug = getArticleSlug(art, artLang);
+              const artUrl = isTr ? `/blog/${slug}/` : isDe ? `/de/blog/${slug}/` : `/en/blog/${slug}/`;
+              return (
+                <Link
+                  key={art.slug}
+                  to={artUrl}
+                  className="group flex flex-col justify-between p-7 rounded-2xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/25 transition-all duration-300 shadow-sm hover:shadow-xl"
+                >
+                  <div>
+                    <div className="flex items-center justify-between text-xs text-gray-400 mb-3.5 font-mono">
+                      <span className="px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10 text-gray-300 font-medium">
+                        {art.category[artLang]}
+                      </span>
+                      <span>{art.readTime[artLang]}</span>
+                    </div>
+                    <h3 className="text-base sm:text-lg font-bold text-white group-hover:text-blue-400 transition-colors line-clamp-2 mb-2.5 leading-snug">
+                      {art.title[artLang]}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-gray-400 line-clamp-3 leading-relaxed mb-5">
+                      {art.desc[artLang]}
+                    </p>
+                  </div>
+                  <div className="flex items-center justify-between text-xs font-semibold text-zinc-300 group-hover:text-white pt-3 border-t border-white/5">
+                    <span>{isTr ? 'Rehberi İncele' : isDe ? 'Leitfaden lesen' : 'Read Guide'}</span>
+                    <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
