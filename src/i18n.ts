@@ -67,6 +67,10 @@ const resources = {
         btn_upload: 'Upload Model',
         btn_play: 'Play',
         btn_pause: 'Pause',
+        frame_mode: 'Frame Mode:',
+        frame_compact: 'Compact Window',
+        frame_transparent: 'Transparent Floating',
+        frame_technical: 'Technical CAD Blueprint',
       },
       features: {
         f1_badge: 'Web-First & Embed',
@@ -229,7 +233,11 @@ const resources = {
                 "btn_showcase": "Showcase →",
                 "btn_upload": "Modell hochladen",
                 "btn_play": "Abspielen",
-                "btn_pause": "Pause"
+                "btn_pause": "Pause",
+                "frame_mode": "Rahmenmodus:",
+                "frame_compact": "Kompaktes Fenster",
+                "frame_transparent": "Transparent Schwebend",
+                "frame_technical": "Technischer CAD-Plan"
           },
           "features": {
                 "f1_badge": "Web-First & Embed",
@@ -393,6 +401,10 @@ const resources = {
         btn_upload: 'Model Yükle',
         btn_play: 'Oynat',
         btn_pause: 'Durdur',
+        frame_mode: 'Çerçeve Modu:',
+        frame_compact: 'Kompakt Pencere',
+        frame_transparent: 'Şeffaf / Saydam',
+        frame_technical: 'Teknik CAD Çerçevesi',
       },
       features: {
         f1_badge: 'Web-First & Embed',

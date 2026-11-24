@@ -6,7 +6,9 @@ import api from '../services/api';
 import { useAuthStore } from '../store/auth';
 import Typewriter from '../components/Typewriter';
 import LanguageDropdown from '../components/LanguageDropdown';
-import { Box, Check, Upload, Image as ImageIcon, AlertCircle, X } from 'lucide-react';
+import { Box, Check, Upload, Image as ImageIcon, AlertCircle, X, User } from 'lucide-react';
+
+type FrameTheme = 'compact' | 'transparent' | 'technical';
 
 declare global {
   namespace JSX {
@@ -562,6 +564,7 @@ export default function Landing() {
   const faqRef = useRef<HTMLDivElement>(null);
   const uploadRef = useRef<HTMLDivElement>(null);
   const [activeEmbed, setActiveEmbed] = useState(-1);
+  const [frameTheme, setFrameTheme] = useState<FrameTheme>('compact');
 
   const { data: heroData, isLoading: _isLoadingHero } = useQuery({
     queryKey: ['hero-models'],
@@ -662,9 +665,20 @@ export default function Landing() {
             >
               {t('nav.upload')}
             </button>
+            {/* Mobile Login Icon Button (matches LanguageDropdown exactly) */}
             <a
               href={token ? 'https://dash.3dstorelink.com/dashboard' : 'https://dash.3dstorelink.com/login'}
-              className="bg-white text-black px-4 py-2 text-sm font-bold rounded-lg hover:bg-gray-200 transition"
+              aria-label={token ? t('nav.dashboard') : t('nav.login')}
+              title={token ? t('nav.dashboard') : t('nav.login')}
+              className="sm:hidden w-9 h-9 rounded-xl bg-white/5 border border-white/10 text-gray-300 hover:text-white hover:bg-white/10 hover:border-white/20 transition cursor-pointer flex items-center justify-center focus:outline-none shadow-xs group"
+            >
+              <User className="w-4 h-4 text-gray-300 group-hover:text-white transition-colors" />
+            </a>
+
+            {/* Desktop Full Login / Dashboard Button */}
+            <a
+              href={token ? 'https://dash.3dstorelink.com/dashboard' : 'https://dash.3dstorelink.com/login'}
+              className="hidden sm:inline-flex items-center justify-center bg-white text-black px-4 py-2 text-sm font-bold rounded-lg hover:bg-gray-200 transition"
             >
               {token ? t('nav.dashboard') : t('nav.login')}
             </a>
@@ -701,19 +715,134 @@ export default function Landing() {
 
         {/* Right: 3D Embed */}
         <div className="flex-1 w-full lg:w-1/2 flex flex-col p-4 sm:p-8 lg:p-12 mt-8 lg:mt-0 min-h-[500px] sm:min-h-[600px] lg:min-h-[700px]">
-          <div className="w-full flex-1 rounded-3xl overflow-hidden border border-white/10 bg-[#111] shadow-2xl relative mb-6">
+          <div
+            className={`w-full flex-1 rounded-3xl overflow-hidden relative transition-all duration-300 ${
+              frameTheme === 'compact'
+                ? 'border border-white/10 bg-[#111] shadow-2xl'
+                : frameTheme === 'transparent'
+                ? 'border border-dashed border-white/20 bg-[repeating-conic-gradient(rgba(255,255,255,0.04)_0%_25%,transparent_0%_50%)] bg-[length:20px_20px] shadow-none'
+                : 'border border-sky-500/40 shadow-[0_0_40px_rgba(56,189,248,0.12)]'
+            }`}
+            style={
+              frameTheme === 'technical'
+                ? {
+                    backgroundColor: '#0b0f19',
+                    backgroundImage:
+                      'linear-gradient(rgba(56, 189, 248, 0.22) 1px, transparent 1px), linear-gradient(90deg, rgba(56, 189, 248, 0.22) 1px, transparent 1px), linear-gradient(rgba(56, 189, 248, 0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(56, 189, 248, 0.06) 1px, transparent 1px)',
+                    backgroundSize: '60px 60px, 60px 60px, 12px 12px, 12px 12px',
+                    backgroundPosition: '-1px -1px, -1px -1px, -1px -1px, -1px -1px',
+                  }
+                : undefined
+            }
+          >
+            {/* Technical CAD HUD Elements */}
+            {frameTheme === 'technical' && (
+              <>
+                <div className="absolute top-3.5 left-3.5 w-4 h-4 border-t-2 border-l-2 border-sky-400 pointer-events-none z-20 opacity-80" />
+                <div className="absolute top-3.5 right-3.5 w-4 h-4 border-t-2 border-r-2 border-sky-400 pointer-events-none z-20 opacity-80" />
+                <div className="absolute bottom-3.5 left-3.5 w-4 h-4 border-b-2 border-l-2 border-sky-400 pointer-events-none z-20 opacity-80" />
+                <div className="absolute bottom-3.5 right-3.5 w-4 h-4 border-b-2 border-r-2 border-sky-400 pointer-events-none z-20 opacity-80" />
+                <div className="absolute top-3.5 left-10 flex items-center gap-1.5 px-2.5 py-1 rounded bg-sky-950/80 border border-sky-500/40 text-[10px] font-mono text-sky-400 pointer-events-none z-20 shadow-xs">
+                  <span className="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse" />
+                  <span>CAD / TECHNICAL BLUEPRINT</span>
+                </div>
+              </>
+            )}
+
+            {/* Transparent Floating Badge */}
+            {frameTheme === 'transparent' && (
+              <div className="absolute top-3.5 left-4 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-[10px] font-medium text-gray-300 pointer-events-none z-20">
+                <span className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse" />
+                <span>{t('hero.frame_transparent')}</span>
+              </div>
+            )}
+
             {_isLoadingHero || !currentEmbed || currentEmbed.slug === 'default-key' ? (
               <div className="w-full h-full absolute inset-0 flex items-center justify-center">
                 <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
               </div>
             ) : (
               <iframe
-                src={`https://view.3dstorelink.com/${currentEmbed.slug}?autoRotate=1&autoplay=1&enableAR=1&bgColor=111111&cameraOrbit=0deg%2075deg%20auto&showControls=1&enableDownload=0`}
+                key={`${currentEmbed.slug}-${frameTheme}`}
+                src={`https://view.3dstorelink.com/${encodeURIComponent(currentEmbed.slug)}?autoRotate=1&autoplay=1&enableAR=1&cameraOrbit=0deg%2075deg%20auto&showControls=1&enableDownload=0&themePreset=${frameTheme}&bgColor=${
+                  frameTheme === 'compact' ? '111111' : frameTheme === 'technical' ? '0b0f19' : 'transparent'
+                }${frameTheme === 'technical' ? '&cadLineColor=38bdf8&cadShowCorners=1' : ''}`}
                 className="w-full h-full absolute inset-0 border-none"
                 allow="xr-spatial-tracking"
                 title={currentEmbed.name || currentEmbed.label || '3D Model'}
               />
             )}
+          </div>
+
+          {/* Frame Theme Switcher (3 Round Icon Buttons) */}
+          <div className="flex items-center justify-center gap-3 mt-4">
+            <span className="text-xs text-gray-400 font-medium mr-1 hidden sm:inline">
+              {t('hero.frame_mode')}
+            </span>
+
+            {/* 1. Compact / Standart */}
+            <button
+              type="button"
+              onClick={() => setFrameTheme('compact')}
+              className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 relative group cursor-pointer focus:outline-none ${
+                frameTheme === 'compact'
+                  ? 'bg-white text-black ring-2 ring-white/60 scale-110 shadow-lg shadow-white/20'
+                  : 'bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/10 hover:border-white/20 hover:scale-105'
+              }`}
+              title={t('hero.frame_compact')}
+              aria-label={t('hero.frame_compact')}
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <rect x="3" y="3" width="18" height="18" rx="3" />
+                <line x1="3" y1="8" x2="21" y2="8" strokeWidth="1.5" />
+              </svg>
+              <span className="absolute -top-8 px-2 py-0.5 rounded text-[11px] font-medium bg-gray-900 border border-gray-700 text-gray-200 pointer-events-none opacity-0 group-hover:opacity-100 transition whitespace-nowrap shadow-md z-30">
+                {t('hero.frame_compact')}
+              </span>
+            </button>
+
+            {/* 2. Transparent / Şeffaf */}
+            <button
+              type="button"
+              onClick={() => setFrameTheme('transparent')}
+              className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 relative group cursor-pointer focus:outline-none ${
+                frameTheme === 'transparent'
+                  ? 'bg-purple-600 text-white ring-2 ring-purple-400/60 scale-110 shadow-lg shadow-purple-500/30'
+                  : 'bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/10 hover:border-white/20 hover:scale-105'
+              }`}
+              title={t('hero.frame_transparent')}
+              aria-label={t('hero.frame_transparent')}
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <rect x="3" y="3" width="18" height="18" rx="3" strokeDasharray="4 3" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+              <span className="absolute -top-8 px-2 py-0.5 rounded text-[11px] font-medium bg-gray-900 border border-gray-700 text-gray-200 pointer-events-none opacity-0 group-hover:opacity-100 transition whitespace-nowrap shadow-md z-30">
+                {t('hero.frame_transparent')}
+              </span>
+            </button>
+
+            {/* 3. Technical / CAD */}
+            <button
+              type="button"
+              onClick={() => setFrameTheme('technical')}
+              className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 relative group cursor-pointer focus:outline-none ${
+                frameTheme === 'technical'
+                  ? 'bg-sky-500 text-black ring-2 ring-sky-300/80 scale-110 shadow-lg shadow-sky-500/30 font-bold'
+                  : 'bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/10 hover:border-white/20 hover:scale-105'
+              }`}
+              title={t('hero.frame_technical')}
+              aria-label={t('hero.frame_technical')}
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <path d="M4 4h4M4 4v4m16-4h-4m4 0v4M4 20h4m-4 0v-4m16 4h-4m4 0v-4" strokeLinecap="round" />
+                <line x1="12" y1="8" x2="12" y2="16" strokeDasharray="2 2" strokeWidth="1.5" />
+                <line x1="8" y1="12" x2="16" y2="12" strokeDasharray="2 2" strokeWidth="1.5" />
+              </svg>
+              <span className="absolute -top-8 px-2 py-0.5 rounded text-[11px] font-medium bg-gray-900 border border-gray-700 text-gray-200 pointer-events-none opacity-0 group-hover:opacity-100 transition whitespace-nowrap shadow-md z-30">
+                {t('hero.frame_technical')}
+              </span>
+            </button>
           </div>
         </div>
       </section>
