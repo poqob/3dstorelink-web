@@ -341,7 +341,259 @@ export const ARTICLES: Article[] = [
     ],
   },
 
-  /* ── 2. CAD TO WEBGL & DRACO ENGINEERING ── */
+  /* ── 2. INDUSTRIAL B2B SPARE PARTS CATALOG GUIDE (NEW // 2026) ── */
+  {
+    slug: 'endustriyel-b2b-makine-dijital-3d-yedek-parca-katalogu',
+    slugs: {
+      tr: 'endustriyel-b2b-makine-dijital-3d-yedek-parca-katalogu',
+      en: 'industrial-b2b-machinery-digital-3d-spare-parts-catalog',
+      de: 'industrieller-maschinenbau-digitaler-3d-ersatzteilkatalog',
+    },
+    category: {
+      tr: 'B2B Endüstri & Dijital Katalog // YENİ',
+      en: 'B2B Industry & Digital Catalogs // NEW',
+      de: 'B2B-Industrie & Digitale Kataloge // NEU',
+    },
+    readTime: { tr: '11 Dk Okuma', en: '11 Min Read', de: '11 Min. Lesezeit' },
+    date: { tr: '24 Kasım 2026', en: 'November 24, 2026', de: '24. November 2026', iso: '2026-11-24' },
+    title: {
+      tr: 'Endüstriyel İmalatçılar ve Makine Üreticileri İçin Dijital 3D Yedek Parça Kataloğu: PDF\'lerden İnteraktif Web CAD\'e Geçiş',
+      en: 'Digital 3D Spare Parts Catalogs for Machinery OEMs: Transitioning from Static PDFs to Interactive Web CAD',
+      de: 'Digitaler 3D-Ersatzteilkatalog für den Maschinenbau: Vom statischen PDF zu interaktivem Web-CAD',
+    },
+    desc: {
+      tr: 'Makine imalatı ve OEM yedek parça tedariğinde statik 2D PDF katalogların yol açtığı yanlış sipariş maliyetlerini (%28 düşüş) ve telif hakkı (CAD IP) hırsızlığı riskini ortadan kaldıran; milimetrik ölçülendirme, teknik blueprint modu ve güvenli WebGL mesh mimarisiyle donatılmış yeni nesil dijital katalog rehberi.',
+      en: 'Eliminating the 28% misorder penalty of legacy 2D PDF spare part catalogs while safeguarding proprietary CAD IP. A strategic engineering guide to deploying interactive WebGL parts viewers with real-time dimensioning and technical blueprint modes.',
+      de: 'Reduzieren Sie Fehlbestellungen im Maschinenbau um 28% und schützen Sie Ihr CAD-IP. Leitfaden für interaktive 3D-Ersatzteilkataloge mit millimetergenauer Bemaßung, technischem CAD-Blueprint-Modus und gesicherter WebGL-Architektur.',
+    },
+    authors: [AUTHORS.mustafa, AUTHORS.akin],
+    keyTakeaways: {
+      tr: [
+        'Endüstriyel makine yedek parça taleplerinin %28\'i 2D PDF kataloglardaki perspektif ve montaj belirsizliği nedeniyle yanlış sipariş edilmektedir.',
+        'İnteraktif 3D parça kataloğu yanlış sipariş oranını %3\'ün altına düşürürken teknik destek ekibinin çağrı yükünü %54 azaltır.',
+        'Orijinal parametrik SolidWorks, Inventor veya STEP çizimleri sunucuda şifreli kalır; tarayıcıya yalnızca hafif görsel mesh iletilerek telif hakkı (IP) %100 korunur.',
+        'CAD Blueprint (Teknik Çizim Izgarası) modu, mühendis ve teknisyenlere alışık oldukları milimetrik referans koordinatlarını ve vizör köşelerini sunar.',
+        'Dinamik 3D ölçülendirme (hotspot dimensioning) ile flanş çapı, mil boyu ve diş aralığı tarayıcıda canlı teyit edilebilir.',
+      ],
+      en: [
+        '28% of industrial machinery spare part orders fail due to orientation and perspective ambiguity in legacy 2D PDF exploded diagrams.',
+        'Interactive 3D web catalogs reduce misorders below 3% while cutting technical support ticket volume by 54%.',
+        'Parametric SolidWorks, Inventor, and STEP source files remain encrypted on the server; browsers only receive an isolated surface mesh to safeguard proprietary manufacturing IP.',
+        'The CAD Blueprint grid preset provides engineers and maintenance crews with familiar millimeter reference axes, corner visors, and orthographic clarity.',
+        'Real-time 3D dimensioning hotspots allow technicians to inspect flange diameters, shaft lengths, and thread clearances directly in the browser.',
+      ],
+      de: [
+        '28% aller Ersatzteilbestellungen im Maschinenbau sind fehlerhaft, bedingt durch ungenaue 2D-Explosionszeichnungen in statischen PDFs.',
+        'Interaktive 3D-Teilekataloge senken die Fehlbestellquote auf unter 3% und entlasten den technischen Support um 54%.',
+        'Original-CAD-Daten (SolidWorks, STEP) verbleiben geschützt auf dem Server; im Browser wird lediglich ein geschütztes Oberflächennetz ohne Fertigungstoleranzen dargestellt.',
+        'Der CAD-Blueprint-Modus bietet Servicetechnikern vertraute Millimeter-Gitter, Fadenkreuz-Ecken und technische Klarheit.',
+        'Echtzeit-Bemaßungen ermöglichen die sofortige Prüfung von Flanschdurchmessern und Wellenlängen direkt im Webbrowser.',
+      ],
+    },
+    sections: [
+      {
+        id: 'pdf-kataloglarin-maliyeti',
+        heading: {
+          tr: '1. Geleneksel 2D PDF Katalogların ve Patlatılmış Görünümlerin Gizli Maliyetleri',
+          en: '1. The Hidden Costs of Legacy 2D PDF Exploded View Catalogs',
+          de: '1. Die versteckten Kosten statischer 2D-PDF-Ersatzteilkataloge',
+        },
+        paragraphs: {
+          tr: [
+            'Endüstriyel makine imalatçıları, vana üreticileri, hidrolik/pnömatik sistem sağlayıcıları ve takım tezgahı üreticileri için satış sonrası yedek parça operasyonu şirketin en karlı gelir kalemidir. Ancak bu operasyonun omurgasını oluşturan 200-500 sayfalık statik PDF kataloglar, dijital çağda ciddi operasyonel sürtünmelere yol açmaktadır.',
+            'Saha bakım teknisyeni veya satın alma uzmanı, arızalanan bir taşlama bıçağını, blöf vanasını veya pnömatik silindiri PDF üzerinde ararken yalnızca tek açıdan çizilmiş 2D patlatılmış montaj (exploded view) şemalarına mahkumdur. Birbirine çok benzeyen sol/sağ yönlü parçalar, farklı mil çapları veya gövde flanşları 2D çizimde ayırt edilemez. Küresel B2B araştırmalarına göre, endüstriyel yedek parça siparişlerinin %28\'i bu görsel belirsizlik nedeniyle yanlış verilmekte; kargo iadeleri, duran üretim bantları ve müşteri memnuniyetsizliği üreticiye yılda yüz binlerce euro kaybettirmektedir.',
+            'Ayrıca PDF katalogların revize edilmesi aylar sürer. Bir parçanın kodunun veya revizyonunun değişmesi durumunda sahada dağıtılmış binlerce eski PDF geçerliliğini yitirir ve senkronizasyon kopar.',
+          ],
+          en: [
+            'For industrial machinery OEMs, valve manufacturers, and pneumatic equipment builders, aftermarket spare parts represent the highest-margin revenue stream. Yet the operational backbone of this sector—200-to-500-page static PDF catalogs—creates crippling friction.',
+            'Field service engineers and B2B procurement managers searching for a replacement grinding blade, blowdown valve, or pneumatic actuator are restricted to flat, single-angle 2D exploded views. Left-hand versus right-hand mirror components, subtle flange bolt circle diameters, and shaft step-downs look identical in orthographic line art. Industry telemetry indicates 28% of machinery spare part orders contain identification errors, generating catastrophic factory downtime and spiraling reverse-logistics expenses.',
+            'Furthermore, PDF catalogs are obsolete upon distribution. Revisions, supplier supersessions, and part updates take months to push, stranding maintenance crews with stale technical documentation.',
+          ],
+          de: [
+            'Für Hersteller von Industrieanlagen, Ventilen und Zerspanungswerkzeugen ist das After-Sales-Geschäft der profitabelste Geschäftsbereich. Dennoch stützt sich die Branche häufig noch auf 200 bis 500 Seiten schwere PDF-Kataloge.',
+            'Instandhalter vor Ort müssen Ersatzteile anhand von 2D-Explosionszeichnungen identifizieren. Gespiegelte Bauteile, Wellendurchmesser und Flanschmaße lassen sich in flachen Skizzen kaum unterscheiden. 28% aller Ersatzteilbestellungen schlagen fehl, weil Kunden falsche Teilenummern heraussuchen.',
+            'Zusätzlich veralten PDF-Dateien sofort nach dem Versand. Änderungen an Artikelnummern oder Baugruppen führen zu teuren Missverständnissen.',
+          ],
+        },
+      },
+      {
+        id: 'cad-ip-korumasi',
+        heading: {
+          tr: '2. Fikri Mülkiyet (CAD IP) Güvenliği: Ham STEP Paylaşmadan 3D İnteraktivite Sağlamak',
+          en: '2. Safeguarding Proprietary CAD IP: 3D Interactivity Without Exposing Raw STEP Files',
+          de: '2. Schutz des geistigen Eigentums: 3D-Visualisierung ohne Freigabe von STEP-Originalen',
+        },
+        paragraphs: {
+          tr: [
+            'Makine üreticilerinin interaktif 3D teknolojisine geçişteki en büyük çekincesi daima "Telif hakkı ve tersine mühendislik" (IP theft) olmuştur. Ar-Ge departmanlarının yıllar süren mühendislik hesaplarıyla geliştirdiği SolidWorks, Autodesk Inventor, Siemens NX veya Creo parametrik modellerini müşterilere veya bayilere ham STEP/STP formatında teslim etmek, rakiplerin ve fason üreticilerin parçayı birebir CNC tezgahlarında kopyalamasına davetiye çıkarır.',
+            '3D StoreLink bu güvenlik çıkmazını mimari seviyede çözer. Yüklenen STEP/STP dosyası bulut sunucularında işlenirken üretim toleransları, iç kanal derinlikleri, malzeme formülleri ve parametrik matematiksel B-Rep eğrileri tamamen ayıklanır. Geriye yalnızca parçanın dış görsel geometrisini yansıtan hafif, optimize edilmiş bir WebGL üçgen yüzey ağı (mesh) kalır.',
+            'Tarayıcıya gönderilen bu yüzey ağı Google Draco ve Meshopt algoritmalarıyla şifrelenir ve kuantize edilir. Bu geometri bir CNC tezgahına veya CAD programına geri aktarılamaz; yalnızca ekranda 60 FPS hızla incelenebilir. Böylece üretici, fikri mülkiyetini %100 koruma altında tutarak müşterilerine kusursuz bir 3D inceleme deneyimi sunar.',
+          ],
+          en: [
+            'The chief barrier preventing heavy equipment manufacturers from modernizing their catalog is the legitimate fear of intellectual property (IP) theft and reverse engineering. Handing raw SolidWorks, Inventor, Siemens NX, or STEP assemblies to customers or distributors allows competitors to reproduce parts directly on 5-axis CNC machines.',
+            '3D StoreLink completely eliminates this security vulnerability at the architectural boundary. When an engineering STEP file is ingested, parametric B-Rep curves, internal tooling tolerances, and subterranean bore recipes are stripped. The system extracts solely the visual topological boundary mesh.',
+            'This outer mesh is quantized and compressed via Google Draco. The resulting asset is computationally irreversible—it cannot be imported back into SolidWorks to extract manufacturing tolerances, yet it renders in sub-millimeter visual fidelity at 60 FPS in any mobile browser.',
+          ],
+          de: [
+            'Die größte Sorge im Maschinenbau ist der Diebstahl von Konstruktionsdaten (IP). Wer originale SolidWorks-, Inventor- oder STEP-Dateien an Kunden oder Händler weitergibt, riskiert illegale 1:1-Kopien auf CNC-Maschinen.',
+            '3D StoreLink löst dieses Problem: Beim Upload von STEP-Dateien werden alle inneren Fertigungsmaße, Toleranzen und parametrischen B-Rep-Gleichungen serverseitig entfernt. Der Browser empfängt ausschließlich ein visuelles Oberflächennetz.',
+            'Dieses Dreiecksnetz wird mit Google Draco verschlüsselt und komprimiert. Es lässt sich nicht in CAD-Systeme für die Fertigung zurückführen, ermöglicht aber eine makellose 3D-Darstellung im Web.',
+          ],
+        },
+      },
+      {
+        id: 'teknik-blueprint-ve-olculendirme',
+        heading: {
+          tr: '3. Teknik CAD Blueprint Modu ve Milimetrik Canlı Ölçülendirme',
+          en: '3. Technical CAD Blueprint HUD and Live Millimeter Dimensioning',
+          de: '3. CAD-Blueprint-Modus und millimetergenaue Live-Bemaßung',
+        },
+        paragraphs: {
+          tr: [
+            'B2B endüstriyel satın almacılar ve bakım şefleri tüketici e-ticaret sitelerindeki şatafatlı stüdyo aydınlatmalarını aramazlar; onlar için önemli olan teknik netlik, toleranslar ve montaj eksenleridir.',
+            '3D StoreLink\'in özel "CAD / Technical Blueprint" teması, 3D görüntüleyiciyi anında modern bir mühendislik vizörüne dönüştürür. 60x60px ana ve 12x12px alt ızgaralar, neon mavi/siyan köşe vizörleri ve karanlık laboratuvar arka planı ile parça adeta bir CAD yazılımı içinde inceleniyormuş hissi uyandırır.',
+            'Buna ek olarak entegre "Dinamik Ölçülendirme" (Show Dimensions) altyapısı sayesinde, parçanın X, Y ve Z eksenlerindeki milimetrik sınır kutusu (bounding box) ve kritik montaj yüzeyleri doğrudan ekranda interaktif cetvellerle gösterilir. Kullanıcı parçayı 360 derece döndürdükçe cetvel çizgileri ve milimetre etiketleri açıya göre kendini hizalar. Bir vana veya bıçak sipariş eden teknisyen, flanş aralığının mevcut boru hattına uyup uymadığını siparişi vermeden önce ekranda doğrular.',
+          ],
+          en: [
+            'Industrial B2B procurement managers and plant engineers do not want consumer studio glitz; they demand dimensional precision, clearance verification, and axis clarity.',
+            'The 3D StoreLink CAD Technical Blueprint preset transforms the web viewer into a precision engineering HUD. Equipped with 60x60px major and 12x12px minor grid overlays, cyan corner brackets, and a high-contrast dark blueprint canvas, it feels like an integrated engineering workstation.',
+            'Coupled with automated 3D Hotspot Dimensioning, the viewer computes exact millimeter bounding metrics across X, Y, and Z axes. Dynamic dimension lines and metric tags automatically billboard as the camera orbits. A technician ordering a replacement slurry valve can verify face-to-face flange length against existing pipework prior to purchase.',
+          ],
+          de: [
+            'Industrielle Einkäufer und Instandhalter benötigen keine verspielten Konsum-Grafiken, sondern verlässliche technische Daten, Passmaße und klare Achsen.',
+            'Der CAD-Blueprint-Modus von 3D StoreLink verwandelt den Web-Viewer in ein virtuelles CAD-Terminal: 60x60 mm Hauptgitter, 12x12 mm Feingitter und technische Fadenkreuze sorgen für höchste Übersicht.',
+            'Dank integrierter Echtzeit-Bemaßung werden X-, Y- und Z-Abmessungen mit interaktiven Maßlinien direkt am Bauteil angezeigt. Der Servicetechniker kann schon vor dem Absenden der Bestellung prüfen, ob der Flanschabstand zur bestehenden Anlage passt.',
+          ],
+        },
+      },
+      {
+        id: 'karsilastirma-tablosu',
+        heading: {
+          tr: '4. Verimlilik Karşılaştırması: Statik 2D PDF Katalog vs. İnteraktif 3D Web CAD',
+          en: '4. Performance Benchmark: Static 2D PDF vs. Interactive 3D Web CAD',
+          de: '4. Effizienzvergleich: Statischer 2D-PDF-Katalog vs. Interaktiver 3D-Web-CAD-Katalog',
+        },
+        paragraphs: {
+          tr: [
+            'Aşağıdaki tablo, endüstriyel makine ve ekipman üreticilerinin 3D dijital yedek parça kataloğuna geçtikten sonra elde ettikleri operasyonel kazanımları özetlemektedir:',
+          ],
+          en: [
+            'The benchmark below compares key operational KPIs between traditional PDF spare parts catalogs and 3D StoreLink interactive Web CAD catalogs:',
+          ],
+          de: [
+            'Die folgende Tabelle zeigt den operativen Effizienzvergleich zwischen klassischen PDF-Ersatzteilkatalogen und interaktiven 3D-Web-Katalogen:',
+          ],
+        },
+        table: {
+          headers: {
+            tr: ['Operasyonel Kriter', 'Geleneksel 2D PDF Katalog', '3D StoreLink Web CAD Kataloğu', 'Ölçülen İyileşme'],
+            en: ['Operational KPI', 'Traditional 2D PDF Catalog', '3D StoreLink Web CAD Catalog', 'Empirical Benefit'],
+            de: ['Operativer Parameter', 'Traditioneller 2D-PDF-Katalog', '3D StoreLink Web-CAD-Katalog', 'Gemessener Vorteil'],
+          },
+          rows: {
+            tr: [
+              ['Yanlış Parça Sipariş Oranı', '%28.4', '%2.7', '-%90.5 Yanlış Sipariş Düşüşü'],
+              ['Sipariş Öncesi Parça Doğrulama Süresi', '14.2 Dakika (PDF arama + telefon)', '1.8 Dakika (Canlı 3D döngü & ölçü)', '%87 Daha Hızlı Parça Tespiti'],
+              ['Teknik Destek Çağrı Hacmi', 'Aylık ortalama 640 talep/OEM', 'Aylık ortalama 294 talep/OEM', '-%54 Destek Yükü Azalması'],
+              ['Telif Hakkı (CAD IP) Güvenliği', 'Riskli (Çizim veya STEP sızabilir)', 'Tam Koruma (Sadece Draco mesh)', '%100 Tersine Mühendislik Koruması'],
+              ['Mobil Sahada Kullanım (Tablet/Telefon)', 'Zor (PDF kaydırma & yakınlaştırma)', 'Kusursuz (60 FPS dokunmatik + 1:1 AR)', 'Doğrudan Sahada Makine Yanında Denetim'],
+              ['Katalog Güncelleme & Revizyon Hızı', '2-6 Ay (Tüm dokümanı baştan basma)', 'Anlık (Buluttan tek tıkla güncelleme)', 'Sıfır Güncelleme Maliyeti'],
+            ],
+            en: [
+              ['Spare Part Misorder Rate', '28.4%', '2.7%', '-90.5% Order Error Reduction'],
+              ['Pre-Purchase Identification Time', '14.2 Min (PDF paging + phone support)', '1.8 Min (Real-time 3D orbit & measure)', '87% Faster Part Verification'],
+              ['Support Desk Ticket Volume', '640 tickets/month per OEM', '294 tickets/month per OEM', '-54% Support Overhead'],
+              ['CAD IP Safeguard', 'Compromised (Drawings/STEP exposed)', 'Fortified (Encrypted surface mesh)', 'Zero Reverse-Engineering Risk'],
+              ['Field Service Mobility (Phones/Tablets)', 'Poor (Clunky PDF pan/zoom)', 'Native 60 FPS touch + 1:1 Web AR', 'Real-Time Machine Side Inspection'],
+              ['Catalog Revision Deployment', '2 to 6 Months (Re-authoring)', 'Instant (Cloud-synced zero downtime)', 'Instant Catalog Sync'],
+            ],
+            de: [
+              ['Fehlbestellquote bei Ersatzteilen', '28,4%', '2,7%', '-90,5% weniger Retouren'],
+              ['Identifikationsdauer pro Bauteil', '14,2 Min. (Blättern + Supportanruf)', '1,8 Min. (3D-Prüfung & Maße)', '87% schnellere Teilefindung'],
+              ['Technisches Support-Ticket-Aufkommen', '640 Anfragen/Monat pro Hersteller', '294 Anfragen/Monat pro Hersteller', '-54% Entlastung des Kundendienstes'],
+              ['CAD-Datensicherheit (IP-Schutz)', 'Unsicher (Zeichnungen leicht kopierbar)', 'Vollständig gesichert (Draco-Mesh)', 'Kein Reverse-Engineering möglich'],
+              ['Mobile Nutzung auf Baustellen / Fabrik', 'Mühsam (Ständiges Zoomen in PDFs)', 'Flüssige 60 FPS Touch-Gesten + 1:1 AR', 'Direkte Montageprüfung am Aggregat'],
+              ['Katalog-Aktualisierungsdauer', '2 bis 6 Monate (Neuauflage)', 'In Echtzeit (Cloud-Aktualisierung)', 'Sofortige Synchronisation'],
+            ],
+          },
+        },
+      },
+      {
+        id: 'b2b-erp-entegrasyonu',
+        heading: {
+          tr: '5. B2B Portallara, ERP ve E-Ticaret Sistemlerine Entegrasyon Mimarisi',
+          en: '5. Architecture: Integrating into B2B Portals, ERP, and E-Commerce Systems',
+          de: '5. Integrationsarchitektur: B2B-Portale, ERP-Systeme und E-Commerce',
+        },
+        paragraphs: {
+          tr: [
+            'Bir 3D katalog çözümünün başarısı, mevcut B2B sipariş altyapısıyla ne kadar hızlı konuşabildiğine bağlıdır. 3D StoreLink, SAP, Microsoft Dynamics 365, Salesforce B2B Commerce, Shopify Plus veya özel yazılmış ERP portallarına sıfır backend bağımlılığıyla entegre olur.',
+            'Her bir parça için oluşturulan parametresiz, temiz UUID4 bağlantısı doğrudan iframe olarak ürün veya parça detay sayfasına gömülebilir. CAD Blueprint modu veya kurumsal renkler tek bir URL parametresiyle yapılandırılır.',
+          ],
+          en: [
+            'An industrial 3D parts catalog succeeds only if it seamlessly bridges into existing enterprise B2B procurement stacks. 3D StoreLink embeds into SAP, Microsoft Dynamics 365, Salesforce B2B Commerce, and bespoke custom ERP portals with zero backend friction.',
+            'Every component is assigned an idempotent clean UUID4 embed endpoint that slots into standard HTML iframes. Technical themes, millimeter rulers, and branding palettes configure instantaneously via standard URL flags.',
+          ],
+          de: [
+            'Ein digitaler 3D-Katalog muss sich nahtlos in bestehende ERP- und B2B-Systeme (SAP, Microsoft Dynamics, Salesforce B2B) einfügen. 3D StoreLink benötigt dafür keinerlei aufwendige Backend-Entwicklung.',
+            'Jedes Bauteil erhält eine saubere, verschlüsselte UUID4-Adresse, die direkt per iframe in Ersatzteil-Portalen eingebunden werden kann.',
+          ],
+        },
+        codeSnippet: `<!-- 3D StoreLink - Endüstriyel B2B Yedek Parça Görüntüleyici -->
+<div style="width: 100%; height: 600px; border-radius: 16px; overflow: hidden; background: #0b0f19;">
+  <iframe
+    src="https://view.3dstorelink.com/bkv-4000-serisi-dip-blf-vana?theme=technical&showDimensions=1&cadColor=38bdf8&cadCorners=1&enableAR=1&autoRotate=1"
+    width="100%"
+    height="100%"
+    frameborder="0"
+    allow="xr-spatial-tracking"
+    loading="lazy"
+    title="BKV 4000 Dip Blöf Vana - 3D CAD Teknik Görüntüleyici"
+  ></iframe>
+</div>`,
+      },
+    ],
+    faq: [
+      {
+        q: {
+          tr: 'Orijinal STEP veya SolidWorks montajlarımız rakipler tarafından web üzerinden indirilebilir mi?',
+          en: 'Can competitors download our original STEP or SolidWorks manufacturing files from the web?',
+          de: 'Können Wettbewerber unsere Original-STEP- oder SolidWorks-Dateien aus dem Web herunterladen?',
+        },
+        a: {
+          tr: 'Kesinlikle hayır. Yüklediğiniz parametrik CAD modelleri sunucuda şifrelenir ve yalnızca dış yüzey üçgenlerinden oluşan optimize bir WebGL mesh üretilir. İndirme butonu kapatıldığında tarayıcıya ham CAD verisi kesinlikle ulaşmaz; tersine mühendislik riski sıfırdır.',
+          en: 'Absolutely not. Source CAD assemblies are stored in an encrypted vault. The client browser solely streams an irreversible Google Draco triangular mesh. With download protection engaged, your core parametric manufacturing IP remains 100% safeguarded.',
+          de: 'Absolut ausgeschlossen. Ihre originalen CAD-Modelle bleiben verschlüsselt auf dem Server. Der Browser empfängt lediglich ein irreversibles WebGL-Polygonnetz, aus dem keine Fertigungsdaten rekonstruiert werden können.',
+        },
+      },
+      {
+        q: {
+          tr: 'Mevcut ERP veya B2B portalımızdaki binlerce yedek parçayı nasıl senkronize edebiliriz?',
+          en: 'How can we synchronize thousands of spare parts from our existing ERP or B2B portal?',
+          de: 'Wie können wir tausende Ersatzteile aus unserem ERP-System synchronisieren?',
+        },
+        a: {
+          tr: '3D StoreLink RESTful API ve SDK\'ları sayesinde parça numaralarınız (SKU) ile 3D modelleri otomatik eşleştirebilir, toplu CAD yüklemeleri ve webhook tetikleyicileri ile tüm kataloğunuzu saatler içinde yayına alabilirsiniz.',
+          en: 'Through 3D StoreLink RESTful APIs and SDKs, you can programmatically associate ERP SKUs with 3D models, execute bulk CAD conversion pipelines, and trigger automated sync via webhooks.',
+          de: 'Über die 3D StoreLink REST-API können Sie Ihre ERP-Teilenummern (SKUs) vollautomatisch mit 3D-Modellen verknüpfen und große Baugruppen per Batch-Upload synchronisieren.',
+        },
+      },
+      {
+        q: {
+          tr: 'Saha bakım teknisyenleri akıllı telefon üzerinden uygulamaya gerek duymadan parçayı inceleyebilir mi?',
+          en: 'Can field service technicians inspect assemblies on smartphones without installing an app?',
+          de: 'Können Servicetechniker die Bauteile auf Smartphones ohne App-Installation prüfen?',
+        },
+        a: {
+          tr: 'Evet. WebGL ve WebXR altyapımız iOS Safari ve Android Chrome ile %100 uyumludur. Teknisyenler parçayı 60 FPS dokunmatik olarak döndürebilir, milimetrik ölçüleri görebilir ve tek tuşla 1:1 artırılmış gerçeklik (AR) ile makine üzerine yerleştirip montaj uyumunu test edebilir.',
+          en: 'Yes. The viewer runs natively inside mobile Safari and Chrome. Field technicians enjoy fluid 60 FPS touch orbit, inspect millimeter tolerances, and project the part into physical equipment via 1:1 Web AR without any app downloads.',
+          de: 'Ja. Die Darstellung erfolgt direkt im mobilen Safari oder Chrome. Techniker können Baugruppen flüssig drehen, Maße prüfen und das Ersatzteil per 1:1 Web-AR direkt an die reale Maschine projizieren.',
+        },
+      },
+    ],
+  },
+
+  /* ── 3. CAD TO WEBGL & DRACO ENGINEERING ── */
   {
     slug: 'endustriyel-cad-stp-step-webgl-draco-optimizasyon-rehberi',
     slugs: {
@@ -1002,258 +1254,6 @@ export const ARTICLES: Article[] = [
           tr: 'Yüklenen CAD dosyalarının (STEP/STP) metrik sınır kutuları (bounding box) korunur ve glTF/USDZ koordinatlarına 1 metre = 1 birim standardıyla işlenir.',
           en: 'Source CAD boundary metrics are locked and exported under the glTF/USDZ 1 unit = 1 meter spatial standard.',
           de: 'CAD-Maße werden im Verhältnis 1 Einheit = 1 Meter exakt in die 3D-Dateien übertragen.',
-        },
-      },
-    ],
-  },
-
-  /* ── 5. INDUSTRIAL B2B SPARE PARTS CATALOG GUIDE ── */
-  {
-    slug: 'endustriyel-b2b-makine-dijital-3d-yedek-parca-katalogu',
-    slugs: {
-      tr: 'endustriyel-b2b-makine-dijital-3d-yedek-parca-katalogu',
-      en: 'industrial-b2b-machinery-digital-3d-spare-parts-catalog',
-      de: 'industrieller-maschinenbau-digitaler-3d-ersatzteilkatalog',
-    },
-    category: {
-      tr: 'B2B Endüstri & Dijital Katalog',
-      en: 'B2B Industry & Digital Catalogs',
-      de: 'B2B-Industrie & Digitale Kataloge',
-    },
-    readTime: { tr: '11 Dk Okuma', en: '11 Min Read', de: '11 Min. Lesezeit' },
-    date: { tr: '24 Kasım 2026', en: 'November 24, 2026', de: '24. November 2026', iso: '2026-11-24' },
-    title: {
-      tr: 'Endüstriyel İmalatçılar ve Makine Üreticileri İçin Dijital 3D Yedek Parça Kataloğu: PDF\'lerden İnteraktif Web CAD\'e Geçiş',
-      en: 'Digital 3D Spare Parts Catalogs for Machinery OEMs: Transitioning from Static PDFs to Interactive Web CAD',
-      de: 'Digitaler 3D-Ersatzteilkatalog für den Maschinenbau: Vom statischen PDF zu interaktivem Web-CAD',
-    },
-    desc: {
-      tr: 'Makine imalatı ve OEM yedek parça tedariğinde statik 2D PDF katalogların yol açtığı yanlış sipariş maliyetlerini (%28 düşüş) ve telif hakkı (CAD IP) hırsızlığı riskini ortadan kaldıran; milimetrik ölçülendirme, teknik blueprint modu ve güvenli WebGL mesh mimarisiyle donatılmış yeni nesil dijital katalog rehberi.',
-      en: 'Eliminating the 28% misorder penalty of legacy 2D PDF spare part catalogs while safeguarding proprietary CAD IP. A strategic engineering guide to deploying interactive WebGL parts viewers with real-time dimensioning and technical blueprint modes.',
-      de: 'Reduzieren Sie Fehlbestellungen im Maschinenbau um 28% und schützen Sie Ihr CAD-IP. Leitfaden für interaktive 3D-Ersatzteilkataloge mit millimetergenauer Bemaßung, technischem CAD-Blueprint-Modus und gesicherter WebGL-Architektur.',
-    },
-    authors: [AUTHORS.mustafa, AUTHORS.akin],
-    keyTakeaways: {
-      tr: [
-        'Endüstriyel makine yedek parça taleplerinin %28\'i 2D PDF kataloglardaki perspektif ve montaj belirsizliği nedeniyle yanlış sipariş edilmektedir.',
-        'İnteraktif 3D parça kataloğu yanlış sipariş oranını %3\'ün altına düşürürken teknik destek ekibinin çağrı yükünü %54 azaltır.',
-        'Orijinal parametrik SolidWorks, Inventor veya STEP çizimleri sunucuda şifreli kalır; tarayıcıya yalnızca hafif görsel mesh iletilerek telif hakkı (IP) %100 korunur.',
-        'CAD Blueprint (Teknik Çizim Izgarası) modu, mühendis ve teknisyenlere alışık oldukları milimetrik referans koordinatlarını ve vizör köşelerini sunar.',
-        'Dinamik 3D ölçülendirme (hotspot dimensioning) ile flanş çapı, mil boyu ve diş aralığı tarayıcıda canlı teyit edilebilir.',
-      ],
-      en: [
-        '28% of industrial machinery spare part orders fail due to orientation and perspective ambiguity in legacy 2D PDF exploded diagrams.',
-        'Interactive 3D web catalogs reduce misorders below 3% while cutting technical support ticket volume by 54%.',
-        'Parametric SolidWorks, Inventor, and STEP source files remain encrypted on the server; browsers only receive an isolated surface mesh to safeguard proprietary manufacturing IP.',
-        'The CAD Blueprint grid preset provides engineers and maintenance crews with familiar millimeter reference axes, corner visors, and orthographic clarity.',
-        'Real-time 3D dimensioning hotspots allow technicians to inspect flange diameters, shaft lengths, and thread clearances directly in the browser.',
-      ],
-      de: [
-        '28% aller Ersatzteilbestellungen im Maschinenbau sind fehlerhaft, bedingt durch ungenaue 2D-Explosionszeichnungen in statischen PDFs.',
-        'Interaktive 3D-Teilekataloge senken die Fehlbestellquote auf unter 3% und entlasten den technischen Support um 54%.',
-        'Original-CAD-Daten (SolidWorks, STEP) verbleiben geschützt auf dem Server; im Browser wird lediglich ein geschütztes Oberflächennetz ohne Fertigungstoleranzen dargestellt.',
-        'Der CAD-Blueprint-Modus bietet Servicetechnikern vertraute Millimeter-Gitter, Fadenkreuz-Ecken und technische Klarheit.',
-        'Echtzeit-Bemaßungen ermöglichen die sofortige Prüfung von Flanschdurchmessern und Wellenlängen direkt im Webbrowser.',
-      ],
-    },
-    sections: [
-      {
-        id: 'pdf-kataloglarin-maliyeti',
-        heading: {
-          tr: '1. Geleneksel 2D PDF Katalogların ve Patlatılmış Görünümlerin Gizli Maliyetleri',
-          en: '1. The Hidden Costs of Legacy 2D PDF Exploded View Catalogs',
-          de: '1. Die versteckten Kosten statischer 2D-PDF-Ersatzteilkataloge',
-        },
-        paragraphs: {
-          tr: [
-            'Endüstriyel makine imalatçıları, vana üreticileri, hidrolik/pnömatik sistem sağlayıcıları ve takım tezgahı üreticileri için satış sonrası yedek parça operasyonu şirketin en karlı gelir kalemidir. Ancak bu operasyonun omurgasını oluşturan 200-500 sayfalık statik PDF kataloglar, dijital çağda ciddi operasyonel sürtünmelere yol açmaktadır.',
-            'Saha bakım teknisyeni veya satın alma uzmanı, arızalanan bir taşlama bıçağını, blöf vanasını veya pnömatik silindiri PDF üzerinde ararken yalnızca tek açıdan çizilmiş 2D patlatılmış montaj (exploded view) şemalarına mahkumdur. Birbirine çok benzeyen sol/sağ yönlü parçalar, farklı mil çapları veya gövde flanşları 2D çizimde ayırt edilemez. Küresel B2B araştırmalarına göre, endüstriyel yedek parça siparişlerinin %28\'i bu görsel belirsizlik nedeniyle yanlış verilmekte; kargo iadeleri, duran üretim bantları ve müşteri memnuniyetsizliği üreticiye yılda yüz binlerce euro kaybettirmektedir.',
-            'Ayrıca PDF katalogların revize edilmesi aylar sürer. Bir parçanın kodunun veya revizyonunun değişmesi durumunda sahada dağıtılmış binlerce eski PDF geçerliliğini yitirir ve senkronizasyon kopar.',
-          ],
-          en: [
-            'For industrial machinery OEMs, valve manufacturers, and pneumatic equipment builders, aftermarket spare parts represent the highest-margin revenue stream. Yet the operational backbone of this sector—200-to-500-page static PDF catalogs—creates crippling friction.',
-            'Field service engineers and B2B procurement managers searching for a replacement grinding blade, blowdown valve, or pneumatic actuator are restricted to flat, single-angle 2D exploded views. Left-hand versus right-hand mirror components, subtle flange bolt circle diameters, and shaft step-downs look identical in orthographic line art. Industry telemetry indicates 28% of machinery spare part orders contain identification errors, generating catastrophic factory downtime and spiraling reverse-logistics expenses.',
-            'Furthermore, PDF catalogs are obsolete upon distribution. Revisions, supplier supersessions, and part updates take months to push, stranding maintenance crews with stale technical documentation.',
-          ],
-          de: [
-            'Für Hersteller von Industrieanlagen, Ventilen und Zerspanungswerkzeugen ist das After-Sales-Geschäft der profitabelste Geschäftsbereich. Dennoch stützt sich die Branche häufig noch auf 200 bis 500 Seiten schwere PDF-Kataloge.',
-            'Instandhalter vor Ort müssen Ersatzteile anhand von 2D-Explosionszeichnungen identifizieren. Gespiegelte Bauteile, Wellendurchmesser und Flanschmaße lassen sich in flachen Skizzen kaum unterscheiden. 28% aller Ersatzteilbestellungen schlagen fehl, weil Kunden falsche Teilenummern heraussuchen.',
-            'Zusätzlich veralten PDF-Dateien sofort nach dem Versand. Änderungen an Artikelnummern oder Baugruppen führen zu teuren Missverständnissen.',
-          ],
-        },
-      },
-      {
-        id: 'cad-ip-korumasi',
-        heading: {
-          tr: '2. Fikri Mülkiyet (CAD IP) Güvenliği: Ham STEP Paylaşmadan 3D İnteraktivite Sağlamak',
-          en: '2. Safeguarding Proprietary CAD IP: 3D Interactivity Without Exposing Raw STEP Files',
-          de: '2. Schutz des geistigen Eigentums: 3D-Visualisierung ohne Freigabe von STEP-Originalen',
-        },
-        paragraphs: {
-          tr: [
-            'Makine üreticilerinin interaktif 3D teknolojisine geçişteki en büyük çekincesi daima "Telif hakkı ve tersine mühendislik" (IP theft) olmuştur. Ar-Ge departmanlarının yıllar süren mühendislik hesaplarıyla geliştirdiği SolidWorks, Autodesk Inventor, Siemens NX veya Creo parametrik modellerini müşterilere veya bayilere ham STEP/STP formatında teslim etmek, rakiplerin ve fason üreticilerin parçayı birebir CNC tezgahlarında kopyalamasına davetiye çıkarır.',
-            '3D StoreLink bu güvenlik çıkmazını mimari seviyede çözer. Yüklenen STEP/STP dosyası bulut sunucularında işlenirken üretim toleransları, iç kanal derinlikleri, malzeme formülleri ve parametrik matematiksel B-Rep eğrileri tamamen ayıklanır. Geriye yalnızca parçanın dış görsel geometrisini yansıtan hafif, optimize edilmiş bir WebGL üçgen yüzey ağı (mesh) kalır.',
-            'Tarayıcıya gönderilen bu yüzey ağı Google Draco ve Meshopt algoritmalarıyla şifrelenir ve kuantize edilir. Bu geometri bir CNC tezgahına veya CAD programına geri aktarılamaz; yalnızca ekranda 60 FPS hızla incelenebilir. Böylece üretici, fikri mülkiyetini %100 koruma altında tutarak müşterilerine kusursuz bir 3D inceleme deneyimi sunar.',
-          ],
-          en: [
-            'The chief barrier preventing heavy equipment manufacturers from modernizing their catalog is the legitimate fear of intellectual property (IP) theft and reverse engineering. Handing raw SolidWorks, Inventor, Siemens NX, or STEP assemblies to customers or distributors allows competitors to reproduce parts directly on 5-axis CNC machines.',
-            '3D StoreLink completely eliminates this security vulnerability at the architectural boundary. When an engineering STEP file is ingested, parametric B-Rep curves, internal tooling tolerances, and subterranean bore recipes are stripped. The system extracts solely the visual topological boundary mesh.',
-            'This outer mesh is quantized and compressed via Google Draco. The resulting asset is computationally irreversible—it cannot be imported back into SolidWorks to extract manufacturing tolerances, yet it renders in sub-millimeter visual fidelity at 60 FPS in any mobile browser.',
-          ],
-          de: [
-            'Die größte Sorge im Maschinenbau ist der Diebstahl von Konstruktionsdaten (IP). Wer originale SolidWorks-, Inventor- oder STEP-Dateien an Kunden oder Händler weitergibt, riskiert illegale 1:1-Kopien auf CNC-Maschinen.',
-            '3D StoreLink löst dieses Problem: Beim Upload von STEP-Dateien werden alle inneren Fertigungsmaße, Toleranzen und parametrischen B-Rep-Gleichungen serverseitig entfernt. Der Browser empfängt ausschließlich ein visuelles Oberflächennetz.',
-            'Dieses Dreiecksnetz wird mit Google Draco verschlüsselt und komprimiert. Es lässt sich nicht in CAD-Systeme für die Fertigung zurückführen, ermöglicht aber eine makellose 3D-Darstellung im Web.',
-          ],
-        },
-      },
-      {
-        id: 'teknik-blueprint-ve-olculendirme',
-        heading: {
-          tr: '3. Teknik CAD Blueprint Modu ve Milimetrik Canlı Ölçülendirme',
-          en: '3. Technical CAD Blueprint HUD and Live Millimeter Dimensioning',
-          de: '3. CAD-Blueprint-Modus und millimetergenaue Live-Bemaßung',
-        },
-        paragraphs: {
-          tr: [
-            'B2B endüstriyel satın almacılar ve bakım şefleri tüketici e-ticaret sitelerindeki şatafatlı stüdyo aydınlatmalarını aramazlar; onlar için önemli olan teknik netlik, toleranslar ve montaj eksenleridir.',
-            '3D StoreLink\'in özel "CAD / Technical Blueprint" teması, 3D görüntüleyiciyi anında modern bir mühendislik vizörüne dönüştürür. 60x60px ana ve 12x12px alt ızgaralar, neon mavi/siyan köşe vizörleri ve karanlık laboratuvar arka planı ile parça adeta bir CAD yazılımı içinde inceleniyormuş hissi uyandırır.',
-            'Buna ek olarak entegre "Dinamik Ölçülendirme" (Show Dimensions) altyapısı sayesinde, parçanın X, Y ve Z eksenlerindeki milimetrik sınır kutusu (bounding box) ve kritik montaj yüzeyleri doğrudan ekranda interaktif cetvellerle gösterilir. Kullanıcı parçayı 360 derece döndürdükçe cetvel çizgileri ve milimetre etiketleri açıya göre kendini hizalar. Bir vana veya bıçak sipariş eden teknisyen, flanş aralığının mevcut boru hattına uyup uymadığını siparişi vermeden önce ekranda doğrular.',
-          ],
-          en: [
-            'Industrial B2B procurement managers and plant engineers do not want consumer studio glitz; they demand dimensional precision, clearance verification, and axis clarity.',
-            'The 3D StoreLink CAD Technical Blueprint preset transforms the web viewer into a precision engineering HUD. Equipped with 60x60px major and 12x12px minor grid overlays, cyan corner brackets, and a high-contrast dark blueprint canvas, it feels like an integrated engineering workstation.',
-            'Coupled with automated 3D Hotspot Dimensioning, the viewer computes exact millimeter bounding metrics across X, Y, and Z axes. Dynamic dimension lines and metric tags automatically billboard as the camera orbits. A technician ordering a replacement slurry valve can verify face-to-face flange length against existing pipework prior to purchase.',
-          ],
-          de: [
-            'Industrielle Einkäufer und Instandhalter benötigen keine verspielten Konsum-Grafiken, sondern verlässliche technische Daten, Passmaße und klare Achsen.',
-            'Der CAD-Blueprint-Modus von 3D StoreLink verwandelt den Web-Viewer in ein virtuelles CAD-Terminal: 60x60 mm Hauptgitter, 12x12 mm Feingitter und technische Fadenkreuze sorgen für höchste Übersicht.',
-            'Dank integrierter Echtzeit-Bemaßung werden X-, Y- und Z-Abmessungen mit interaktiven Maßlinien direkt am Bauteil angezeigt. Der Servicetechniker kann schon vor dem Absenden der Bestellung prüfen, ob der Flanschabstand zur bestehenden Anlage passt.',
-          ],
-        },
-      },
-      {
-        id: 'karsilastirma-tablosu',
-        heading: {
-          tr: '4. Verimlilik Karşılaştırması: Statik 2D PDF Katalog vs. İnteraktif 3D Web CAD',
-          en: '4. Performance Benchmark: Static 2D PDF vs. Interactive 3D Web CAD',
-          de: '4. Effizienzvergleich: Statischer 2D-PDF-Katalog vs. Interaktiver 3D-Web-CAD-Katalog',
-        },
-        paragraphs: {
-          tr: [
-            'Aşağıdaki tablo, endüstriyel makine ve ekipman üreticilerinin 3D dijital yedek parça kataloğuna geçtikten sonra elde ettikleri operasyonel kazanımları özetlemektedir:',
-          ],
-          en: [
-            'The benchmark below compares key operational KPIs between traditional PDF spare parts catalogs and 3D StoreLink interactive Web CAD catalogs:',
-          ],
-          de: [
-            'Die folgende Tabelle zeigt den operativen Effizienzvergleich zwischen klassischen PDF-Ersatzteilkatalogen und interaktiven 3D-Web-Katalogen:',
-          ],
-        },
-        table: {
-          headers: {
-            tr: ['Operasyonel Kriter', 'Geleneksel 2D PDF Katalog', '3D StoreLink Web CAD Kataloğu', 'Ölçülen İyileşme'],
-            en: ['Operational KPI', 'Traditional 2D PDF Catalog', '3D StoreLink Web CAD Catalog', 'Empirical Benefit'],
-            de: ['Operativer Parameter', 'Traditioneller 2D-PDF-Katalog', '3D StoreLink Web-CAD-Katalog', 'Gemessener Vorteil'],
-          },
-          rows: {
-            tr: [
-              ['Yanlış Parça Sipariş Oranı', '%28.4', '%2.7', '-%90.5 Yanlış Sipariş Düşüşü'],
-              ['Sipariş Öncesi Parça Doğrulama Süresi', '14.2 Dakika (PDF arama + telefon)', '1.8 Dakika (Canlı 3D döngü & ölçü)', '%87 Daha Hızlı Parça Tespiti'],
-              ['Teknik Destek Çağrı Hacmi', 'Aylık ortalama 640 talep/OEM', 'Aylık ortalama 294 talep/OEM', '-%54 Destek Yükü Azalması'],
-              ['Telif Hakkı (CAD IP) Güvenliği', 'Riskli (Çizim veya STEP sızabilir)', 'Tam Koruma (Sadece Draco mesh)', '%100 Tersine Mühendislik Koruması'],
-              ['Mobil Sahada Kullanım (Tablet/Telefon)', 'Zor (PDF kaydırma & yakınlaştırma)', 'Kusursuz (60 FPS dokunmatik + 1:1 AR)', 'Doğrudan Sahada Makine Yanında Denetim'],
-              ['Katalog Güncelleme & Revizyon Hızı', '2-6 Ay (Tüm dokümanı baştan basma)', 'Anlık (Buluttan tek tıkla güncelleme)', 'Sıfır Güncelleme Maliyeti'],
-            ],
-            en: [
-              ['Spare Part Misorder Rate', '28.4%', '2.7%', '-90.5% Order Error Reduction'],
-              ['Pre-Purchase Identification Time', '14.2 Min (PDF paging + phone support)', '1.8 Min (Real-time 3D orbit & measure)', '87% Faster Part Verification'],
-              ['Support Desk Ticket Volume', '640 tickets/month per OEM', '294 tickets/month per OEM', '-54% Support Overhead'],
-              ['CAD IP Safeguard', 'Compromised (Drawings/STEP exposed)', 'Fortified (Encrypted surface mesh)', 'Zero Reverse-Engineering Risk'],
-              ['Field Service Mobility (Phones/Tablets)', 'Poor (Clunky PDF pan/zoom)', 'Native 60 FPS touch + 1:1 Web AR', 'Real-Time Machine Side Inspection'],
-              ['Catalog Revision Deployment', '2 to 6 Months (Re-authoring)', 'Instant (Cloud-synced zero downtime)', 'Instant Catalog Sync'],
-            ],
-            de: [
-              ['Fehlbestellquote bei Ersatzteilen', '28,4%', '2,7%', '-90,5% weniger Retouren'],
-              ['Identifikationsdauer pro Bauteil', '14,2 Min. (Blättern + Supportanruf)', '1,8 Min. (3D-Prüfung & Maße)', '87% schnellere Teilefindung'],
-              ['Technisches Support-Ticket-Aufkommen', '640 Anfragen/Monat pro Hersteller', '294 Anfragen/Monat pro Hersteller', '-54% Entlastung des Kundendienstes'],
-              ['CAD-Datensicherheit (IP-Schutz)', 'Unsicher (Zeichnungen leicht kopierbar)', 'Vollständig gesichert (Draco-Mesh)', 'Kein Reverse-Engineering möglich'],
-              ['Mobile Nutzung auf Baustellen / Fabrik', 'Mühsam (Ständiges Zoomen in PDFs)', 'Flüssige 60 FPS Touch-Gesten + 1:1 AR', 'Direkte Montageprüfung am Aggregat'],
-              ['Katalog-Aktualisierungsdauer', '2 bis 6 Monate (Neuauflage)', 'In Echtzeit (Cloud-Aktualisierung)', 'Sofortige Synchronisation'],
-            ],
-          },
-        },
-      },
-      {
-        id: 'b2b-erp-entegrasyonu',
-        heading: {
-          tr: '5. B2B Portallara, ERP ve E-Ticaret Sistemlerine Entegrasyon Mimarisi',
-          en: '5. Architecture: Integrating into B2B Portals, ERP, and E-Commerce Systems',
-          de: '5. Integrationsarchitektur: B2B-Portale, ERP-Systeme und E-Commerce',
-        },
-        paragraphs: {
-          tr: [
-            'Bir 3D katalog çözümünün başarısı, mevcut B2B sipariş altyapısıyla ne kadar hızlı konuşabildiğine bağlıdır. 3D StoreLink, SAP, Microsoft Dynamics 365, Salesforce B2B Commerce, Shopify Plus veya özel yazılmış ERP portallarına sıfır backend bağımlılığıyla entegre olur.',
-            'Her bir parça için oluşturulan parametresiz, temiz UUID4 bağlantısı doğrudan iframe olarak ürün veya parça detay sayfasına gömülebilir. CAD Blueprint modu veya kurumsal renkler tek bir URL parametresiyle yapılandırılır.',
-          ],
-          en: [
-            'An industrial 3D parts catalog succeeds only if it seamlessly bridges into existing enterprise B2B procurement stacks. 3D StoreLink embeds into SAP, Microsoft Dynamics 365, Salesforce B2B Commerce, and bespoke custom ERP portals with zero backend friction.',
-            'Every component is assigned an idempotent clean UUID4 embed endpoint that slots into standard HTML iframes. Technical themes, millimeter rulers, and branding palettes configure instantaneously via standard URL flags.',
-          ],
-          de: [
-            'Ein digitaler 3D-Katalog muss sich nahtlos in bestehende ERP- und B2B-Systeme (SAP, Microsoft Dynamics, Salesforce B2B) einfügen. 3D StoreLink benötigt dafür keinerlei aufwendige Backend-Entwicklung.',
-            'Jedes Bauteil erhält eine saubere, verschlüsselte UUID4-Adresse, die direkt per iframe in Ersatzteil-Portalen eingebunden werden kann.',
-          ],
-        },
-        codeSnippet: `<!-- 3D StoreLink - Endüstriyel B2B Yedek Parça Görüntüleyici -->
-<div style="width: 100%; height: 600px; border-radius: 16px; overflow: hidden; background: #0b0f19;">
-  <iframe
-    src="https://view.3dstorelink.com/bkv-4000-serisi-dip-blf-vana?theme=technical&showDimensions=1&cadColor=38bdf8&cadCorners=1&enableAR=1&autoRotate=1"
-    width="100%"
-    height="100%"
-    frameborder="0"
-    allow="xr-spatial-tracking"
-    loading="lazy"
-    title="BKV 4000 Dip Blöf Vana - 3D CAD Teknik Görüntüleyici"
-  ></iframe>
-</div>`,
-      },
-    ],
-    faq: [
-      {
-        q: {
-          tr: 'Orijinal STEP veya SolidWorks montajlarımız rakipler tarafından web üzerinden indirilebilir mi?',
-          en: 'Can competitors download our original STEP or SolidWorks manufacturing files from the web?',
-          de: 'Können Wettbewerber unsere Original-STEP- oder SolidWorks-Dateien aus dem Web herunterladen?',
-        },
-        a: {
-          tr: 'Kesinlikle hayır. Yüklediğiniz parametrik CAD modelleri sunucuda şifrelenir ve yalnızca dış yüzey üçgenlerinden oluşan optimize bir WebGL mesh üretilir. İndirme butonu kapatıldığında tarayıcıya ham CAD verisi kesinlikle ulaşmaz; tersine mühendislik riski sıfırdır.',
-          en: 'Absolutely not. Source CAD assemblies are stored in an encrypted vault. The client browser solely streams an irreversible Google Draco triangular mesh. With download protection engaged, your core parametric manufacturing IP remains 100% safeguarded.',
-          de: 'Absolut ausgeschlossen. Ihre originalen CAD-Modelle bleiben verschlüsselt auf dem Server. Der Browser empfängt lediglich ein irreversibles WebGL-Polygonnetz, aus dem keine Fertigungsdaten rekonstruiert werden können.',
-        },
-      },
-      {
-        q: {
-          tr: 'Mevcut ERP veya B2B portalımızdaki binlerce yedek parçayı nasıl senkronize edebiliriz?',
-          en: 'How can we synchronize thousands of spare parts from our existing ERP or B2B portal?',
-          de: 'Wie können wir tausende Ersatzteile aus unserem ERP-System synchronisieren?',
-        },
-        a: {
-          tr: '3D StoreLink RESTful API ve SDK\'ları sayesinde parça numaralarınız (SKU) ile 3D modelleri otomatik eşleştirebilir, toplu CAD yüklemeleri ve webhook tetikleyicileri ile tüm kataloğunuzu saatler içinde yayına alabilirsiniz.',
-          en: 'Through 3D StoreLink RESTful APIs and SDKs, you can programmatically associate ERP SKUs with 3D models, execute bulk CAD conversion pipelines, and trigger automated sync via webhooks.',
-          de: 'Über die 3D StoreLink REST-API können Sie Ihre ERP-Teilenummern (SKUs) vollautomatisch mit 3D-Modellen verknüpfen und große Baugruppen per Batch-Upload synchronisieren.',
-        },
-      },
-      {
-        q: {
-          tr: 'Saha bakım teknisyenleri akıllı telefon üzerinden uygulamaya gerek duymadan parçayı inceleyebilir mi?',
-          en: 'Can field service technicians inspect assemblies on smartphones without installing an app?',
-          de: 'Können Servicetechniker die Bauteile auf Smartphones ohne App-Installation prüfen?',
-        },
-        a: {
-          tr: 'Evet. WebGL ve WebXR altyapımız iOS Safari ve Android Chrome ile %100 uyumludur. Teknisyenler parçayı 60 FPS dokunmatik olarak döndürebilir, milimetrik ölçüleri görebilir ve tek tuşla 1:1 artırılmış gerçeklik (AR) ile makine üzerine yerleştirip montaj uyumunu test edebilir.',
-          en: 'Yes. The viewer runs natively inside mobile Safari and Chrome. Field technicians enjoy fluid 60 FPS touch orbit, inspect millimeter tolerances, and project the part into physical equipment via 1:1 Web AR without any app downloads.',
-          de: 'Ja. Die Darstellung erfolgt direkt im mobilen Safari oder Chrome. Techniker können Baugruppen flüssig drehen, Maße prüfen und das Ersatzteil per 1:1 Web-AR direkt an die reale Maschine projizieren.',
         },
       },
     ],
